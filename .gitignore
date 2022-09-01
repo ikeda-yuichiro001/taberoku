@@ -1,0 +1,15 @@
+#objフォルダ無視
+obj/
+
+#.vsフォルダ無視
+.vs/
+
+#.sln .csprojを無視
+*.sln
+*.csproj
+
+#Libraryフォルダ無視
+Library/
+
+#Tempフォルダ無視
+Temp/
