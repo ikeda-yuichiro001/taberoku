@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SettingSceneManager : MonoBehaviour
 {
-    public void OnClick0() { SceneManager.LoadScene("AdminTool"); }
-    public void OnClick1() { SceneManager.LoadScene("Title"); }
+    public void OnClick0() { SceneManager.LoadScene("AdminTool"); OPTION.Save(); }
+    public void OnClick1() { SceneManager.LoadScene("Title"); OPTION.Save(); }
     public void Nup() { if (SettingSceneUIManager.n < 9) SettingSceneUIManager.n++; }
     public void Ndown() { if (SettingSceneUIManager.n > 1) SettingSceneUIManager.n--; }
     public void Lup() { if (SettingSceneUIManager.l < 90) SettingSceneUIManager.l += 5; }

@@ -9,7 +9,7 @@ public class SettingSceneUIManager : MonoBehaviour
     public static int n, l, r, b, s;
     void Start()
     {
-        n = 1;l = 30;r = 150; b = 60;s = 60;
+        n = 1;l = 30;r = 150; b = 60;s = 60; OPTION.Load();
     }
     void Update()
     {
