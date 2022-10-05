@@ -43,10 +43,11 @@ public class Stage : MonoBehaviour
         int cnt = Line.GetPositions(pos);
         for (int len = 0; len < grid.Length; len++)//ƒ}ƒX‚Ì¶¬
         {
-            A = (cnt / Menber * len + len)/10;
+            A = cnt / 20 * len * Menber;
             pos[len] = Line.GetPosition(A);
-            grid[len] = Instantiate(G, pos[len] + table.transform.position, Quaternion.identity);//Random.Range(-0.3f, 0.3f)
-            //grid[len].transform.SetParent(stage.transform, false);
+            grid[len] = Instantiate(G, new Vector3( pos[len].x , G.transform.position.y
+                ,pos[len].z), Quaternion.identity);//Random.Range(-0.3f, 0.3f)
+            grid[len].transform.SetParent(stage.transform, false);
             print(A);
         }
         for (int len2 = 0; len2 < Menber; len2++)
