@@ -27,9 +27,10 @@ public static class OPTION
     public static float bgm       { get => b;  set => b = value > 001 ? 001 : (value < 0 ? 0 : value); }
     public static float se        { get => s;  set => s = value > 001 ? 001 : (value < 0 ? 0 : value); }
     public static int menberLen { get => m;  set => m = value > 100 ? 100 : (value < 0 ? 0 : value); }
-    public static int time      { get => t;  set => t = value > 120 ? 120 : (value < 10 ? 10 : value); }
-    static float b = 1, s = 1;
-    static int m = 8, t = 30;
+    public static int time      { get => t;  set => t = value > 90 ? 90 : (value < 10 ? 10 : value); }
+    public static int response  { get => r;  set => r = value > 300 ? 300 : (value < 10 ? 10 : value); }
+    static float b = 0.1f, s = 0.1f;
+    static int m = 5, r = 150, t = 30;
 
     public static void Save() =>
         DATA__.DATAIO.WRITE
@@ -39,6 +40,7 @@ public static class OPTION
             "SE:" + s + "\n" + 
             "MENBER:" + m + "\n" +
             "TIME:" + t + "\n" +
+            "RESPONSE:" + r + "\n" +
             "USE_DEVICE:" + t + "\n"
         );
 
@@ -51,10 +53,11 @@ public static class OPTION
             string[] a_ = i.Split(':');
             switch (a_[0].ToLower().Trim())
             {
-                case "bgm"   : if (a_.Length > 1) float.TryParse(a_[1], out b); break;
-                case "se"    : if (a_.Length > 1) float.TryParse(a_[1], out s); break;
-                case "menber": if (a_.Length > 1) int.TryParse(a_[1], out m); break;
-                case "time": if (a_.Length > 1) int.TryParse(a_[1], out t); break;
+                case "bgm"      : if (a_.Length > 1) float.TryParse(a_[1], out b); break;
+                case "se"       : if (a_.Length > 1) float.TryParse(a_[1], out s); break;
+                case "menber"   : if (a_.Length > 1) int.TryParse(a_[1], out m); break;
+                case "time"     : if (a_.Length > 1) int.TryParse(a_[1], out t); break;
+                case "response" : if (a_.Length > 1) int.TryParse(a_[1], out r); break;
                 case "usedevice": case "use_device": case "ebldevice": case "ebl_device": useDevice = true; break; 
                 default: break;
             }
