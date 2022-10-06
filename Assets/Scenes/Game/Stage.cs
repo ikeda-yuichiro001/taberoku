@@ -7,18 +7,15 @@ public class Stage : MonoBehaviour
     Vector3 tempoPpos, tempoPsca, tempoTpos, tempoTsca;//一次的な情報
     public Vector3[] Linepos;
     public GameObject player;
-    GameObject[] players;
-    int[] masu, Skip;
-    public GameObject stage;
-    public GameObject table;
-    public GameObject cam;
+    public static GameObject[] players;
+    public static int[] masu;
+    public static bool[] Goal;
+    public GameObject stage, table, cam;
     public LineRenderer Line;
     public GameObject G;//コピー元
-    GameObject[] grid;//コピーしたオブジェクトを入れる箱
+    public static GameObject[] grid;//コピーしたオブジェクトを入れる箱
     public int A;
     public static int Menber;
-    int Num = 0, Len = 0;
-    bool gool;
 
     void Start()
     {
@@ -27,62 +24,31 @@ public class Stage : MonoBehaviour
         stage.transform.localScale *= Menber;
         cam.transform.position *= Menber;
         //G.transform.localScale *= Menber;
-        grid = new GameObject[20 * Menber];
+        grid = new GameObject[25 + (5 * Menber)];
+        //print("Oops,I did it!");
         players = new GameObject[Menber];
         masu = new int[Menber];
-        Skip = new int[Menber];
+        Goal = new bool[Menber];
         //tempoTpos = table.transform.position * Menber;
         //tempoTsca = table.transform.localScale * Menber;
-        //tempoPpos = player.transform.position * Menber;
-        //tempoPsca = player.transform.localScale * Menber;
-        GridFormat();
-    }
-    void GridFormat()
-    { 
+        //player.transform.localScale = player.transform.localScale * Menber;   
         var pos = new Vector3[Line.positionCount];
         int cnt = Line.GetPositions(pos);
         for (int len = 0; len < grid.Length; len++)//マスの生成
         {
-            A = cnt / 20 * len * Menber;
+            A = (cnt / grid.Length) * len;
             pos[len] = Line.GetPosition(A);
-            grid[len] = Instantiate(G, new Vector3( pos[len].x , G.transform.position.y
-                ,pos[len].z), Quaternion.identity);//Random.Range(-0.3f, 0.3f)
+            grid[len] = Instantiate(G, pos[len], Quaternion.identity);//Random.Range(-0.3f, 0.3f)
             grid[len].transform.SetParent(stage.transform, false);
             print(A);
         }
-        for (int len2 = 0; len2 < Menber; len2++)
+        for (int len2 = 0; len2 < Menber; len2++)//プレイヤーの生成
         {
             players[len2] = Instantiate(player,
-                grid[0].transform.position,
+                grid[0].transform.position + new Vector3(0,table.transform.localScale.y,0) ,
                 Quaternion.identity);
             masu[len2] = 0;
-            Skip[len2] = 0;
-        }
-        return;
-    }
-    void Update()
-    {
-        //print(grid.Length);
-        for (Num = 0; Num < Menber;)
-        {
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                Len = SAIKORO.M;
-                for (int l = 0; l < Len; l++)
-                {
-                    masu[Num]++;
-                    players[Num].transform.position = grid[masu[Num]].transform.position;
-                    if (masu[Num] > grid.Length) masu[Num]--;
-                }
-                Num++;
-            }
-            if (masu[Num] == grid.Length)// && Skip[Num] == 0
-            {
-                Skip[Num]++;
-                Num++;
-            }
-            if (Skip[Num] == 1) Num++;
-            if (Skip[Num] == 0) Num -= Menber;
+            Goal[len2] = false;
         }
     }
 }

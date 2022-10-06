@@ -39,7 +39,7 @@ public class Line : MonoBehaviour
             // 得られたローカル座標をラインレンダラーに追加する
             positionCount++;
             lineRenderer.positionCount = positionCount;
-            lineRenderer.SetPosition(positionCount - 1, pos);
+            lineRenderer.SetPosition(positionCount - 1, new Vector3( pos.x,20,pos.z+25));
         }
         //リセットする
         if (!(Input.GetMouseButton(0)))
