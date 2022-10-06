@@ -4,35 +4,58 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    int Num = 0, Len = 0;
-    bool gool;
-    void Start()
+    public static int Num = 0, goal = 0;
+    int Len = 0;
+    void PlayerPosition()
     {
-
-    }
-    void Update()
-    {
-        for (Num = 0; Num < Stage.Menber;)
+        print("プレイヤー " + Num + " の場所を確認したZOI!");
+        if (Stage.Goal[Num] == true) return;
+        else
         {
-            if(Stage.players[Num])
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                Len = SAIKORO.M;
-                for (int l = 0; l < Len; l++)
-                {
-                    Stage.masu[Num]++;
-                    Stage.players[Num].transform.position = Stage.grid[Stage.masu[Num]].transform.position;
-                    if (Stage.masu[Num] > Stage.grid.Length) Stage.masu[Num]--;
-                }
-                Num++;
-            }
-            if (Stage.masu[Num] == Stage.grid.Length)// && Skip[Num] == 0
+            if (Stage.masu[Num] == Stage.grid.Length)//ゴール判定
             {
                 Stage.Goal[Num] = true;
-                Num++;
+                goal++;
+                print("プレイヤー " + Num + " がゴールしたZOI!");
             }
-            //Stage.Goal[Num] ? Num++:Num--;
-            return;
+        }
+    }
+    void PlayerRoll()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Len = Random.Range(1, 7); ;
+            print("プレイヤー " + Num + " がサイコロを振ったZOI!");
+            print("サイコロの目は..." + Len);
+            Main.Phase++;
+        }
+    }
+    void PlayerMove()
+    {
+        for (int l = 0; l < Len; l++)
+        {
+            if (Stage.masu[Num] < Stage.grid.Length) Stage.masu[Num]++;
+            else if (Stage.masu[Num] > Stage.grid.Length) Stage.masu[Num] += 0;
+            else if (Stage.masu[Num] == Stage.grid.Length) Stage.masu[Num] += 0;
+            Stage.players[Num].transform.position = Stage.grid[Stage.masu[Num]].transform.position + new Vector3(0, 2, 0);
+        }
+        print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
+        print("プレイヤー " + Num + " がコマを動かしたZOI!");
+        Main.Phase++;
+    }
+    void PlayerPass()
+    {
+        if (Num < OPTION.menberLen)
+        {
+            Num++;
+            print("プレイヤー " + Num + " に回したZOI!");
+            Main.Phase = 1;
+        }
+        if (Num >= OPTION.menberLen)
+        {
+            Num = 0;
+            print("一巡したZOI");
+            Main.Phase = 1;
         }
     }
 }

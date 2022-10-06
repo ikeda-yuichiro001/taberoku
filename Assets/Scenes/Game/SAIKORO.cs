@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SAIKORO : MonoBehaviour
 {
-    public static int M;
+    public static int Me;
     float X, Y, Z;
     public static bool D;
     public GameObject Saikoro;
@@ -30,13 +30,7 @@ public class SAIKORO : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            M = Random.Range(1, 7);
-            if (M == 1) Saikoro.transform.Rotate(-90, 0, 0);
-            if (M == 2) Saikoro.transform.Rotate(0, 0, 0);
-            if (M == 3) Saikoro.transform.Rotate(90, 0, 0);
-            if (M == 4) Saikoro.transform.Rotate(180, 0, 0);
-            if (M == 5) Saikoro.transform.Rotate(0, 0, -90);
-            if (M == 6) Saikoro.transform.Rotate(0, 0, 90);
+            Me = Random.Range(1, 7);
             D = false;
         }
     }
