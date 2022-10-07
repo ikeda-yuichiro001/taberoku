@@ -8,17 +8,23 @@ public class Player : MonoBehaviour
     int Len = 0;
     void PlayerPosition()
     {
-        print("プレイヤー " + Num + " の場所を確認したZOI!");
-        if (Stage.Goal[Num] == true) return;
+        if (Stage.Goal[Num] == true)
+        {
+            Main.Phase++;
+            return;
+        }
         else
         {
-            if (Stage.masu[Num] == Stage.grid.Length)//ゴール判定
+            if (Stage.masu[Num] == Stage.grid.Length - 1)//ゴール判定
             {
                 Stage.Goal[Num] = true;
                 goal++;
+                Main.Phase = 6;
                 print("プレイヤー " + Num + " がゴールしたZOI!");
             }
+            else Main.Phase++;
         }
+        print("プレイヤー " + Num + " の場所を確認したZOI!");
     }
     void PlayerRoll()
     {
@@ -26,21 +32,22 @@ public class Player : MonoBehaviour
         {
             Len = Random.Range(1, 7); ;
             print("プレイヤー " + Num + " がサイコロを振ったZOI!");
-            print("サイコロの目は..." + Len);
+            //print("サイコロの目は..." + Len);
             Main.Phase++;
         }
     }
     void PlayerMove()
     {
+        //Debug.Log("マス目の合計は" + Stage.grid.Length + "Deth。");
         for (int l = 0; l < Len; l++)
         {
-            if (Stage.masu[Num] < Stage.grid.Length) Stage.masu[Num]++;
-            else if (Stage.masu[Num] > Stage.grid.Length) Stage.masu[Num] += 0;
-            else if (Stage.masu[Num] == Stage.grid.Length) Stage.masu[Num] += 0;
+            if (Stage.masu[Num] < Stage.grid.Length - 1) Stage.masu[Num]++;
+            else if (Stage.masu[Num] > Stage.grid.Length - 1) Stage.masu[Num] += 0;
+            else if (Stage.masu[Num] == Stage.grid.Length - 1) Stage.masu[Num] += 0;
+            print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
             Stage.players[Num].transform.position = Stage.grid[Stage.masu[Num]].transform.position + new Vector3(0, 2, 0);
         }
-        print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
-        print("プレイヤー " + Num + " がコマを動かしたZOI!");
+        //print("プレイヤー " + Num + " がコマを動かしたZOI!");
         Main.Phase++;
     }
     void PlayerPass()
@@ -48,13 +55,13 @@ public class Player : MonoBehaviour
         if (Num < OPTION.menberLen)
         {
             Num++;
-            print("プレイヤー " + Num + " に回したZOI!");
+            //print("プレイヤー " + Num + " に回したZOI!");
             Main.Phase = 1;
         }
         if (Num >= OPTION.menberLen)
         {
             Num = 0;
-            print("一巡したZOI");
+            //print("一巡したZOI");
             Main.Phase = 1;
         }
     }

@@ -15,6 +15,7 @@ public class Stage : MonoBehaviour
     public static GameObject[] grid;//コピーしたオブジェクトを入れる箱
     public int A;
     public static int Menber;
+    int GameLen;
 
     void StageCreate()
     {
@@ -35,10 +36,14 @@ public class Stage : MonoBehaviour
             grid[len].transform.SetParent(stage.transform, false);
             //print(A);
         }
+        for (int len0 = 0; len0 < grid.Length; len0++)//罰ゲームマスの生成
+        {
+            GameLen = Random.Range(0, grid.Length - 1);
+        }
         for (int len2 = 0; len2 < Menber; len2++)//プレイヤーの生成
         {
             players[len2] = Instantiate(player,
-                grid[0].transform.position + new Vector3(0,2,0) ,
+                grid[0].transform.position + new Vector3(0, 2, 0),
                 Quaternion.identity);
             masu[len2] = 0;
             Goal[len2] = false;

@@ -23,9 +23,13 @@ public class Main : MonoBehaviour
                 if (Player.goal<OPTION.menberLen)
                 {
                     targetObj[1].SendMessage("PlayerPosition");
-                    Phase++;//ゴールしていない人がいたら
+                    //ゴールしていない人がいたらPhase++;
                 }
-                else if(Player.goal == OPTION.menberLen) Phase = 6;//全員がゴールしたら
+                else if(Player.goal == OPTION.menberLen)
+                {
+                    Phase = 7;//全員がゴールしたら
+                    print("プレイヤー全員がゴールしたZOI!");
+                }
                 break;
             case 2://プレイヤーの行動(サイコロを振る)
                 targetObj[1].SendMessage("PlayerRoll");
@@ -34,9 +38,9 @@ public class Main : MonoBehaviour
                 targetObj[1].SendMessage("PlayerMove");
                 break;
             case 4://止まったマスの処理
-                //if()(マスに効果があったら)Phase++; 
-                Phase = 6;//else(なかったら)
-                print("Phase 4ダヨーン");
+                targetObj[1].SendMessage("GridProcessing");
+                Phase = 6;
+                //print("Phase 4ダヨーン");
                 break;
             case 5:
                 //止まったマスの効果の処理
@@ -49,6 +53,7 @@ public class Main : MonoBehaviour
                 break;
             case 7:
                 //ゴールの処理
+                print("終了！");
                 break;
             default:
                 print("Oops,I did it!");
