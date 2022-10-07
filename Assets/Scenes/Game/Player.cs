@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     {
         if (Stage.Goal[Num] == true)
         {
-            Main.Phase++;
+            Main.Phase = 6;
             return;
         }
         else
@@ -52,13 +52,13 @@ public class Player : MonoBehaviour
     }
     void PlayerPass()
     {
-        if (Num < OPTION.menberLen)
+        if (Num < OPTION.menberLen - 1)
         {
             Num++;
             print("ÉvÉåÉCÉÑÅ[ " + Num + " Ç…âÒÇµÇΩZOI!");
             Main.Phase = 1;
         }
-        if (Num >= OPTION.menberLen)
+        else if (Num >= OPTION.menberLen -1)
         {
             Num = 0;
             print("àÍèÑÇµÇΩZOI");

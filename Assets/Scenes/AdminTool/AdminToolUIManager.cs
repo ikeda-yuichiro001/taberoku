@@ -28,6 +28,6 @@ public class AdminToolUIManager : MonoBehaviour
     void Update()
     {
         QGeneration();
-        Debug.Log(QNum);
+        //Debug.Log(QNum);
     }
 }
