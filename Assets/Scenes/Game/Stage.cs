@@ -16,6 +16,7 @@ public class Stage : MonoBehaviour
     public int A;
     public static int Menber;
     int GameLen;
+    public static int[] MiniGame;
 
     void StageCreate()
     {
@@ -23,9 +24,10 @@ public class Stage : MonoBehaviour
         stage.transform.localScale *= Menber;
         cam.transform.position *= Menber;
         grid = new GameObject[25 + (5 * Menber)];
+        MiniGame = new int[5 * Menber];
         players = new GameObject[Menber];
         masu = new int[Menber];
-        Goal = new bool[Menber]; 
+        Goal = new bool[Menber];
         var pos = new Vector3[Line.positionCount];
         int cnt = Line.GetPositions(pos);
         for (int len = 0; len < grid.Length; len++)//マスの生成
@@ -36,9 +38,11 @@ public class Stage : MonoBehaviour
             grid[len].transform.SetParent(stage.transform, false);
             //print(A);
         }
-        for (int len0 = 0; len0 < grid.Length; len0++)//罰ゲームマスの生成
+        for (int len0 = 0; len0 < 5 * Menber; len0++)//罰ゲームマスの生成
         {
-            GameLen = Random.Range(0, grid.Length - 1);
+            GameLen = Random.Range(1, grid.Length - 1);
+            MiniGame[len0] = GameLen;
+            print(GameLen);
         }
         for (int len2 = 0; len2 < Menber; len2++)//プレイヤーの生成
         {

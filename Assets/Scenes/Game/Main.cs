@@ -38,18 +38,17 @@ public class Main : MonoBehaviour
                 targetObj[1].SendMessage("PlayerMove");
                 break;
             case 4://止まったマスの処理
-                targetObj[1].SendMessage("GridProcessing");
-                Phase = 6;
+                targetObj[2].SendMessage("GridProcessing");
                 //print("Phase 4ダヨーン");
                 break;
-            case 5:
-                //止まったマスの効果の処理
-                print("Phase 5ダヨーン");
-                Phase++;
+            case 5://止まったマスの効果の処理
+                targetObj[2].SendMessage("MINIGame");
+                //print("Phase 5ダヨーン");
+                //Phase++;
                 break;
             case 6://次の人に回す
                 targetObj[1].SendMessage("PlayerPass");
-                print("Phase 6ダヨーン");
+                //print("Phase 6ダヨーン");
                 break;
             case 7:
                 //ゴールの処理

@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         {
             Len = Random.Range(1, 7); ;
             print("プレイヤー " + Num + " がサイコロを振ったZOI!");
-            //print("サイコロの目は..." + Len);
+            //Debug.Log("サイコロの目は..." + Len);
             Main.Phase++;
         }
     }
@@ -44,10 +44,10 @@ public class Player : MonoBehaviour
             if (Stage.masu[Num] < Stage.grid.Length - 1) Stage.masu[Num]++;
             else if (Stage.masu[Num] > Stage.grid.Length - 1) Stage.masu[Num] += 0;
             else if (Stage.masu[Num] == Stage.grid.Length - 1) Stage.masu[Num] += 0;
-            print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
             Stage.players[Num].transform.position = Stage.grid[Stage.masu[Num]].transform.position + new Vector3(0, 2, 0);
         }
-        //print("プレイヤー " + Num + " がコマを動かしたZOI!");
+        print("プレイヤー " + Num + " がコマを動かしたZOI!");
+        print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
         Main.Phase++;
     }
     void PlayerPass()
@@ -55,13 +55,13 @@ public class Player : MonoBehaviour
         if (Num < OPTION.menberLen)
         {
             Num++;
-            //print("プレイヤー " + Num + " に回したZOI!");
+            print("プレイヤー " + Num + " に回したZOI!");
             Main.Phase = 1;
         }
         if (Num >= OPTION.menberLen)
         {
             Num = 0;
-            //print("一巡したZOI");
+            print("一巡したZOI");
             Main.Phase = 1;
         }
     }
