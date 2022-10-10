@@ -21,6 +21,7 @@ public class Main : MonoBehaviour
                 break;
             case 1://プレイヤーの行動(位置をみる)
                 targetObj[0].SendMessage("MoveCam");
+                //targetObj[3].SendMessage("DiceDestroy");
                 if (Player.goal<OPTION.menberLen)
                 {
                     targetObj[1].SendMessage("PlayerPosition");
@@ -28,30 +29,33 @@ public class Main : MonoBehaviour
                 }
                 else if(Player.goal == OPTION.menberLen)
                 {
-                    Phase = 7;//全員がゴールしたら
+                    Phase = 8;//全員がゴールしたら
                     print("プレイヤー全員がゴールしたZOI!");
                 }
                 break;
             case 2://プレイヤーの行動(サイコロを振る)
-                targetObj[1].SendMessage("PlayerRoll");
+                targetObj[3].SendMessage("DiceThrow");
                 break;
-            case 3: //プレイヤーの行動(コマの移動)
+            case 3: //サイコロの目の確認
+                print("サイコロの目の確認");
+                break;
+            case 4: //プレイヤーの行動(コマの移動)
                 targetObj[1].SendMessage("PlayerMove");
                 break;
-            case 4://止まったマスの処理
+            case 5://止まったマスの処理
                 targetObj[2].SendMessage("GridProcessing");
-                //print("Phase 4ダヨーン");
-                break;
-            case 5://止まったマスの効果の処理
-                targetObj[2].SendMessage("MINIGame");
                 //print("Phase 5ダヨーン");
+                break;
+            case 6://止まったマスの効果の処理
+                targetObj[2].SendMessage("MINIGame");
+                //print("Phase 6ダヨーン");
                 //Phase++;
                 break;
-            case 6://次の人に回す
+            case 7://次の人に回す
                 targetObj[1].SendMessage("PlayerPass");
-                //print("Phase 6ダヨーン");
+                //print("Phase 7ダヨーン");
                 break;
-            case 7:
+            case 8:
                 //ゴールの処理
                 print("終了！");
                 break;

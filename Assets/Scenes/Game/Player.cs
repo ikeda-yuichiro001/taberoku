@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static int Num = 0, goal = 0;
-    int Len = 0;
+    public static int Num = 0, goal = 0, Len = 0;
+    int l = 0;
     void PlayerPosition()
     {
         if (Stage.Goal[Num] == true)
         {
-            Main.Phase = 6;
+            Main.Phase = 7;
             return;
         }
         else
@@ -19,37 +19,37 @@ public class Player : MonoBehaviour
             {
                 Stage.Goal[Num] = true;
                 goal++;
-                Main.Phase = 6;
+                Main.Phase = 7;
                 print("プレイヤー " + Num + " がゴールしたZOI!");
             }
             else Main.Phase++;
         }
         print("プレイヤー " + Num + " の場所を確認したZOI!");
     }
-    void PlayerRoll()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            Len = Random.Range(1, 7); ;
-            print("プレイヤー " + Num + " がサイコロを振ったZOI!");
-            //Debug.Log("サイコロの目は..." + Len);
-            Main.Phase++;
-        }
-    }
+
     void PlayerMove()
     {
         //Debug.Log("マス目の合計は" + Stage.grid.Length + "Deth。");
-        for (int l = 0; l < Len; l++)
+        for (l = 0; l < Len; l++)
         {
-            if (Stage.masu[Num] < Stage.grid.Length - 1) Stage.masu[Num]++;
-            else if (Stage.masu[Num] > Stage.grid.Length - 1) Stage.masu[Num] += 0;
-            else if (Stage.masu[Num] == Stage.grid.Length - 1) Stage.masu[Num] += 0;
-            Stage.players[Num].transform.position = Stage.grid[Stage.masu[Num]].transform.position + new Vector3(0, 2, 0);
+            Invoke("Move", 0.5f);
         }
-        print("プレイヤー " + Num + " がコマを動かしたZOI!");
-        print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
-        Main.Phase++;
+        if(l == Len)
+        {
+            print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
+            Main.Phase++;
+        }
     }
+    void Move()
+    {
+        if (Stage.masu[Num] < Stage.grid.Length - 1) Stage.masu[Num]++;
+        else if (Stage.masu[Num] > Stage.grid.Length - 1) Stage.masu[Num] += 0;
+        else if (Stage.masu[Num] == Stage.grid.Length - 1) Stage.masu[Num] += 0;
+        Stage.players[Num].transform.position = Stage.grid[Stage.masu[Num]].transform.position + new Vector3(0, 2, 0);
+        //l++;
+        print("プレイヤー " + Num + " がコマを動かしたZOI!");
+    }
+
     void PlayerPass()
     {
         if (Num < OPTION.menberLen - 1)

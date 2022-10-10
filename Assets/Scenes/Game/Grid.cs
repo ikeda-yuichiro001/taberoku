@@ -28,8 +28,12 @@ public class Grid : MonoBehaviour
     void MINIGame()
     {
         Stage.textboxs.SetActive(true);
-        print("ボボボー・ボ・ボーボボ");
-        Gameturn = false;
-        Main.Phase++;
+        print("問題を表示するZOI!");
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Gameturn = false;
+            Stage.textboxs.SetActive(false);
+            Main.Phase++;
+        }
     }
 }

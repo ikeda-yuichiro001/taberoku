@@ -60,6 +60,6 @@ public class Stage : MonoBehaviour
     void MoveCam()
     {
         cam.transform.position = 
-            players[Player.Num].transform.position + new Vector3(0,4,-4) * Menber;
+            players[Player.Num].transform.position + new Vector3(0,4,-5) * Menber;
     }
 }
