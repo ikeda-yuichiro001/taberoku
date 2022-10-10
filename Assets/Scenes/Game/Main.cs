@@ -13,13 +13,14 @@ public class Main : MonoBehaviour
     
     void Update()
     {
-        switch(Phase)
+        switch (Phase)
         {
             case 0://ステージ&プレイヤーの生成
                 targetObj[0].SendMessage("StageCreate");
                 Phase++;
                 break;
             case 1://プレイヤーの行動(位置をみる)
+                targetObj[0].SendMessage("MoveCam");
                 if (Player.goal<OPTION.menberLen)
                 {
                     targetObj[1].SendMessage("PlayerPosition");

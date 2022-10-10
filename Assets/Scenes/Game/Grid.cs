@@ -27,6 +27,7 @@ public class Grid : MonoBehaviour
     }
     void MINIGame()
     {
+        Stage.textboxs.SetActive(true);
         print("ボボボー・ボ・ボーボボ");
         Gameturn = false;
         Main.Phase++;
