@@ -279,11 +279,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1047213271760470523, guid: e565e80e86dc2974eb167a0d2d0ad968, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e565e80e86dc2974eb167a0d2d0ad968, type: 3}
       propertyPath: m_Name
       value: stage_3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e565e80e86dc2974eb167a0d2d0ad968, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2718757686234406655, guid: e565e80e86dc2974eb167a0d2d0ad968, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341455146520977679, guid: e565e80e86dc2974eb167a0d2d0ad968, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396864290648405801, guid: e565e80e86dc2974eb167a0d2d0ad968, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904833882470906994, guid: e565e80e86dc2974eb167a0d2d0ad968, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354921148744097938, guid: e565e80e86dc2974eb167a0d2d0ad968, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352058482544426249, guid: e565e80e86dc2974eb167a0d2d0ad968, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -593,7 +621,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363021566}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f342ddd61e93bde45800d32164c7fe29, type: 3}
   m_Name: 
@@ -1746,7 +1774,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427537033}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd16acdf5acb2fc45b773b2ae13987e4, type: 3}
   m_Name: 
