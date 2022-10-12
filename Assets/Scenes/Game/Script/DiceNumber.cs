@@ -5,6 +5,10 @@ using UnityEngine;
 public class DiceNumber : MonoBehaviour
 {
     public static int number;
+    void Update()
+    {
+        
+    }
     void OnTriggerStay(Collider collider)
     {
         if (Main.Phase == 3)
@@ -39,16 +43,17 @@ public class DiceNumber : MonoBehaviour
                 number = 1;
                 Invoke("NumberDisplay", 1.5f);
             }
+            print("サイコロの目の確認");
         }
     }
     void NumberDisplay()
     {
         if (number > 0)
         {
-            Player.Len = number;
             Debug.Log("サイコロの目は..." + number);
+            Player.Len = number;
             number = 0;
-            Main.Phase++;
+            Main.Phase = 4;
         }
     }
 }

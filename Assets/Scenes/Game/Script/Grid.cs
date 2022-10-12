@@ -20,9 +20,9 @@ public class Grid : MonoBehaviour
                 Gameturn = false;//なかったら
                 print("チッ!");
             }
-            if (Gameturn == true) Main.Phase++;
+            if (Gameturn == true) Main.Phase = 6;
         }
-        if (Gameturn == false) Main.Phase = 6;
+        if (Gameturn == false) Main.Phase = 7;
         print("罰ゲームの有無を確認したZOI!");
     }
     void MINIGame()
@@ -33,7 +33,7 @@ public class Grid : MonoBehaviour
         {
             Gameturn = false;
             Stage.textboxs.SetActive(false);
-            Main.Phase++;
+            Main.Phase = 7;
         }
     }
 }

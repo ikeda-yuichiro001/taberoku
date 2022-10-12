@@ -18,11 +18,12 @@ public class Dice : MonoBehaviour
             rotateZ = Random.Range(0, 360);
             GameObject dice = GameObject.Instantiate(prefab) as GameObject;
             dice.transform.localScale *= Stage.Menber;
-            dice.transform.position = cam.transform.position + new Vector3(8, -4, 8);// * Stage.Menber;
+            dice.transform.position = cam.transform.position + new Vector3(8, 0, 4);
             dice.GetComponent<Rigidbody>().AddForce(-transform.right * 300);
             dice.transform.Rotate(rotateX, rotateY, rotateZ);
             print("プレイヤー " + Player.Num + " がサイコロを振ったZOI!");
-            Main.Phase++;
+            SE.AUDIO.PlayOneShot(SE.CRIP[1]);
+            Main.Phase = 3;
         }
     }
 }

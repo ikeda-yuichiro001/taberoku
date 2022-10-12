@@ -49,7 +49,7 @@ public class Stage : MonoBehaviour
         for (int len2 = 0; len2 < Menber; len2++)//ƒvƒŒƒCƒ„[‚Ì¶¬
         {
             players[len2] = Instantiate(player,
-                grid[0].transform.position ,//+ new Vector3(0, 1, 0),
+                grid[0].transform.position ,
                 Quaternion.identity);
             masu[len2] = 0;
             Goal[len2] = false;

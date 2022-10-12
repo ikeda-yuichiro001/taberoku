@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class Player : MonoBehaviour
 {
@@ -22,35 +23,39 @@ public class Player : MonoBehaviour
                 Main.Phase = 7;
                 print("プレイヤー " + Num + " がゴールしたZOI!");
             }
-            else Main.Phase++;
+            else Main.Phase = 2;
         }
         print("プレイヤー " + Num + " の場所を確認したZOI!");
     }
 
-    void PlayerMove()
+    async void PlayerMove()
     {
         //Debug.Log("マス目の合計は" + Stage.grid.Length + "Deth。");
-        for (l = 0; l < Len; l++)
+
+        if(l < Len)
         {
-            Invoke("Move", 0.5f);
+            if (Stage.masu[Num] < Stage.grid.Length - 1) Stage.masu[Num]++;
+            else if (Stage.masu[Num] > Stage.grid.Length - 1) Stage.masu[Num] += 0;
+            else if (Stage.masu[Num] == Stage.grid.Length - 1) Stage.masu[Num] += 0;
+            Stage.players[Num].transform.position = Stage.grid[Stage.masu[Num]].transform.position;
+            print("プレイヤー " + Num + " がコマを動かしたZOI!");
+            l++;
+            SE.AUDIO.PlayOneShot(SE.CRIP[0]);
+            await MoveDelay();
         }
-        if(l == Len)
+        if (l == Len)
         {
+            l = 0;
             print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
-            Main.Phase++;
+            Main.Phase = 5;
         }
     }
-    void Move()
+    async Task MoveDelay()
     {
-        if (Stage.masu[Num] < Stage.grid.Length - 1) Stage.masu[Num]++;
-        else if (Stage.masu[Num] > Stage.grid.Length - 1) Stage.masu[Num] += 0;
-        else if (Stage.masu[Num] == Stage.grid.Length - 1) Stage.masu[Num] += 0;
-        Stage.players[Num].transform.position = Stage.grid[Stage.masu[Num]].transform.position + new Vector3(0, 2, 0);
-        //l++;
-        print("プレイヤー " + Num + " がコマを動かしたZOI!");
+        await Task.Delay(10000000);
     }
 
-    void PlayerPass()
+   void PlayerPass()
     {
         if (Num < OPTION.menberLen - 1)
         {

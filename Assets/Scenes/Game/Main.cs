@@ -13,15 +13,15 @@ public class Main : MonoBehaviour
     
     void Update()
     {
+        //print("Phase " + Phase + "ダヨーン");
         switch (Phase)
         {
             case 0://ステージ&プレイヤーの生成
                 targetObj[0].SendMessage("StageCreate");
-                Phase++;
+                Phase = 1;
                 break;
             case 1://プレイヤーの行動(位置をみる)
-                targetObj[0].SendMessage("MoveCam");
-                //targetObj[3].SendMessage("DiceDestroy");
+                targetObj[0].SendMessage("MoveCam");//視点移動
                 if (Player.goal<OPTION.menberLen)
                 {
                     targetObj[1].SendMessage("PlayerPosition");
@@ -37,9 +37,10 @@ public class Main : MonoBehaviour
                 targetObj[3].SendMessage("DiceThrow");
                 break;
             case 3: //サイコロの目の確認
-                print("サイコロの目の確認");
+                //print("サイコロの目の確認");
                 break;
             case 4: //プレイヤーの行動(コマの移動)
+                targetObj[0].SendMessage("MoveCam");//視点移動
                 targetObj[1].SendMessage("PlayerMove");
                 break;
             case 5://止まったマスの処理
