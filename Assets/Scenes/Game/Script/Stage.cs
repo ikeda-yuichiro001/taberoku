@@ -9,8 +9,8 @@ public class Stage : MonoBehaviour
     public static GameObject[] players;
     public static int[] masu;
     public static bool[] Goal;
-    public GameObject stage, table, cam, textboxes;
-    public static GameObject textboxs;
+    public GameObject stage, cam, textboxes, evocations;
+    public static GameObject textboxs, evocation;
     public LineRenderer Line;
     public GameObject G;//コピー元
     public static GameObject[] grid;//コピーしたオブジェクトを入れる箱
@@ -30,6 +30,8 @@ public class Stage : MonoBehaviour
         Goal = new bool[Menber];
         textboxs = textboxes;
         textboxs.SetActive(false);
+        evocation = evocations;
+        evocation.SetActive(false);
         var pos = new Vector3[Line.positionCount];
         int cnt = Line.GetPositions(pos);
         for (int len = 0; len < grid.Length; len++)//マスの生成

@@ -35,6 +35,8 @@ public class Main : MonoBehaviour
                 break;
             case 2://プレイヤーの行動(サイコロを振る)
                 targetObj[3].SendMessage("DiceThrow");
+                Stage.evocation.SetActive(true);
+                targetObj[4].SendMessage("Texts");
                 break;
             case 3: //サイコロの目の確認
                 //print("サイコロの目の確認");
@@ -56,8 +58,7 @@ public class Main : MonoBehaviour
                 targetObj[1].SendMessage("PlayerPass");
                 //print("Phase 7ダヨーン");
                 break;
-            case 8:
-                //ゴールの処理
+            case 8://ゴールの処理
                 print("終了！");
                 break;
             default:
