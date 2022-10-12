@@ -6,7 +6,7 @@ public class Line : MonoBehaviour
 {
     private LineRenderer lineRenderer;
     private int positionCount;
-    private Camera mainCamera;
+    public Camera mainCamera;
     public float X;
     void Start()
     {
@@ -15,7 +15,6 @@ public class Line : MonoBehaviour
         // この状態でラインオブジェクトを移動・回転させると、描かれたラインもワールド空間に取り残されることなく、一緒に移動・回転
         lineRenderer.useWorldSpace = false;
         positionCount = 0;
-        mainCamera = Camera.main;
     }
 
     void Update()
@@ -39,7 +38,7 @@ public class Line : MonoBehaviour
             // 得られたローカル座標をラインレンダラーに追加する
             positionCount++;
             lineRenderer.positionCount = positionCount;
-            lineRenderer.SetPosition(positionCount - 1, new Vector3( pos.x * X,20,(pos.z+25) * X));
+            lineRenderer.SetPosition(positionCount - 1, new Vector3( pos.x * X,20.26f,pos.z * X));
         }
         //リセットする
         if (!(Input.GetMouseButton(0)))
