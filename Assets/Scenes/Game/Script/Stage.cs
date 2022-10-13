@@ -12,6 +12,8 @@ public class Stage : MonoBehaviour
     public GameObject stage, cam, textboxes, evocations;
     public static GameObject textboxs, evocation;
     public LineRenderer Line;
+    public LineRenderer PreLine;
+    int ViewLinePoint;
     public GameObject G;//コピー元
     public static GameObject[] grid;//コピーしたオブジェクトを入れる箱
     public int A;
@@ -32,6 +34,7 @@ public class Stage : MonoBehaviour
         textboxs.SetActive(false);
         evocation = evocations;
         evocation.SetActive(false);
+        ViewLinePoint = 0;
         var pos = new Vector3[Line.positionCount];
         int cnt = Line.GetPositions(pos);
         for (int len = 0; len < grid.Length; len++)//マスの生成
@@ -40,6 +43,9 @@ public class Stage : MonoBehaviour
             pos[len] = Line.GetPosition(A);
             grid[len] = Instantiate(G, pos[len], Quaternion.identity);//Random.Range(-0.3f, 0.3f)
             grid[len].transform.SetParent(stage.transform, false);
+            ViewLinePoint++;
+            PreLine.positionCount = ViewLinePoint;
+            PreLine.SetPosition(ViewLinePoint - 1, pos[len]);
             //print(A);
         }
         for (int len0 = 0; len0 < 5 * Menber; len0++)//罰ゲームマスの生成
