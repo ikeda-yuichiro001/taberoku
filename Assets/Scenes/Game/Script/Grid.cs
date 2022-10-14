@@ -28,6 +28,11 @@ public class Grid : MonoBehaviour
     void MINIGame()
     {
         Stage.textboxs.SetActive(true);
+        //Stage.textboxs.transform.position = new Vector3(0, -400, 0);
+        /*for(; Stage.textboxs.transform.position.y < 0;)
+        {
+            Stage.textboxs.transform.position += new Vector3(0, 10, 0);
+        }*/
         print("–â‘è‚ð•\Ž¦‚·‚éZOI!");
         if (Input.GetKeyDown(KeyCode.Return))
         {
