@@ -60,6 +60,7 @@ public class Main : MonoBehaviour
                 //print("Phase 7ダヨーン");
                 break;
             case 8://ゴールの処理
+                targetObj[5].SendMessage("Finish");
                 print("終了！");
                 break;
             default:

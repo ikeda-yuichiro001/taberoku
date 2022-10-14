@@ -13,6 +13,7 @@ public class Dice : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
+            Stage.evocation.SetActive(false);
             rotateX = Random.Range(0, 360);
             rotateY = Random.Range(0, 360);
             rotateZ = Random.Range(0, 360);

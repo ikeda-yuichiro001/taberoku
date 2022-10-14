@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Threading.Tasks;
 
 public class Player : MonoBehaviour
 {
@@ -10,8 +9,11 @@ public class Player : MonoBehaviour
     private float e;  //収縮率
     public static int Num = 0, goal = 0, Len = 0;
     int l = 0;
+    float set = 0;
+    float TT;
     float eTime;
     float ttt;
+    bool Moooove;
     void PlayerPosition()
     {
         if (Stage.Goal[Num] == true)
@@ -33,31 +35,51 @@ public class Player : MonoBehaviour
         print("プレイヤー " + Num + " の場所を確認したZOI!");
     }
 
-    async void PlayerMove()
+    void PlayerMove()
     {
         //Debug.Log("マス目の合計は" + Stage.grid.Length + "Deth。");
-
         if(l < Len)
         {
-            if (Stage.masu[Num] < Stage.grid.Length - 1) Stage.masu[Num]++;
-            else if (Stage.masu[Num] > Stage.grid.Length - 1) Stage.masu[Num] += 0;
-            else if (Stage.masu[Num] == Stage.grid.Length - 1) Stage.masu[Num] += 0;
-            Stage.players[Num].transform.position = Stage.grid[Stage.masu[Num]].transform.position;
-            print("プレイヤー " + Num + " がコマを動かしたZOI!");
-            l++;
-            SE.AUDIO.PlayOneShot(SE.CRIP[0]);
-            await MoveDelay();
+            if (Moooove == false && Stage.masu[Num] < Stage.grid.Length - 1)
+            {
+                Stage.masu[Num]++;
+                //print("アムロ行っきまーす!");
+                Moooove = true;
+            }
+            else if (Moooove == false && (Stage.masu[Num] > Stage.grid.Length - 1 || Stage.masu[Num] == Stage.grid.Length - 1))
+            {
+                l++;
+                SE.AUDIO.PlayOneShot(SE.CRIP[0]);//ゴールっぽいやつを選んどく
+            }
+            if (Moooove == true)
+            {
+                TT += Time.deltaTime;
+                if (TT >= 0.01f)
+                {
+                    set += 0.1f;
+                    Stage.players[Num].transform.position =
+                        Vector3.Lerp(Stage.grid[Stage.masu[Num] - 1].transform.position,
+                        Stage.grid[Stage.masu[Num]].transform.position, set);
+                    TT = 0;
+                    if (set >= 1)
+                    {
+                        set = 0;
+                        Moooove = false;//移動の終了
+                        l++;
+                        SE.AUDIO.PlayOneShot(SE.CRIP[0]);
+                        print("プレイヤー " + Num + " がコマを動かしたZOI!");
+                    }
+                    print("if (TT >= 0.1f)は通った");
+                }
+                print("trueは通った");
+            }
         }
-        if (l == Len)
+        else if (l == Len)
         {
             l = 0;
             print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
             Main.Phase = 5;
         }
-    }
-    async Task MoveDelay()
-    {
-        await Task.Delay(10000000);
     }
 
     void PlayerCircular()
