@@ -5,8 +5,13 @@ using System.Threading.Tasks;
 
 public class Player : MonoBehaviour
 {
+    public LineRenderer CircularLine;
+    private int Wave;
+    private float e;  //Žûk—¦
     public static int Num = 0, goal = 0, Len = 0;
     int l = 0;
+    float eTime;
+    float ttt;
     void PlayerPosition()
     {
         if (Stage.Goal[Num] == true)
@@ -55,7 +60,26 @@ public class Player : MonoBehaviour
         await Task.Delay(10000000);
     }
 
-   void PlayerPass()
+    void PlayerCircular()
+    {
+        ttt += Time.deltaTime;
+        if(ttt > 0.01f)
+        {
+            eTime += Time.deltaTime;
+            e = Mathf.Sin(eTime) * 1.0f;
+            ttt = 0;
+        }
+        for (Wave = 0; Wave < 360 ;)
+        {
+            Wave++;
+            CircularLine.positionCount = Wave;
+            CircularLine.SetPosition(Wave - 1,
+                Stage.players[Num].transform.position
+                + new Vector3(Mathf.Sin(Wave), 0, Mathf.Cos(Wave)) * e);
+        }
+    }
+
+    void PlayerPass()
     {
         if (Num < OPTION.menberLen - 1)
         {

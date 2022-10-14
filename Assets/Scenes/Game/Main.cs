@@ -13,6 +13,7 @@ public class Main : MonoBehaviour
     
     void Update()
     {
+        targetObj[1].SendMessage("PlayerCircular");
         //print("Phase " + Phase + "ƒ_ƒˆ[ƒ“");
         switch (Phase)
         {
