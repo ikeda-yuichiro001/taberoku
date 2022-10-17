@@ -2380,6 +2380,7 @@ MonoBehaviour:
   Crip:
   - {fileID: 8300000, guid: 6952195f6ce70ae45b2cd06442c77e55, type: 3}
   - {fileID: 8300000, guid: c6b7400667417fa4a8ff9a6cc49df1ba, type: 3}
+  - {fileID: 8300000, guid: 64114f9f3f43cdb44b5b324351d61185, type: 3}
   Audio: {fileID: 1511693737}
 --- !u!4 &1511693739
 Transform:

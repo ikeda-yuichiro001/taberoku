@@ -8,6 +8,7 @@ public class Grid : MonoBehaviour
     float GT;
     float alf;
     bool set = false;
+    bool se = false;
     public RawImage Back;
     public Text h1, bun;
     public static bool Gameturn;
@@ -55,10 +56,17 @@ public class Grid : MonoBehaviour
         {
             h1.color = new Color(0, 0, 0, 1.0f);
             bun.color = new Color(0, 0, 0, 1.0f);
+            if (se == false)
+            {
+                SE.AUDIO.PlayOneShot(SE.CRIP[2]);
+                se = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Grid.Gameturn = false;
+            set = false;
+            se = false;
+            Gameturn = false;
             Stage.textboxs.SetActive(false);
             Main.Phase = 7;
         }
