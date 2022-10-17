@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Grid : MonoBehaviour
 {
-    bool Gameturn;
+    float GT;
+    float alf;
+    bool set = false;
+    public RawImage Back;
+    public Text h1, bun;
+    public static bool Gameturn;
     void GridProcessing()
     {
         for (int len = 0; len < 5 * Stage.Menber; len++)//罰ゲームマスのチェック
@@ -16,8 +22,7 @@ public class Grid : MonoBehaviour
                 print("デデーン　OUT!");
             }
             else
-            {
-                Gameturn = false;//なかったら
+            {//なかったら
                 print("チッ!");
             }
             if (Gameturn == true) Main.Phase = 6;
@@ -25,18 +30,35 @@ public class Grid : MonoBehaviour
         if (Gameturn == false) Main.Phase = 7;
         print("罰ゲームの有無を確認したZOI!");
     }
-    void MINIGame()
+    void Creating()
     {
-        Stage.textboxs.SetActive(true);
-        //Stage.textboxs.transform.position = new Vector3(0, -400, 0);
-        /*for(; Stage.textboxs.transform.position.y < 0;)
+        if (set == false)
         {
-            Stage.textboxs.transform.position += new Vector3(0, 10, 0);
-        }*/
-        print("問題を表示するZOI!");
+            Stage.textboxs.SetActive(true);
+            Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, 0);
+            h1.color = new Color(0, 0, 0, 0);
+            bun.color = new Color(0, 0, 0, 0);
+            print("問題を表示するZOI!");
+            set = true;
+        }
+        GT += Time.deltaTime;
+        if (GT >= 0.01f)
+        {
+            if (Back.color.a < 1.0f)
+            {
+                alf += Time.deltaTime;
+                GT = 0;
+            }
+        }
+        Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, alf);
+        if (Back.color.a >= 1.0f)
+        {
+            h1.color = new Color(0, 0, 0, 1.0f);
+            bun.color = new Color(0, 0, 0, 1.0f);
+        }
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Gameturn = false;
+            Grid.Gameturn = false;
             Stage.textboxs.SetActive(false);
             Main.Phase = 7;
         }

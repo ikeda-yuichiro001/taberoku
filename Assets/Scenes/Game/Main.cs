@@ -39,7 +39,8 @@ public class Main : MonoBehaviour
                 Stage.evocation.SetActive(true);
                 targetObj[4].SendMessage("Texts");
                 break;
-            case 3: //サイコロの目の確認
+            case 3:
+                Stage.evocation.SetActive(false);//サイコロの目の確認
                 //print("サイコロの目の確認");
                 break;
             case 4: //プレイヤーの行動(コマの移動)
@@ -51,7 +52,7 @@ public class Main : MonoBehaviour
                 //print("Phase 5ダヨーン");
                 break;
             case 6://止まったマスの効果の処理
-                targetObj[2].SendMessage("MINIGame");
+                targetObj[2].SendMessage("Creating");
                 //print("Phase 6ダヨーン");
                 //Phase++;
                 break;

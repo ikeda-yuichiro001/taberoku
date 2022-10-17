@@ -15,6 +15,6 @@ public class ResultUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Winner.text = "FÅúck you";
+        Winner.text = "aaaaa";
     }
 }

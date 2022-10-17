@@ -9,8 +9,8 @@ public class Stage : MonoBehaviour
     public static GameObject[] players;
     public static int[] masu;
     public static bool[] Goal;
-    public GameObject stage, cam, textboxes, evocations;
-    public static GameObject textboxs, evocation;
+    public GameObject stage, CAM, textboxes, evocations;
+    public static GameObject textboxs, evocation, cam;
     public LineRenderer Line;
     public LineRenderer PreLine;
     int ViewLinePoint;
@@ -24,7 +24,8 @@ public class Stage : MonoBehaviour
     void StageCreate()
     {
         Menber = OPTION.menberLen;
-        stage.transform.localScale *= Menber;
+        //stage.transform.localScale *= Menber;
+        cam= CAM;
         grid = new GameObject[25 + (5 * Menber)];
         MiniGame = new int[5 * Menber];
         players = new GameObject[Menber];
@@ -67,7 +68,7 @@ public class Stage : MonoBehaviour
     }
     void MoveCam()
     {
-        cam.transform.position = 
-            players[Player.Num].transform.position + new Vector3(0,4,-5) * Menber;
+        cam.transform.position =
+            players[Player.Num].transform.position + new Vector3(0, 4, -5);// * Menber;
     }
 }

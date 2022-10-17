@@ -9,6 +9,7 @@ public class Fin : MonoBehaviour
     {
         SE.AUDIO.PlayOneShot(SE.CRIP[0]);//終了っぽいやつを選んどく
         //なんか文字が出てくる
-        if (Input.GetKeyDown(KeyCode.Return)) SceneManager.LoadScene("Result");//ステージ遷移
+        //if (Input.GetKeyDown(KeyCode.Return))
+            SceneManager.LoadScene("Result");//ステージ遷移
     }
 }
