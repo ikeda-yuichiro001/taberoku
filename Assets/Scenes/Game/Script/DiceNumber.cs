@@ -51,7 +51,7 @@ public class DiceNumber : MonoBehaviour
         if (number > 0)
         {
             Dice.DiceDelet = false;
-            Dice.Wait = false;
+            Dice.Wait = true;
             Debug.Log("ƒTƒCƒRƒ‚Ì–Ú‚Í..." + number);
             Player.Len = number;
             number = 0;

@@ -16,7 +16,7 @@ public class Grid : MonoBehaviour
     {
         for (int len = 0; len < 5 * Stage.Menber; len++)//罰ゲームマスのチェック
         {
-            print(Stage.MiniGame[len]);
+            //print(Stage.MiniGame[len]);
             if (Stage.masu[Player.Num] == Stage.MiniGame[len])
             {
                 Gameturn = true; //マスに効果があったら
@@ -24,7 +24,7 @@ public class Grid : MonoBehaviour
             }
             else
             {//なかったら
-                print("チッ!");
+                //print("チッ!");
             }
             if (Gameturn == true) Main.Phase = 6;
         }

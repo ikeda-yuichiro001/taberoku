@@ -69,9 +69,7 @@ public class Player : MonoBehaviour
                         SE.AUDIO.PlayOneShot(SE.CRIP[0]);
                         print("プレイヤー " + Num + " がコマを動かしたZOI!");
                     }
-                    print("if (TT >= 0.1f)は通った");
                 }
-                print("trueは通った");
             }
         }
         else if (l == Len)
