@@ -80,6 +80,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    void PlayerMove2()
+    {
+        for(int loop = 0; loop < Stage.Menber; loop++)
+        {
+            for (int leep = 0; leep < Stage.Menber; leep++)
+            {
+                if (Stage.masu[loop] == Stage.masu[leep])
+                {
+                    Stage.grid[Stage.masu[Num]].transform.position += new Vector3(0, 0, 1);
+                }
+            }
+        }
+    }
+
     void PlayerCircular()
     {
         ttt += Time.deltaTime;
