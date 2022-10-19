@@ -899,6 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CircularLine: {fileID: 382223276}
+  scl: 1
 --- !u!4 &382223275
 Transform:
   m_ObjectHideFlags: 0
@@ -2251,6 +2252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7173065419031898413, guid: 001886377cee17b4282a2026f38d9c90, type: 3}
   cam: {fileID: 184792699}
+  dice: {fileID: 0}
 --- !u!1 &1511693736
 GameObject:
   m_ObjectHideFlags: 0

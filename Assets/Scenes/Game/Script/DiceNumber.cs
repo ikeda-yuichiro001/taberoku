@@ -43,7 +43,7 @@ public class DiceNumber : MonoBehaviour
                 number = 1;
                 Invoke("NumberDisplay", 1.5f);
             }
-            print("サイコロの目の確認");
+            //print("サイコロの目の確認");
         }
     }
     void NumberDisplay()

@@ -53,7 +53,7 @@ public class Stage : MonoBehaviour
         {
             GameLen = Random.Range(1, grid.Length - 1);
             MiniGame[len0] = GameLen;
-            print(GameLen);
+            //print(GameLen);
         }
         for (int len2 = 0; len2 < Menber; len2++)//ƒvƒŒƒCƒ„[‚Ì¶¬
         {

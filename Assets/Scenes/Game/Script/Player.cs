@@ -8,12 +8,14 @@ public class Player : MonoBehaviour
     private int Wave;
     private float e;  //収縮率
     public static int Num = 0, goal = 0, Len = 0;
+    public float scl;
     int l = 0;
     float set = 0;
     float TT;
     float eTime;
     float ttt;
-    bool Moooove;
+    bool Moooove = false;
+    bool Cheak = false;
     void PlayerPosition()
     {
         if (Stage.Goal[Num] == true)
@@ -35,7 +37,30 @@ public class Player : MonoBehaviour
         print("プレイヤー " + Num + " の場所を確認したZOI!");
     }
 
-    void PlayerMove()
+
+    void PlayerMove0()//元の位置にはどげして戻そうかや
+    {
+        for (int leep = 0; leep < Stage.Menber; leep++)
+        {
+            Stage.players[Num].transform.position = Stage.grid[Stage.masu[Num]].transform.position;
+            if (Num != leep)
+            {
+                Cheak = false;
+                if (Stage.masu[Num] == Stage.masu[leep])
+                {
+                    if (Cheak == false)
+                    {
+                        Vector3 Newpos = Stage.players[Num].transform.position
+                                             + new Vector3(Mathf.Sin(leep), 0, Mathf.Cos(leep)) * scl;
+                        Stage.players[leep].transform.position = Newpos;//移動的な奴
+                        Cheak = true;
+                        //print("プレイヤー" + Num + "とプレイヤー" + leep + "を比べてるンゴ");
+                    }
+                }
+            }
+        }
+    }
+    void PlayerMove1()
     {
         //Debug.Log("マス目の合計は" + Stage.grid.Length + "Deth。");
         if(l < Len)
@@ -77,20 +102,6 @@ public class Player : MonoBehaviour
             l = 0;
             print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
             Main.Phase = 5;
-        }
-    }
-
-    void PlayerMove2()
-    {
-        for(int loop = 0; loop < Stage.Menber; loop++)
-        {
-            for (int leep = 0; leep < Stage.Menber; leep++)
-            {
-                if (Stage.masu[loop] == Stage.masu[leep])
-                {
-                    Stage.grid[Stage.masu[Num]].transform.position += new Vector3(0, 0, 1);
-                }
-            }
         }
     }
 

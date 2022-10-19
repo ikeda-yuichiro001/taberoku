@@ -23,6 +23,7 @@ public class Main : MonoBehaviour
                 break;
             case 1://プレイヤーの行動(位置をみる)
                 targetObj[0].SendMessage("MoveCam");//視点移動
+                targetObj[1].SendMessage("PlayerMove0");//駒の位置調整
                 if (Player.goal<OPTION.menberLen)
                 {
                     targetObj[1].SendMessage("PlayerPosition");
@@ -45,7 +46,8 @@ public class Main : MonoBehaviour
                 break;
             case 4: //プレイヤーの行動(コマの移動)
                 targetObj[0].SendMessage("MoveCam");//視点移動
-                targetObj[1].SendMessage("PlayerMove");
+                targetObj[1].SendMessage("PlayerMove0");
+                targetObj[1].SendMessage("PlayerMove1");
                 break;
             case 5://止まったマスの処理
                 targetObj[2].SendMessage("GridProcessing");
