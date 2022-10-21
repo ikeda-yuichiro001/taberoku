@@ -290,7 +290,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f02bbe03b9c07b4494e4e7e03babaa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: {fileID: 8803745655835339272}
+  PreColor: {fileID: 2936141003688259404}
+  PreName: {fileID: 8803745655835339272}
+  NamePleat:
+  - "\u4F50\u3005\u6728"
+  - "\u9DB4"
+  - "\u6C60\u7530"
+  - "\u8349\u5834"
+  - "\u897F\u6751"
+  - "\u5712\u7530"
+  - 
+  - 
+  - 
+  - 
 --- !u!1 &7609670203166130551
 GameObject:
   m_ObjectHideFlags: 0

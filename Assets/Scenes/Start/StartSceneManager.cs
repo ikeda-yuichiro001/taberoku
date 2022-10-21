@@ -6,5 +6,5 @@ using UnityEngine.SceneManagement;
 public class StartSceneManager : MonoBehaviour
 {
     public void OnClick0() { SceneManager.LoadScene("Game"); }
-    public void OnClick1() { SceneManager.LoadScene("Title"); }
+    public void OnClick1() { SceneManager.LoadScene("Title");}
 }

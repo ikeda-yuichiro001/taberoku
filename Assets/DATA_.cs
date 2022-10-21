@@ -8,6 +8,7 @@ public class DATA_ : MonoBehaviour
     public static readonly DATA_<Question> questionData = new DATA_<Question>("question");
     public static readonly DATA_<Penalty> penaltyData = new DATA_<Penalty>("penalty");
     public static readonly DATA_<Penalty> winner = new DATA_<Penalty>("winner");
+    public static readonly DATA_<User> userData = new DATA_<User>("userInfo");
 
     [RuntimeInitializeOnLoadMethod]
     static void INIT()
@@ -15,6 +16,7 @@ public class DATA_ : MonoBehaviour
         questionData.Load();
         penaltyData.Load();
         winner.Load();
+        userData.Load();
     }
 }
 
@@ -135,11 +137,42 @@ public class Winner : DATAB
     }
 }
 
+[System.Serializable]
+public class User : DATAB
+{
+    public uint id;
+    public byte color, shape;
+    public string name;
 
+    public string ToStr() =>
+        id.ToString().PadLeft(8, '0') + "," +
+        color.ToString().PadLeft(3, '0') + "," +
+        shape.ToString().PadLeft(3, '0') + "," +
+        name;
 
+    public void SET(string a)
+    {
+        var aa = a.Split(',');
+        if (aa.Length >= 4)
+        {
+            byte.TryParse(aa[0], out color);
+            byte.TryParse(aa[1], out shape);
+            uint.TryParse(aa[2], out id);
 
-
- 
+            name = "";
+            if (aa.Length == 4)
+                name = aa[3];
+            else
+            {
+                for (int v = 4; v < aa.Length; v++)
+                {
+                    name += aa[v] + ',';
+                }
+                name = name.Substring(0, name.Length - 1);
+            }
+        }
+    }
+}
 
 public interface DATAB
 { 

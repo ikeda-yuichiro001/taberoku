@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class NamePlate : MonoBehaviour
 {
-    public Text []Name;
-    public RawImage []Color;
+    public RawImage PreColor;
+    public Text PreName;
+    RawImage []Color;
+    Text []Name;
+    public string []NamePleat;
     void Start()
     {
-        //ikeda‚³‚ñ‚ªì‚é–¼‘O‚âF‚ğŠi”[‚·‚é“z‚ğƒ[ƒh
-        Name = new Text[Stage.Menber];
+        DATA_.userData.Load();//ikeda‚³‚ñ‚ªì‚é–¼‘O‚âF‚ğŠi”[‚·‚é“z‚ğƒ[ƒh
         Color = new RawImage[Stage.Menber];
-        for (int c = 0; c < Stage.Menber; c++)
+        Name = new Text[Stage.Menber];
+        for(int n = 0; n < Stage.Menber;n++)
         {
-            Name[c].text = ("Ä“¡");
-            Color[c].color = new Color32(1,1,1,1);
+            PreName.text = NamePleat[n];
+            PreColor.color = new Color32(1, 1, 1, 1);
+            Name[n] = PreName;
+            Color[n] = PreColor;
         }
     }
 
