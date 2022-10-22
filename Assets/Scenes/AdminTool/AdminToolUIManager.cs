@@ -6,28 +6,38 @@ using UnityEngine.UI;
 public class AdminToolUIManager : MonoBehaviour
 {
     public InputField Prefab;
-    public GameObject panel, DestroyOBJ;
+    public static InputField InputQ;
+    public GameObject TextFab; 
+    GameObject[] Q;
+    public GameObject panel;
+    public GameObject canvas;
     public int Number;
+    static public int MAXNum = 30;
     static public int QNum;
     void Start()
     {
         DATA_.questionData.Load();
-        Number = QNum;
-        QGeneration();
-        Destroy(DestroyOBJ);
-    }
-    void QGeneration()
-    {
-        InputField[] Q = new InputField[QNum];
-        for (int a = 0; a < QNum; a++)
+        Q = new GameObject[MAXNum];
+        for(int t = 0; t < MAXNum; t++)
         {
-            Q[QNum] = Instantiate(Prefab, new Vector3(-10, 100 - (80 * a), 0), Quaternion.identity);
-            Q[QNum].transform.SetParent(this.panel.transform, false);
+            Q[Number] = Instantiate(TextFab, new Vector3(-10, 100 - (80 * t), 0), Quaternion.identity);
+            Q[Number].transform.SetParent(this.panel.transform, false);
         }
+        //QGeneration();
+    }
+    public void QGeneration()
+    {
+        Number = QNum;
+    }
+    public void AddQ()
+    {
+        InputQ = Instantiate(Prefab, new Vector3(-10, 100 - (80 * Number), 0), Quaternion.identity);
+        InputQ.transform.SetParent(this.canvas.transform, false);
+        //DATA_.questionData.data.Add(new Question { text = Q[Number].text, answer = ANSWER.YES });
+        //DATA_.questionData.Save();
     }
     void Update()
     {
-        QGeneration();
-        //Debug.Log(QNum);
+        Debug.Log(QNum);
     }
 }
