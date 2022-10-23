@@ -27,7 +27,7 @@ public class Stage : MonoBehaviour
     public RawImage RawImage;
     public Text Text;
     public RawImage[] rawImages;
-    public Text[] texts;
+    public static Text[] texts;
 
     void StageCreate()
     {

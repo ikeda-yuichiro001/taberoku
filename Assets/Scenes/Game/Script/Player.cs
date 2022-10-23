@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
             {
                 Stage.Goal[Num] = true;
                 goal++;
+                //DATA_.winner.data.Add(new Winner() { name = (string)Stage.texts[Num].text, time = { 2002, 06, 28, 00, 00 } });
+                DATA_.winner.Save();
                 Main.Phase = 7;
                 print("プレイヤー " + Num + " がゴールしたZOI!");
             }
