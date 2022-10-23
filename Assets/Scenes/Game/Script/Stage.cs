@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Stage : MonoBehaviour
 {
     public Vector3[] Linepos;
     public GameObject player;
     public static GameObject[] players;
-    public static int[] num;
+    //public static int[] num;
     public static int[] masu;
     public static bool[] Goal;
     public GameObject stage, CAM, textboxes, evocations;
@@ -21,6 +22,12 @@ public class Stage : MonoBehaviour
     public static int Menber;
     int GameLen;
     public static int[] MiniGame;
+    public GameObject Soy;
+    public GameObject[] Soys;
+    public RawImage RawImage;
+    public Text Text;
+    public RawImage[] rawImages;
+    public Text[] texts;
 
     void StageCreate()
     {
@@ -30,9 +37,12 @@ public class Stage : MonoBehaviour
         grid = new GameObject[25 + (5 * Menber)];
         MiniGame = new int[5 * Menber];
         players = new GameObject[Menber];
-        num = new int[Menber];
+        //num = new int[Menber];
         masu = new int[Menber];
         Goal = new bool[Menber];
+        Soys = new GameObject[Menber];
+        rawImages = new RawImage[Menber];
+        texts = new Text[Menber];
         textboxs = textboxes;
         textboxs.SetActive(false);
         evocation = evocations;
@@ -62,7 +72,53 @@ public class Stage : MonoBehaviour
             players[len2] = Instantiate(player,
                 grid[0].transform.position ,
                 Quaternion.identity);
-            num[len2] = len2;
+            Soys[len2] = Instantiate(Soy,
+                new Vector3(0,0,0),
+                Quaternion.identity);
+            Soys[len2].transform.SetParent(players[len2].transform, false);
+            rawImages[len2] = Instantiate(RawImage,
+                new Vector3(0, 1, 0),
+                Quaternion.identity);
+            rawImages[len2].transform.SetParent(Soys[len2].transform, false);
+            texts[len2] = Instantiate(Text,
+                new Vector3(0, 1, 0),
+                Quaternion.identity);
+            texts[len2].transform.SetParent(Soys[len2].transform, false);
+            switch (DATA_.userData.data[len2].color)
+            {
+                case 0:
+                    rawImages[len2].color = new Color(1.0f, 0.0f, 0.0f, 0.4f);
+                    break;
+                case 1:
+                    rawImages[len2].color = new Color(0.0f, 1.0f, 0.0f, 0.4f);
+                    break;
+                case 2:
+                    rawImages[len2].color = new Color(0.0f, 0.0f, 1.0f, 0.4f);
+                    break;
+                case 3:
+                    rawImages[len2].color = new Color(1.0f, 1.0f, 0.0f, 0.4f);
+                    break;
+                case 4:
+                    rawImages[len2].color = new Color(1.0f, 0.0f, 1.0f, 0.4f);
+                    break;
+                case 5:
+                    rawImages[len2].color = new Color(0.0f, 1.0f, 1.0f, 0.4f);
+                    break;
+                case 6:
+                    rawImages[len2].color = new Color(1.0f, 1.0f, 1.0f, 0.4f);
+                    break;
+                case 7:
+                    rawImages[len2].color = new Color(1.0f, 0.65f, 0.0f, 0.4f);
+                    break;
+                case 8:
+                    rawImages[len2].color = new Color(0.5f, 0.0f, 0.5f, 0.4f);
+                    break;
+                case 9:
+                    rawImages[len2].color = new Color(0.65f, 0.16f, 0.16f, 0.4f);
+                    break;
+            }
+            texts[len2].text = DATA_.userData.data[len2].name;
+            //num[len2] = len2;
             masu[len2] = 0;
             Goal[len2] = false;
         }
