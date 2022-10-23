@@ -7,6 +7,7 @@ public class Stage : MonoBehaviour
     public Vector3[] Linepos;
     public GameObject player;
     public static GameObject[] players;
+    public static int[] num;
     public static int[] masu;
     public static bool[] Goal;
     public GameObject stage, CAM, textboxes, evocations;
@@ -29,6 +30,7 @@ public class Stage : MonoBehaviour
         grid = new GameObject[25 + (5 * Menber)];
         MiniGame = new int[5 * Menber];
         players = new GameObject[Menber];
+        num = new int[Menber];
         masu = new int[Menber];
         Goal = new bool[Menber];
         textboxs = textboxes;
@@ -60,6 +62,7 @@ public class Stage : MonoBehaviour
             players[len2] = Instantiate(player,
                 grid[0].transform.position ,
                 Quaternion.identity);
+            num[len2] = len2;
             masu[len2] = 0;
             Goal[len2] = false;
         }

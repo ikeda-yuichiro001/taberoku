@@ -17,6 +17,7 @@ public class StartManager : MonoBehaviour
 
     void Start()
     {
+        OPTION.Load();
         NAME = new InputField[OPTION.menberLen];
         COLOE = new Dropdown[OPTION.menberLen];
         OBJ = new Dropdown[OPTION.menberLen];
@@ -24,24 +25,6 @@ public class StartManager : MonoBehaviour
         {
             NameNum[a] = GameObject.Find("Canvas/Name/Num").GetComponent<Text>();
             NameNum[a].text = "É`Å[ÉÄ" + (a + 1);
-            /*if (a % 2 == 0)
-            {
-                NAME[a] = Instantiate(Prefab, new Vector3(-240, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                NAME[a].transform.SetParent(panel.transform, false);
-                COLOE[a] = Instantiate(Prefab2, new Vector3(-110, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                COLOE[a].transform.SetParent(panel.transform, false);
-                OBJ[a] = Instantiate(Prefab3, new Vector3(-35, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                OBJ[a].transform.SetParent(panel.transform, false);
-            }
-            if (a % 2 == 1)
-            {
-                NAME[a] = Instantiate(Prefab, new Vector3(165, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                NAME[a].transform.SetParent(panel.transform, false);
-                COLOE[a] = Instantiate(Prefab2, new Vector3(290, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                COLOE[a].transform.SetParent(panel.transform, false);
-                OBJ[a] = Instantiate(Prefab3, new Vector3(365, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                OBJ[a].transform.SetParent(panel.transform, false);
-            }*/
             if (a % 2 == 0)
             {
                 NAME[a] = Instantiate(Prefab, new Vector3(-210, 205 - (35 * (a + 1)), 0), Quaternion.identity);

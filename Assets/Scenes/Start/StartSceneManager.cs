@@ -10,7 +10,7 @@ public class StartSceneManager : MonoBehaviour
         DATA_.userData.Load();
         for (int Save = 0; Save < OPTION.menberLen; Save++)
         {
-            DATA_.userData.data.Add(new User() { id = (uint)(Save + 1),
+            DATA_.userData.data.Add(new User() { id = (uint)Save,
                 color = (byte)StartManager.COLOE[Save].value,
                 shape = (byte)StartManager.OBJ[Save].value,
                 name = StartManager.NAME[Save].text });
