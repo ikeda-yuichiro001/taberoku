@@ -20,7 +20,7 @@ public class AdminToolUIManager : MonoBehaviour
         Q = new GameObject[MAXNum];
         for(int t = 0; t < MAXNum; t++)
         {
-            Q[Number] = Instantiate(TextFab, new Vector3(-10, 100 - (80 * t), 0), Quaternion.identity);
+            Q[Number] = Instantiate(TextFab, new Vector3(-10, 1200 - (80 * t), 0), Quaternion.identity);
             Q[Number].transform.SetParent(this.panel.transform, false);
         }
         //QGeneration();
