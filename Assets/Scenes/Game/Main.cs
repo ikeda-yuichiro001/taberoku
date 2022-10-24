@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
     float delay;
     public static int Phase;
+    bool seflag;
+    float cnt,cnt2;
+    public RawImage seikai, huseikai;
     public GameObject[] targetObj;
     void Start()
     {
         Phase = 0;
+        seikai.color = Color.clear;
+        huseikai.color = Color.clear;
     }
     
     void Update()
@@ -72,6 +78,57 @@ public class Main : MonoBehaviour
             case 8://ゴールの処理
                 targetObj[5].SendMessage("Finish");
                 print("終了！");
+                break;
+            case 9:
+                if (!seflag)
+                {
+                    SE.AUDIO.PlayOneShot(SE.CRIP[3]);//正解!!
+                    seflag = true;
+                }
+                    cnt += Time.deltaTime * 10;
+                    if (Mathf.Sin(cnt) > 0)
+                    {
+                        seikai.color = Color.red;
+                    }
+                    else
+                    {
+                        seikai.color = Color.clear;
+                    }
+                    if (cnt > 50)
+                    {
+                        cnt = 0;
+                        seflag = false;
+                        seikai.color = Color.clear;
+                        Phase = 7;
+                    }
+                    
+                
+                break;
+            case 10:
+                if (!seflag)
+                {
+                    SE.AUDIO.PlayOneShot(SE.CRIP[4]);//不正解  
+                    seflag = true;
+                    cnt += Time.deltaTime * 10;
+                    if (Mathf.Sin(cnt) > 0)
+                    {
+                        seikai.color = Color.blue;
+                    }
+                    else
+                    {
+                        seikai.color = Color.clear;
+                    }
+                    if (cnt > 50)
+                    {
+                        cnt = 0;
+                        seflag = false;
+                        seikai.color = Color.clear;
+                        Phase = 11;
+                    }
+                }
+                break;
+            case 11:
+                cnt2 += Time.deltaTime;
                 break;
             default:
                 print("Oops,I did it!");

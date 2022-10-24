@@ -69,12 +69,10 @@ public class Grid : MonoBehaviour
         {
             if (questions[rand].Answer == true) //KeyCode.▲ならYESを選択なのでquestions[?].Answerがtrueなら正解となる
             {
-                SE.AUDIO.PlayOneShot(SE.CRIP[3]);//正解!!
                 Main.Phase = 9;
             }
             else
             {
-                SE.AUDIO.PlayOneShot(SE.CRIP[4]);//不正解  
                 Main.Phase = 10;
             }
 
@@ -83,12 +81,10 @@ public class Grid : MonoBehaviour
         {
             if (questions[rand].Answer == false) //KeyCode.▽ならNoを選択なのでquestions[?].Answerがfalseなら正解となる
             {
-                SE.AUDIO.PlayOneShot(SE.CRIP[3]);//正解!!
                 Main.Phase = 9;
             }
             else
             {
-                SE.AUDIO.PlayOneShot(SE.CRIP[4]);//不正解 
                 Main.Phase = 10;
             }
 
