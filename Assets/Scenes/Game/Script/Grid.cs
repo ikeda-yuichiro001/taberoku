@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Grid : MonoBehaviour
 {
+    int rand;
     float GT;
     float alf;
     bool set = false;
@@ -40,6 +41,7 @@ public class Grid : MonoBehaviour
             h1.color = new Color(0, 0, 0, 0);
             bun.color = new Color(0, 0, 0, 0);
             print("問題を表示するZOI!");
+            rand = Random.Range(0, 10);
             set = true;
         }
         GT += Time.deltaTime;
@@ -58,9 +60,38 @@ public class Grid : MonoBehaviour
             bun.color = new Color(0, 0, 0, 1.0f);
             if (se == false)
             {
+                bun.text = questions[rand].questionText;
                 SE.AUDIO.PlayOneShot(SE.CRIP[2]);
                 se = true;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (questions[rand].Answer == true) //KeyCode.▲ならYESを選択なのでquestions[?].Answerがtrueなら正解となる
+            {
+                SE.AUDIO.PlayOneShot(SE.CRIP[3]);//正解!!
+                Main.Phase = 9;
+            }
+            else
+            {
+                SE.AUDIO.PlayOneShot(SE.CRIP[4]);//不正解  
+                Main.Phase = 10;
+            }
+
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (questions[rand].Answer == false) //KeyCode.▽ならNoを選択なのでquestions[?].Answerがfalseなら正解となる
+            {
+                SE.AUDIO.PlayOneShot(SE.CRIP[3]);//正解!!
+                Main.Phase = 9;
+            }
+            else
+            {
+                SE.AUDIO.PlayOneShot(SE.CRIP[4]);//不正解 
+                Main.Phase = 10;
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -70,5 +101,12 @@ public class Grid : MonoBehaviour
             Stage.textboxs.SetActive(false);
             Main.Phase = 7;
         }
+    }
+    public Question[] questions = new Question[10];
+    [System.Serializable]
+    public class Question
+    {
+        public string questionText;
+        public bool Answer;//yes => true, no => false;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
+    float delay;
     public static int Phase;
     public GameObject[] targetObj;
     void Start()
@@ -59,7 +60,13 @@ public class Main : MonoBehaviour
                 //Phase++;
                 break;
             case 7://次の人に回す
-                targetObj[1].SendMessage("PlayerPass");
+                delay += Time.deltaTime; 
+                if(delay > 1.4f)
+                {
+                    targetObj[1].SendMessage("PlayerPass");
+                    delay = 0;
+                }
+
                 //print("Phase 7ダヨーン");
                 break;
             case 8://ゴールの処理

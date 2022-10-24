@@ -17,6 +17,7 @@ public class Stage : MonoBehaviour
     public LineRenderer PreLine;
     int ViewLinePoint;
     public GameObject G;//コピー元
+    public GameObject G2;//コピー元2
     public static GameObject[] grid;//コピーしたオブジェクトを入れる箱
     public int A;
     public static int Menber;
@@ -28,6 +29,7 @@ public class Stage : MonoBehaviour
     public Text Text;
     public RawImage[] rawImages;
     public static Text[] texts;
+    public Material red;
 
     void StageCreate()
     {
@@ -54,7 +56,7 @@ public class Stage : MonoBehaviour
         {
             A = (cnt / grid.Length) * len;
             pos[len] = Line.GetPosition(A);
-            grid[len] = Instantiate(G, pos[len], Quaternion.identity);//Random.Range(-0.3f, 0.3f)
+            grid[len] = Instantiate(G, pos[len]+ Vector3.up*0.04f, Quaternion.identity);//Random.Range(-0.3f, 0.3f)
             grid[len].transform.SetParent(stage.transform, false);
             ViewLinePoint++;
             PreLine.positionCount = ViewLinePoint;
@@ -67,9 +69,13 @@ public class Stage : MonoBehaviour
             MiniGame[len0] = GameLen;
             //print(GameLen);
         }
+        for(int aaa = 0; aaa < MiniGame.Length;aaa++)
+        {
+            grid[MiniGame[aaa]].GetComponent<MeshRenderer>().material = red;
+        }
         for (int len2 = 0; len2 < Menber; len2++)//プレイヤーの生成
         {
-            players[len2] = Instantiate(player,
+            players[len2] = Instantiate(player/*[DATA_.userData.data[len2].shape]*/,
                 grid[0].transform.position ,
                 Quaternion.identity);
             Soys[len2] = Instantiate(Soy,
