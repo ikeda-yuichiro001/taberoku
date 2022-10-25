@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Fin : MonoBehaviour
 {
-    void Finish()
+    public void Finish()
     {
         SE.AUDIO.PlayOneShot(SE.CRIP[0]);//I—¹‚Á‚Û‚¢‚â‚Â‚ğ‘I‚ñ‚Ç‚­
         //‚È‚ñ‚©•¶š‚ªo‚Ä‚­‚é

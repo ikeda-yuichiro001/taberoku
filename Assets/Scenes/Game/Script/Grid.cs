@@ -13,7 +13,7 @@ public class Grid : MonoBehaviour
     public RawImage Back;
     public Text h1, bun;
     public static bool Gameturn;
-    void GridProcessing()
+    public void GridProcessing()
     {
         for (int len = 0; len < 5 * Stage.Menber; len++)//罰ゲームマスのチェック
         {
@@ -32,7 +32,7 @@ public class Grid : MonoBehaviour
         if (Gameturn == false) Main.Phase = 7;
         print("罰ゲームの有無を確認したZOI!");
     }
-    void Creating()
+    public void Creating()
     {
         if (set == false)
         {

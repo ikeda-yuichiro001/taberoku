@@ -31,11 +31,10 @@ public class Stage : MonoBehaviour
     public static Text[] texts;
     public Material red;
 
-    void StageCreate()
+    public void StageCreate()
     {
         Menber = OPTION.menberLen;
-        //stage.transform.localScale *= Menber;
-        cam= CAM;
+        cam = CAM;
         grid = new GameObject[25 + (5 * Menber)];
         MiniGame = new int[5 * Menber];
         players = new GameObject[Menber];
@@ -131,7 +130,7 @@ public class Stage : MonoBehaviour
         print("ステージとプレイヤーを生成したZOI!");
         //print("Oops,I did it!");
     }
-    void MoveCam()
+    public void MoveCam()
     {
         cam.transform.position =
             players[Player.Num].transform.position + new Vector3(0, 4, -5);// * Menber;

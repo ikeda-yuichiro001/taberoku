@@ -16,7 +16,12 @@ public class Player : MonoBehaviour
     float ttt;
     bool Moooove = false;
     bool Cheak = false;
-    void PlayerPosition()
+    /*
+    void Start()
+    {
+        Debug.Log(CircularLine);
+    }*/
+    public void PlayerPosition()
     {
         if (Stage.Goal[Num] == true)
         {
@@ -40,7 +45,7 @@ public class Player : MonoBehaviour
     }
 
 
-    void PlayerMove0()//元の位置にはどげして戻そうかや
+    public void PlayerMove0()//元の位置にはどげして戻そうかや
     {
         for (int leep = 0; leep < Stage.Menber; leep++)
         {
@@ -62,7 +67,7 @@ public class Player : MonoBehaviour
             }
         }
     }
-    void PlayerMove1()
+    public void PlayerMove1()
     {
         //Debug.Log("マス目の合計は" + Stage.grid.Length + "Deth。");
         if(l < Len)
@@ -107,26 +112,26 @@ public class Player : MonoBehaviour
         }
     }
 
-    void PlayerCircular()
+    public void PlayerCircular()
     {
         ttt += Time.deltaTime;
         if(ttt > 0.01f)
         {
             eTime += Time.deltaTime;
             e = Mathf.Sin(eTime) * 1.0f;
+            for (Wave = 0; Wave < 360;)
+            {
+                Wave++;
+                CircularLine.positionCount = Wave;
+                CircularLine.SetPosition(Wave - 1,
+                    Stage.players[Num].transform.position
+                    + new Vector3(Mathf.Sin(Wave), 0, Mathf.Cos(Wave)) * e);
+            }
             ttt = 0;
-        }
-        for (Wave = 0; Wave < 360 ;)
-        {
-            Wave++;
-            CircularLine.positionCount = Wave;
-            CircularLine.SetPosition(Wave - 1,
-                Stage.players[Num].transform.position
-                + new Vector3(Mathf.Sin(Wave), 0, Mathf.Cos(Wave)) * e);
         }
     }
 
-    void PlayerPass()
+    public void PlayerPass()
     {
         if (Num < OPTION.menberLen - 1)
         {

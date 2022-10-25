@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
-    float delay;
+    private int Hours, Minutes;
+    float delay1, delay2;
     public static int Phase;
-    bool seflag;
+    bool seflag , dSet, Rot;
     float cnt,cnt2;
+    public Text Timer;
     public RawImage seikai, huseikai;
     public GameObject[] targetObj;
     void Start()
     {
+        OPTION.Load();
+        Hours = OPTION.time;
+        Minutes = 0;
         Phase = 0;
         seikai.color = Color.clear;
         huseikai.color = Color.clear;
@@ -20,20 +25,21 @@ public class Main : MonoBehaviour
     
     void Update()
     {
-        targetObj[1].SendMessage("PlayerCircular");
+        Timer.text = "残り時間 " + Hours.ToString() + "分"　+ Minutes.ToString() + "秒";
+        //targetObj[1].GetComponent<Player>().PlayerCircular();
         //print("Phase " + Phase + "ダヨーン");
         switch (Phase)
         {
             case 0://ステージ&プレイヤーの生成
-                targetObj[0].SendMessage("StageCreate");
+                targetObj[0].GetComponent<Stage>().StageCreate();
                 Phase = 1;
                 break;
             case 1://プレイヤーの行動(位置をみる)
-                targetObj[0].SendMessage("MoveCam");//視点移動
-                targetObj[1].SendMessage("PlayerMove0");//駒の位置調整
+                targetObj[0].GetComponent<Stage>().MoveCam();//視点移動
+                targetObj[1].GetComponent<Player>().PlayerMove0();//駒の位置調整
                 if (Player.goal<OPTION.menberLen)
                 {
-                    targetObj[1].SendMessage("PlayerPosition");
+                    targetObj[1].GetComponent<Player>().PlayerPosition();
                     //ゴールしていない人がいたらPhase++;
                 }
                 else if(Player.goal == OPTION.menberLen)
@@ -43,40 +49,60 @@ public class Main : MonoBehaviour
                 }
                 break;
             case 2://プレイヤーの行動(サイコロを振る)
-                targetObj[3].SendMessage("DiceThrow");
+                if (!dSet)
+                {
+                    targetObj[3].GetComponent<Dice>().DiceSetting();
+                    dSet = true;
+                }
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Rot = true;
+                }
+                if (Rot)
+                {
+                    targetObj[3].GetComponent<Dice>().DiceRotate();
+                    delay1 += Time.deltaTime;
+                    if (delay1 > 1.5f)
+                    {
+                        targetObj[3].GetComponent<Dice>().DiceThrow();
+                        delay1 = 0;
+                        dSet = false;
+                        Rot = false;
+                    }
+                }
                 Stage.evocation.SetActive(true);
-                targetObj[4].SendMessage("Texts");
+                targetObj[4].GetComponent<Evocat>().Texts();
                 break;
             case 3:
                 Stage.evocation.SetActive(false);//サイコロの目の確認
                 //print("サイコロの目の確認");
                 break;
             case 4: //プレイヤーの行動(コマの移動)
-                targetObj[0].SendMessage("MoveCam");//視点移動
-                targetObj[1].SendMessage("PlayerMove0");
-                targetObj[1].SendMessage("PlayerMove1");
+                targetObj[0].GetComponent<Stage>().MoveCam();//視点移動
+                targetObj[1].GetComponent<Player>().PlayerMove0();
+                targetObj[1].GetComponent<Player>().PlayerMove1();
                 break;
             case 5://止まったマスの処理
-                targetObj[2].SendMessage("GridProcessing");
+                targetObj[2].GetComponent<Grid>().GridProcessing();
                 //print("Phase 5ダヨーン");
                 break;
             case 6://止まったマスの効果の処理
-                targetObj[2].SendMessage("Creating");
+                targetObj[2].GetComponent<Grid>().Creating();
                 //print("Phase 6ダヨーン");
                 //Phase++;
                 break;
             case 7://次の人に回す
-                delay += Time.deltaTime; 
-                if(delay > 1.4f)
+                //delay += Time.deltaTime; 
+                if(Input.GetKeyDown(KeyCode.Return))//delay > 1.4f)
                 {
-                    targetObj[1].SendMessage("PlayerPass");
-                    delay = 0;
+                    targetObj[1].GetComponent<Player>().PlayerPass();
+                    //delay = 0;
                 }
 
                 //print("Phase 7ダヨーン");
                 break;
             case 8://ゴールの処理
-                targetObj[5].SendMessage("Finish");
+                targetObj[5].GetComponent<Fin>().Finish();
                 print("終了！");
                 break;
             case 9:
@@ -109,6 +135,7 @@ public class Main : MonoBehaviour
                 {
                     SE.AUDIO.PlayOneShot(SE.CRIP[4]);//不正解  
                     seflag = true;
+                }
                     cnt += Time.deltaTime * 10;
                     if (Mathf.Sin(cnt) > 0)
                     {
@@ -125,7 +152,6 @@ public class Main : MonoBehaviour
                         seikai.color = Color.clear;
                         Phase = 11;
                     }
-                }
                 break;
             case 11:
                 cnt2 += Time.deltaTime;

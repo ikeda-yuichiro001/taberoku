@@ -8,7 +8,7 @@ public class Evocat : MonoBehaviour
     public Text[] texts;
     Color color;
     private float time;
-    void Texts()
+    public void Texts()
     {
         time += Time.deltaTime * 2.0f;
         color.a = Mathf.Sin(time);

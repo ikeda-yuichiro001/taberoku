@@ -5,10 +5,6 @@ using UnityEngine;
 public class DiceNumber : MonoBehaviour
 {
     public static int number;
-    void Update()
-    {
-        
-    }
     void OnTriggerStay(Collider collider)
     {
         if (Main.Phase == 3)
