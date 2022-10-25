@@ -8,6 +8,7 @@ public class Grid : MonoBehaviour
     int rand;
     float GT;
     float alf;
+    private float pass;
     bool set = false;
     bool se = false;
     public RawImage Back;
@@ -23,13 +24,12 @@ public class Grid : MonoBehaviour
                 Gameturn = true; //マスに効果があったら
                 print("デデーン　OUT!");
             }
-            else
-            {//なかったら
-                //print("チッ!");
-            }
             if (Gameturn == true) Main.Phase = 6;
         }
-        if (Gameturn == false) Main.Phase = 7;
+        if (Gameturn == false)
+        {
+            Main.Phase = 7;
+        }
         print("罰ゲームの有無を確認したZOI!");
     }
     public void Creating()
@@ -67,6 +67,9 @@ public class Grid : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            set = false;
+            se = false;
+            Gameturn = false;
             if (questions[rand].Answer == true) //KeyCode.▲ならYESを選択なのでquestions[?].Answerがtrueなら正解となる
             {
                 Main.Phase = 9;
@@ -75,10 +78,12 @@ public class Grid : MonoBehaviour
             {
                 Main.Phase = 10;
             }
-
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            set = false;
+            se = false;
+            Gameturn = false;
             if (questions[rand].Answer == false) //KeyCode.▽ならNoを選択なのでquestions[?].Answerがfalseなら正解となる
             {
                 Main.Phase = 9;
@@ -87,16 +92,15 @@ public class Grid : MonoBehaviour
             {
                 Main.Phase = 10;
             }
-
         }
-        if (Input.GetKeyDown(KeyCode.Return))
+        /*if (Input.GetKeyDown(KeyCode.Return))
         {
             set = false;
             se = false;
             Gameturn = false;
             Stage.textboxs.SetActive(false);
             Main.Phase = 7;
-        }
+        }*/
     }
     public Question[] questions = new Question[10];
     [System.Serializable]

@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
                 TT += Time.deltaTime;
                 if (TT >= 0.01f)
                 {
-                    set += 0.1f;
+                    set += 0.05f;
                     Stage.players[Num].transform.position =
                         Vector3.Lerp(Stage.grid[Stage.masu[Num] - 1].transform.position,
                         Stage.grid[Stage.masu[Num]].transform.position, set);

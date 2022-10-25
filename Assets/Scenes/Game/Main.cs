@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
-    private int Hours, Minutes;
-    float delay1, delay2;
+    public int Minutes, Seconds;//ゆくゆくはprivateにする
+    private float S;
+    float delay;
     public static int Phase;
     bool seflag , dSet, Rot;
     float cnt,cnt2;
@@ -16,8 +17,9 @@ public class Main : MonoBehaviour
     void Start()
     {
         OPTION.Load();
-        Hours = OPTION.time;
-        Minutes = 0;
+        Minutes = OPTION.time;
+        Seconds = 0;
+        S = 0;
         Phase = 0;
         seikai.color = Color.clear;
         huseikai.color = Color.clear;
@@ -25,7 +27,22 @@ public class Main : MonoBehaviour
     
     void Update()
     {
-        Timer.text = "残り時間 " + Hours.ToString() + "分"　+ Minutes.ToString() + "秒";
+        S += Time.deltaTime;
+        if(S >= 1.0f)
+        {
+            Seconds--;
+            if (Seconds < 0)
+            {
+                Seconds = 59;
+                Minutes--; 
+                if(Minutes < 0)
+                {
+                    Phase = 8;//どっかでゴールしてるかしてないかをみて一位の人を決める
+                }
+            }
+            S = 0;
+        }
+        Timer.text = "残り時間 " + Minutes.ToString() + "分"　+ Seconds.ToString() + "秒";
         //targetObj[1].GetComponent<Player>().PlayerCircular();
         //print("Phase " + Phase + "ダヨーン");
         switch (Phase)
@@ -61,11 +78,11 @@ public class Main : MonoBehaviour
                 if (Rot)
                 {
                     targetObj[3].GetComponent<Dice>().DiceRotate();
-                    delay1 += Time.deltaTime;
-                    if (delay1 > 1.5f)
+                    delay += Time.deltaTime;
+                    if (delay > 1.5f)
                     {
                         targetObj[3].GetComponent<Dice>().DiceThrow();
-                        delay1 = 0;
+                        delay = 0;
                         dSet = false;
                         Rot = false;
                     }
@@ -92,13 +109,12 @@ public class Main : MonoBehaviour
                 //Phase++;
                 break;
             case 7://次の人に回す
-                //delay += Time.deltaTime; 
-                if(Input.GetKeyDown(KeyCode.Return))//delay > 1.4f)
+                delay += Time.deltaTime; 
+                if(delay > 1.4f)
                 {
                     targetObj[1].GetComponent<Player>().PlayerPass();
-                    //delay = 0;
+                    delay = 0;
                 }
-
                 //print("Phase 7ダヨーン");
                 break;
             case 8://ゴールの処理
@@ -111,24 +127,23 @@ public class Main : MonoBehaviour
                     SE.AUDIO.PlayOneShot(SE.CRIP[3]);//正解!!
                     seflag = true;
                 }
-                    cnt += Time.deltaTime * 10;
-                    if (Mathf.Sin(cnt) > 0)
-                    {
-                        seikai.color = Color.red;
-                    }
-                    else
-                    {
-                        seikai.color = Color.clear;
-                    }
-                    if (cnt > 50)
-                    {
-                        cnt = 0;
-                        seflag = false;
-                        seikai.color = Color.clear;
-                        Phase = 7;
-                    }
-                    
-                
+                cnt += Time.deltaTime * 10;
+                if (Mathf.Sin(cnt) > 0)
+                {
+                    seikai.color = Color.red;
+                }
+                else
+                {
+                    seikai.color = Color.clear;
+                }
+                if (cnt > 50)
+                {
+                    cnt = 0;
+                    seflag = false;
+                    seikai.color = Color.clear;
+                    Stage.textboxs.SetActive(false);
+                    Phase = 11;
+                }
                 break;
             case 10:
                 if (!seflag)
@@ -136,25 +151,29 @@ public class Main : MonoBehaviour
                     SE.AUDIO.PlayOneShot(SE.CRIP[4]);//不正解  
                     seflag = true;
                 }
-                    cnt += Time.deltaTime * 10;
-                    if (Mathf.Sin(cnt) > 0)
-                    {
-                        seikai.color = Color.blue;
-                    }
-                    else
-                    {
-                        seikai.color = Color.clear;
-                    }
-                    if (cnt > 50)
-                    {
-                        cnt = 0;
-                        seflag = false;
-                        seikai.color = Color.clear;
-                        Phase = 11;
-                    }
+                cnt += Time.deltaTime * 10;
+                if (Mathf.Sin(cnt) > 0)
+                {
+                    seikai.color = Color.blue;
+                }
+                else
+                {
+                    seikai.color = Color.clear;
+                }
+                if (cnt > 50)
+                {
+                    cnt = 0;
+                    seflag = false;
+                    seikai.color = Color.clear;
+                    Stage.textboxs.SetActive(false);
+                    Phase = 11;
+                }
                 break;
-            case 11:
-                cnt2 += Time.deltaTime;
+            case 11://解説ターン
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    targetObj[1].GetComponent<Player>().PlayerPass();
+                }
                 break;
             default:
                 print("Oops,I did it!");
