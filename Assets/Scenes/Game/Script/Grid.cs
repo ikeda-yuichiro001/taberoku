@@ -60,6 +60,7 @@ public class Grid : MonoBehaviour
             bun.color = new Color(0, 0, 0, 1.0f);
             if (se == false)
             {
+                h1.text = "–â‘è" + (rand + 1);
                 bun.text = questions[rand].questionText;
                 SE.AUDIO.PlayOneShot(SE.CRIP[2]);
                 se = true;
@@ -106,6 +107,7 @@ public class Grid : MonoBehaviour
     [System.Serializable]
     public class Question
     {
+        [Multiline]
         public string questionText;
         public bool Answer;//yes => true, no => false;
     }
