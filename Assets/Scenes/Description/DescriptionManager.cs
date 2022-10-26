@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class DescriptionManager : MonoBehaviour
 {
-    public int next;
+    public int next = 0;
+    bool i;
     public RawImage[] images;
     void Start()
     {
@@ -14,25 +15,23 @@ public class DescriptionManager : MonoBehaviour
         if (SceneLoader.IsFade) return;
         if (a == "‚Â‚¬‚Ö")
         {
-            next++;
             if(next >= images.Length)SceneLoader.Load("Start");
+            i = true;
         }
         if (a == "‚Â‚¬‚¦")
         {
-            next++;
             if (next >= images.Length) SceneLoader.Load("Start");
+            i = true;
         }
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) SceneLoader.Load("Start");
-        for(int a = 0;a<images.Length - 1;)
-        {
-            if (a < next)
+        //if (Input.GetMouseButtonDown(0)) SceneLoader.Load("Start");
+            if(i == true)
             {
-                a++;
                 images[next].color -= new Color(0, 0, 0, Time.deltaTime);
+                next++;
+                i = false;
             }
-        }
     }
 }
