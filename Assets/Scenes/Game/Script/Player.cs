@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     }
 
 
-    public void PlayerMove0()//Œ³‚ÌˆÊ’u‚É‚Í‚Ç‚°‚µ‚Ä–ß‚»‚¤‚©‚â
+    public void PlayerMove0()
     {
         for (int leep = 0; leep < Stage.Menber; leep++)
         {

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SettingSceneManager : MonoBehaviour
 {
-    public void OnClick0() { SceneLoader.Load("AdminTool"); OPTION.Save(); }
-    public void OnClick1() { SceneLoader.Load("Title"); OPTION.Save(); }
+    public void OnClick0() { OPTION.Save(); SceneLoader.Load("AdminTool"); }
+    public void OnClick1() { OPTION.Save(); SceneLoader.Load("Title"); }
     public void Nup()   { if (OPTION.menberLen < 10)  OPTION.menberLen++; }
     public void Ndown() { if (OPTION.menberLen > 1)  OPTION.menberLen--; }
     public void Lup()   { if (OPTION.time < 90)      OPTION.time += 5; }

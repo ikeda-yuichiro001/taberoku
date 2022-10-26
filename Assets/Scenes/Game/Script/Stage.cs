@@ -27,7 +27,7 @@ public class Stage : MonoBehaviour
     public GameObject[] Soys;
     public RawImage RawImage;
     public Text Text;
-    public RawImage[] rawImages;
+    public static RawImage[] rawImages;
     public static Text[] texts;
     public Material red;
 

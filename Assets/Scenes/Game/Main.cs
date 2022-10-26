@@ -23,8 +23,20 @@ public class Main : MonoBehaviour
         Phase = 0;
         seikai.color = Color.clear;
         huseikai.color = Color.clear;
+        VoiceRec.INIT(Recv, new string[]
+        { "おわる", "おわり", "しゅうりょう", "なげる", "ふる"});
     }
-    
+    void Recv(string a)
+    {
+        if (SceneLoader.IsFade) return;
+        if (a == "おわる" || a == "おわり" || a == "しゅうりょう")
+        {
+            SceneLoader.Load("Result");
+            //ゴールしてる人がいるならそのままリザルト画面へ
+            //いない場合はもっともゴールに近い人を優勝にする
+            //そういった処理に私は飛ばしたい
+        }
+    }
     void Update()
     {
         S += Time.deltaTime;
