@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Evocat : MonoBehaviour
 {
+    public GameObject batuGAME;
     public Text[] texts;
     Color color;
     private float time;
@@ -17,5 +18,9 @@ public class Evocat : MonoBehaviour
             color = new Color(texts[c].color.r, texts[c].color.g, texts[c].color.b, color.a);
             texts[c].color = color;
         }
+    }
+    public void SinGame()
+    {
+
     }
 }

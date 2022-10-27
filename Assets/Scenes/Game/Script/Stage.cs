@@ -89,39 +89,7 @@ public class Stage : MonoBehaviour
                 new Vector3(0, 1, 0),
                 Quaternion.identity);
             texts[len2].transform.SetParent(Soys[len2].transform, false);
-            switch (DATA_.userData.data[len2].color)
-            {
-                case 0:
-                    rawImages[len2].color = new Color(1.0f, 0.0f, 0.0f, 0.4f);
-                    break;
-                case 1:
-                    rawImages[len2].color = new Color(0.0f, 1.0f, 0.0f, 0.4f);
-                    break;
-                case 2:
-                    rawImages[len2].color = new Color(0.0f, 0.0f, 1.0f, 0.4f);
-                    break;
-                case 3:
-                    rawImages[len2].color = new Color(1.0f, 1.0f, 0.0f, 0.4f);
-                    break;
-                case 4:
-                    rawImages[len2].color = new Color(1.0f, 0.0f, 1.0f, 0.4f);
-                    break;
-                case 5:
-                    rawImages[len2].color = new Color(0.0f, 1.0f, 1.0f, 0.4f);
-                    break;
-                case 6:
-                    rawImages[len2].color = new Color(1.0f, 1.0f, 1.0f, 0.4f);
-                    break;
-                case 7:
-                    rawImages[len2].color = new Color(1.0f, 0.65f, 0.0f, 0.4f);
-                    break;
-                case 8:
-                    rawImages[len2].color = new Color(0.5f, 0.0f, 0.5f, 0.4f);
-                    break;
-                case 9:
-                    rawImages[len2].color = new Color(0.65f, 0.16f, 0.16f, 0.4f);
-                    break;
-            }
+            rawImages[len2].color = StartManager.PlayerColor[DATA_.userData.data[len2].color];
             texts[len2].text = DATA_.userData.data[len2].name;
             //num[len2] = len2;
             masu[len2] = 0;

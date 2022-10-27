@@ -564,13 +564,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1166719445}
-  Pre1: {fileID: 6055438501870655786, guid: 5f739ace43c2019468ab7e1b97695dba, type: 3}
-  Pre2: {fileID: 7774262091715258112, guid: 911b87b80aa40214f8e874090d11e11c, type: 3}
-  Pre3: {fileID: 2127729712317641543, guid: 827e17eb865979d4fa19ce2961678b6f, type: 3}
+  Pre1: {fileID: 6055438501870655784, guid: 5f739ace43c2019468ab7e1b97695dba, type: 3}
+  Pre1_I: {fileID: 3985675229448705318, guid: 31efa499abcd5cf4f865f8d6928e5a7f, type: 3}
+  Pre2: {fileID: 7774262091715258127, guid: 911b87b80aa40214f8e874090d11e11c, type: 3}
+  Pre3: {fileID: 2127729712317641547, guid: 827e17eb865979d4fa19ce2961678b6f, type: 3}
   playerDatas:
   - name: "\u30CB\u30F3\u30B8\u30F3\u30C1\u30FC\u30E0"
-    color: 1
-    obj: 1
+    color: 0
+    obj: 0
   - name: "\u9B5A\u30C1\u30FC\u30E0"
     color: 1
     obj: 1
@@ -585,7 +586,7 @@ MonoBehaviour:
     obj: 4
   - name: "\u767D\u83DC\u30C1\u30FC\u30E0"
     color: 5
-    obj: 1
+    obj: 0
   - name: "\u30AC\u30D1\u30AA\u30E9\u30A4\u30B9"
     color: 6
     obj: 1
@@ -598,37 +599,7 @@ MonoBehaviour:
   - name: "\u4F50\u3005\u6728\u5065\u6597"
     color: 9
     obj: 4
-  playerDataUIs:
-  - NAME: {fileID: 0}
-    COLOR: {fileID: 0}
-    OBJ: {fileID: 0}
-  - NAME: {fileID: 0}
-    COLOR: {fileID: 0}
-    OBJ: {fileID: 0}
-  - NAME: {fileID: 0}
-    COLOR: {fileID: 0}
-    OBJ: {fileID: 0}
-  - NAME: {fileID: 0}
-    COLOR: {fileID: 0}
-    OBJ: {fileID: 0}
-  - NAME: {fileID: 0}
-    COLOR: {fileID: 0}
-    OBJ: {fileID: 0}
-  - NAME: {fileID: 0}
-    COLOR: {fileID: 0}
-    OBJ: {fileID: 0}
-  - NAME: {fileID: 0}
-    COLOR: {fileID: 0}
-    OBJ: {fileID: 0}
-  - NAME: {fileID: 0}
-    COLOR: {fileID: 0}
-    OBJ: {fileID: 0}
-  - NAME: {fileID: 0}
-    COLOR: {fileID: 0}
-    OBJ: {fileID: 0}
-  - NAME: {fileID: 0}
-    COLOR: {fileID: 0}
-    OBJ: {fileID: 0}
+  playerDataUIs: []
 --- !u!4 &889830584
 Transform:
   m_ObjectHideFlags: 0
