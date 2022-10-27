@@ -3,10 +3,11 @@ using UnityEngine.UI;
 
 public class DescriptionManager : MonoBehaviour
 {
-    public int next = -1;
+    public int next;
     public RawImage[] images;
     void Start()
     {
+        next = -1;
         VoiceRec.INIT(Recv, new string[] { "‚Â‚¬‚Ö", "‚Â‚¬‚¦", "‚Â‚¬", "‚Â‚¬", "‚¬‚Ö", "‚¬‚¦" ,"‚Â‚¬‚É‚·‚·‚Þ","‚±‚Ü‚¨‚«‚ß‚é"});
     }
     void Recv(string a)
@@ -28,15 +29,15 @@ public class DescriptionManager : MonoBehaviour
         switch(next)
         {
             case 0:
-                images[next].color += new Color(0, 0, 0, Time.deltaTime);
+                images[0].color -= new Color(0, 0, 0, Time.deltaTime);
                 break;
             case 1:
-                images[next].color += new Color(0, 0, 0, Time.deltaTime);
+                images[1].color -= new Color(0, 0, 0, Time.deltaTime);
                 break;
+            /*case 2:
+                images[2].color -= new Color(0, 0, 0, Time.deltaTime);
+                break;*/
             case 2:
-                images[next].color += new Color(0, 0, 0, Time.deltaTime);
-                break;
-            case 3:
                 next = -1;
                 SceneLoader.Load("Start");
                 break;

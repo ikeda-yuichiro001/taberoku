@@ -5,56 +5,26 @@ using UnityEngine.UI;
 
 public class StartManager : MonoBehaviour
 {
-    bool cheac;
-    //public InputField Prefab;
-    public Dropdown Prefab2, Prefab3;
-    public GameObject panel; 
-    //public static InputField[] NAME;
-    public Dropdown[] COLOE;
-    public Dropdown[] OBJ;
-    //Text[] NameNum = new Text[OPTION.menberLen];
-    //Text[] Name = new Text[OPTION.menberLen];
-
+    public GameObject panel;
+    public Text Pre1;
+    public Dropdown Pre2, Pre3;
+    public PlayerData[] playerDatas;
+    public PlayerDataUI[] playerDataUIs;
+    Vector3 vector1, vector2, vector3;
     void Start()
     {
         OPTION.Load();
-        //NAME = new InputField[OPTION.menberLen];
-        COLOE = new Dropdown[OPTION.menberLen];
-        OBJ = new Dropdown[OPTION.menberLen];
+        //playerDatas = new PlayerData[OPTION.menberLen];
+        playerDataUIs = new PlayerDataUI[OPTION.menberLen];
         for (int a = 0; a < OPTION.menberLen; a++)
         {
-            //NameNum[a] = GameObject.Find("Canvas/Name/Num").GetComponent<Text>();
-            //NameNum[a].text = "É`Å[ÉÄ" + (a + 1);
-            if (a % 2 == 0)
-            {
-                //NAME[a] = Instantiate(Prefab, new Vector3(-210, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                //NAME[a].transform.SetParent(panel.transform, false);
-                COLOE[a] = Instantiate(Prefab2, new Vector3(-90, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                COLOE[a].transform.SetParent(panel.transform, false);
-                OBJ[a] = Instantiate(Prefab3, new Vector3(-25, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                OBJ[a].transform.SetParent(panel.transform, false);
-            }
-            if (a % 2 == 1)
-            {
-                //NAME[a] = Instantiate(Prefab, new Vector3(135, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                //NAME[a].transform.SetParent(panel.transform, false);
-                COLOE[a] = Instantiate(Prefab2, new Vector3(255, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                COLOE[a].transform.SetParent(panel.transform, false);
-                OBJ[a] = Instantiate(Prefab3, new Vector3(320, 205 - (35 * (a + 1)), 0), Quaternion.identity);
-                OBJ[a].transform.SetParent(panel.transform, false);
-            }
-        }
-    }
-    void Update()
-    {
-        if(!cheac)
-        {
-            for(int A = 0; A < OPTION.menberLen; A++)
-            {
-                COLOE[A].value = A;
-                OBJ[A].value = Random.Range(0, 6);
-            }
-            cheac = true;
+            playerDataUIs[a].NAME = Instantiate(Pre1, new Vector3((a % 2 == 0) ? -300:85, 160 - (30 * a), 0), Quaternion.identity);
+            playerDataUIs[a].NAME.transform.SetParent(panel.transform, false);
+            playerDataUIs[a].COLOR = Instantiate(Pre2, new Vector3((a % 2 == 0) ? -190:190, 160 - (30 * a), 0), Quaternion.identity);
+            playerDataUIs[a].OBJ = Instantiate(Pre3, new Vector3((a % 2 == 0) ? -85:300, 160 - (30 * a), 0), Quaternion.identity);
+            playerDataUIs[a].NAME.text = playerDatas[a].name;
+            playerDataUIs[a].COLOR.value = playerDatas[a].color;
+            playerDataUIs[a].OBJ.value = playerDatas[a].obj;
         }
     }
 
@@ -66,15 +36,32 @@ public class StartManager : MonoBehaviour
             DATA_.userData.data.Add(new User()
             {
                 id = (uint)Save,
-                color = (byte)COLOE[Save].value,
-                shape = (byte)OBJ[Save].value,
-                //name = StartManager.NAME[Save].text
+                color = (byte)playerDataUIs[Save].COLOR.value,
+                shape = (byte)playerDataUIs[Save].OBJ.value,
+                name = playerDataUIs[Save].NAME.text
             });
         }
         DATA_.userData.Save();
         print("ZeroSave");
-        cheac = false;
         SceneLoader.Load("Game");
     }
-    public void OnClick1() { cheac = false; SceneLoader.Load("Title"); }
+    public void OnClick1()
+    {
+        SceneLoader.Load("Title");
+    }
+
+
+    [System.Serializable]
+    public class PlayerData
+    {
+        public string name;
+        public int color, obj;
+    }
+
+    [System.Serializable]
+    public class PlayerDataUI
+    {
+        public Text NAME;
+        public Dropdown COLOR, OBJ;
+    }
 }
