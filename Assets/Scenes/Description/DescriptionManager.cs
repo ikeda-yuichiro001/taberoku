@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class DescriptionManager : MonoBehaviour
 {
+    public AudioSource SE;
+    public AudioClip[] clips;
     public int next;
     public RawImage[] images;
     void Start()
@@ -16,11 +18,13 @@ public class DescriptionManager : MonoBehaviour
         if (a == "‚±‚Ü‚¨‚«‚ß‚é")
         {
             next = -1;
+            SE.PlayOneShot(clips[0]);
             SceneLoader.Load("Start");
         }
         else
         {
             next++;
+            SE.PlayOneShot(clips[1]);
         }
     }
     void Update()
@@ -39,6 +43,7 @@ public class DescriptionManager : MonoBehaviour
                 break;*/
             case 2:
                 next = -1;
+                SE.PlayOneShot(clips[1]);
                 SceneLoader.Load("Start");
                 break;
             default:

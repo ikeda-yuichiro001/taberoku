@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
+    public AudioSource BGM;
     public int Minutes, Seconds;//ゆくゆくはprivateにする
     private float S;
     float delay;
@@ -31,10 +32,12 @@ public class Main : MonoBehaviour
         if (SceneLoader.IsFade) return;
         if (a == "おわる" || a == "おわり" || a == "しゅうりょう")
         {
-            SceneLoader.Load("Result");
             //ゴールしてる人がいるならそのままリザルト画面へ
             //いない場合はもっともゴールに近い人を優勝にする
             //そういった処理に私は飛ばしたい
+            BGM.mute = true;
+            SE.AUDIO.PlayOneShot(SE.CRIP[5]);
+            SceneLoader.Load("Result");
         }
     }
     void Update()

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class StartManager : MonoBehaviour
 {
+    public AudioSource SE;
+    public AudioClip[] clips;
     public static Color[] PlayerColor = new Color[]
     {
         new Color(1.0f, 0.0f, 0.0f, 0.4f),
@@ -52,6 +54,8 @@ public class StartManager : MonoBehaviour
             playerDataUIs[a].NAMEImage.color = Color.clear;
             playerDataUIs[a].COLOR.value = playerDatas[a].color;
             playerDataUIs[a].OBJ.value = playerDatas[a].obj;
+            playerDataUIs[a].COLOR.onValueChanged.AddListener(delegate { PlaySE(); });
+            playerDataUIs[a].OBJ.onValueChanged.AddListener(delegate { PlaySE(); });
         }
     }
     void Update()
@@ -77,11 +81,18 @@ public class StartManager : MonoBehaviour
         }
         DATA_.userData.Save();
         print("ZeroSave");
+        SE.PlayOneShot(clips[0]);
         SceneLoader.Load("Game");
     }
     public void OnClick1()
     {
+        SE.PlayOneShot(clips[0]);
         SceneLoader.Load("Title");
+    }
+
+    void PlaySE()
+    {
+        SE.PlayOneShot(clips[1]);
     }
 
     [System.Serializable]
