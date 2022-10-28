@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     {
         if (Stage.Goal[Num] == true)
         {
-            Main.Phase = 7;
+            Main.Phase = 7;//次の人に回す
             return;
         }
         else
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
                 Main.Phase = 7;
                 print("プレイヤー " + Num + " がゴールしたZOI!");
             }
-            else Main.Phase = 2;
+            else Main.Phase = 13;
         }
         print("プレイヤー " + Num + " の場所を確認したZOI!");
     }

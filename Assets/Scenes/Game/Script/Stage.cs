@@ -24,7 +24,7 @@ public class Stage : MonoBehaviour
     int GameLen;
     public static int[] MiniGame;
     public GameObject Soy;
-    public GameObject[] Soys;
+    public static GameObject[] Soys;
     public RawImage RawImage;
     public Text Text;
     public static RawImage[] rawImages;
@@ -92,6 +92,7 @@ public class Stage : MonoBehaviour
             rawImages[len2].color = StartManager.PlayerColor[DATA_.userData.data[len2].color];
             texts[len2].text = DATA_.userData.data[len2].name;
             //num[len2] = len2;
+            Soys[len2].SetActive(false);
             masu[len2] = 0;
             Goal[len2] = false;
         }

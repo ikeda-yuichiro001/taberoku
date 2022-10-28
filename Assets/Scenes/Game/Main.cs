@@ -22,6 +22,7 @@ public class Main : MonoBehaviour
         Seconds = 0;
         S = 0;
         Phase = 0;
+        BGM.mute = false;
         seikai.color = Color.clear;
         huseikai.color = Color.clear;
         VoiceRec.INIT(Recv, new string[]
@@ -38,6 +39,10 @@ public class Main : MonoBehaviour
             BGM.mute = true;
             SE.AUDIO.PlayOneShot(SE.CRIP[5]);
             SceneLoader.Load("Result");
+        }
+        else
+        {
+            Rot = true;
         }
     }
     void Update()
@@ -67,6 +72,7 @@ public class Main : MonoBehaviour
                 Phase = 1;
                 break;
             case 1://プレイヤーの行動(位置をみる)
+                Stage.Soys[Player.Num].SetActive(true);
                 targetObj[0].GetComponent<Stage>().MoveCam();//視点移動
                 targetObj[1].GetComponent<Player>().PlayerMove0();//駒の位置調整
                 if (Player.goal<OPTION.menberLen)
@@ -80,6 +86,9 @@ public class Main : MonoBehaviour
                     print("プレイヤー全員がゴールしたZOI!");
                 }
                 break;
+            case 13://名前のUI出すところ
+                targetObj[4].GetComponent<InformUI>().Inform();
+                break;
             case 2://プレイヤーの行動(サイコロを振る)
                 if (!dSet)
                 {
@@ -92,6 +101,7 @@ public class Main : MonoBehaviour
                 }
                 if (Rot)
                 {
+                    Stage.Soys[Player.Num].SetActive(false);
                     targetObj[3].GetComponent<Dice>().DiceRotate();
                     delay += Time.deltaTime;
                     if (delay > 1.5f)
@@ -123,7 +133,7 @@ public class Main : MonoBehaviour
                 //print("Phase 6ダヨーン");
                 //Phase++;
                 break;
-            case 7://次の人に回す
+            case 7://masuに何もながっだから次の人に回す
                 delay += Time.deltaTime; 
                 if(delay > 1.4f)
                 {
@@ -132,11 +142,7 @@ public class Main : MonoBehaviour
                 }
                 //print("Phase 7ダヨーン");
                 break;
-            case 8://ゴールの処理
-                targetObj[5].GetComponent<Fin>().Finish();
-                print("終了！");
-                break;
-            case 9:
+            case 9://正解!!
                 if (!seflag)
                 {
                     SE.AUDIO.PlayOneShot(SE.CRIP[3]);//正解!!
@@ -160,10 +166,10 @@ public class Main : MonoBehaviour
                     Phase = 11;
                 }
                 break;
-            case 10:
+            case 10://不正解  
                 if (!seflag)
                 {
-                    SE.AUDIO.PlayOneShot(SE.CRIP[4]);//不正解  
+                    SE.AUDIO.PlayOneShot(SE.CRIP[4]);
                     seflag = true;
                 }
                 cnt += Time.deltaTime * 10;
@@ -189,6 +195,16 @@ public class Main : MonoBehaviour
                 {
                     targetObj[1].GetComponent<Player>().PlayerPass();
                 }
+                break;
+            case 12://解説＆罰ゲームターン
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    targetObj[1].GetComponent<Player>().PlayerPass();
+                }
+                break;
+            case 8://ゴールの処理
+                targetObj[5].GetComponent<Fin>().Finish();
+                print("終了！");
                 break;
             default:
                 print("Oops,I did it!");
