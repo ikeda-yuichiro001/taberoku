@@ -12,7 +12,7 @@ public class Grid : MonoBehaviour
     bool set = false;
     bool se = false;
     public RawImage Back;
-    public Text h1, bun;
+    public Text h1, bun, h2, bun2, h3, bun3;
     public static bool Gameturn;
     public void GridProcessing()
     {
@@ -103,6 +103,17 @@ public class Grid : MonoBehaviour
             Main.Phase = 7;
         }*/
     }
+    public void Explanat()
+    {
+        h2.text = "‰ğà" + (rand + 1);
+        bun2.text = explanations[rand].explanationText;
+    }
+    public void SinGames()
+    {
+        h3.text = "”±ƒQ[ƒ€" + (rand + 1);
+        bun3.text = singames[rand].singameText;
+    }
+
     public Question[] questions = new Question[10];
     [System.Serializable]
     public class Question
@@ -110,5 +121,23 @@ public class Grid : MonoBehaviour
         [Multiline]
         public string questionText;
         public bool Answer;//yes => true, no => false;
+    }
+
+    public Explanation[] explanations = new Explanation[10];
+    [System.Serializable]
+    public class Explanation
+    {
+        [Multiline]
+        public string explanationText;
+        //public bool Answer;//yes => true, no => false;
+    }
+
+    public SinGame[] singames = new SinGame[10];
+    [System.Serializable]
+    public class SinGame
+    {
+        [Multiline]
+        public string singameText;
+        //public bool Answer;//yes => true, no => false;
     }
 }

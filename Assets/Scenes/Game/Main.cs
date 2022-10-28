@@ -187,18 +187,33 @@ public class Main : MonoBehaviour
                     seflag = false;
                     seikai.color = Color.clear;
                     Stage.textboxs.SetActive(false);
-                    Phase = 11;
+                    Phase = 12;
                 }
                 break;
             case 11://解説ターン
+                Stage.textboxs2.SetActive(true);
+                targetObj[2].GetComponent<Grid>().Explanat();
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
+                    Stage.textboxs2.SetActive(false);
                     targetObj[1].GetComponent<Player>().PlayerPass();
                 }
                 break;
             case 12://解説＆罰ゲームターン
+                Stage.textboxs2.SetActive(true);
+                targetObj[2].GetComponent<Grid>().Explanat();
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
+                    Stage.textboxs2.SetActive(false);
+                    Phase = 14;
+                }
+                break;
+            case 14:
+                Stage.textboxs3.SetActive(true);
+                targetObj[2].GetComponent<Grid>().SinGames();
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Stage.textboxs3.SetActive(false);
                     targetObj[1].GetComponent<Player>().PlayerPass();
                 }
                 break;

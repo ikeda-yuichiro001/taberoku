@@ -23,7 +23,7 @@ public class InformUI : MonoBehaviour
             UIset = true;
         }
         SmokeTime += Time.deltaTime;
-        if (SmokeTime < 2.5f)
+        if (SmokeTime < 3)
         {
             if(Player.Num - 1 < 0)
             {
@@ -43,7 +43,7 @@ public class InformUI : MonoBehaviour
             InformBoxs.GetComponent<RawImage>().texture = images[Player.Num];
             Smoke.color -= new Color(0, 0, 0, Time.deltaTime);
         }
-        if(SmokeTime > 5)
+        if(SmokeTime > 6)
         {
             UIset = false;
             InformBoxs.SetActive(false);

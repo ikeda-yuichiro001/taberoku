@@ -11,8 +11,8 @@ public class Stage : MonoBehaviour
     //public static int[] num;
     public static int[] masu;
     public static bool[] Goal;
-    public GameObject stage, CAM, textboxes, evocations;
-    public static GameObject textboxs, evocation, cam;
+    public GameObject stage, CAM, textboxes, textboxes2, textboxes3, evocations;
+    public static GameObject textboxs, textboxs2, textboxs3, evocation, cam;
     public LineRenderer Line;
     public LineRenderer PreLine;
     int ViewLinePoint;
@@ -46,6 +46,10 @@ public class Stage : MonoBehaviour
         texts = new Text[Menber];
         textboxs = textboxes;
         textboxs.SetActive(false);
+        textboxs2 = textboxes2;
+        textboxs2.SetActive(false);
+        textboxs3 = textboxes3;
+        textboxs3.SetActive(false);
         evocation = evocations;
         evocation.SetActive(false);
         ViewLinePoint = 0;
