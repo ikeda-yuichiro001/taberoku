@@ -27,7 +27,7 @@ public class InformUI : MonoBehaviour
         {
             if(Player.Num - 1 < 0)
             {
-                InformBoxs.GetComponent<RawImage>().texture = images[images.Length - 1];
+                InformBoxs.GetComponent<RawImage>().texture = images[OPTION.menberLen - 1];
             }
             else
             {

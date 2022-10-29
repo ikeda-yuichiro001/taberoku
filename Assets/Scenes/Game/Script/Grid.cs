@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Grid : MonoBehaviour
 {
-    int rand;
+    public static int rand;
     float GT;
     float alf;
     private float pass;
-    bool set = false;
-    bool se = false;
+    public static bool set = false;
+    public static bool se = false;
     public RawImage Back;
     public Text h1, bun, h2, bun2, h3, bun3;
     public static bool Gameturn;
@@ -36,6 +36,10 @@ public class Grid : MonoBehaviour
     {
         if (set == false)
         {
+            for(int q = 0; q < 10;q++)
+            {
+                staticquestions[q] = questions[q];
+            }
             Stage.textboxs.SetActive(true);
             Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, 0);
             h1.color = new Color(0, 0, 0, 0);
@@ -114,6 +118,7 @@ public class Grid : MonoBehaviour
         bun3.text = singames[rand].singameText;
     }
 
+    public static Question[] staticquestions = new Question[10];
     public Question[] questions = new Question[10];
     [System.Serializable]
     public class Question

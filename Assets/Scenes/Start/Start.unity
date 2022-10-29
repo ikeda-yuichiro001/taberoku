@@ -319,8 +319,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -130, y: -180}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -150, y: -180}
+  m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &391531117
 GameObject:
@@ -358,8 +358,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130, y: -180}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 150, y: -180}
+  m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &391531119
 MonoBehaviour:
@@ -655,7 +655,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0f8c919b912016f4fb0355bb33876c98, type: 3}
-    m_FontSize: 25
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -731,19 +731,19 @@ MonoBehaviour:
     obj: 4
   - name: "\u30EA\u30F3\u30B4\u30C1\u30FC\u30E0"
     color: 5
-    obj: 0
+    obj: 5
   - name: "\u30D0\u30CA\u30CA\u30C1\u30FC\u30E0"
     color: 6
-    obj: 1
+    obj: 6
   - name: "\u30B5\u30AB\u30CA\u30C1\u30FC\u30E0"
     color: 7
-    obj: 2
+    obj: 7
   - name: "\u30EF\u30AB\u30E1\u30C1\u30FC\u30E0"
     color: 8
-    obj: 3
+    obj: 8
   - name: "\u4F50\u3005\u6728\u5065\u6597"
     color: 9
-    obj: 4
+    obj: 9
   playerDataUIs: []
 --- !u!4 &889830584
 Transform:
@@ -1309,7 +1309,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0f8c919b912016f4fb0355bb33876c98, type: 3}
-    m_FontSize: 25
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2

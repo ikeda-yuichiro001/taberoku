@@ -26,7 +26,7 @@ public class Main : MonoBehaviour
         seikai.color = Color.clear;
         huseikai.color = Color.clear;
         VoiceRec.INIT(Recv, new string[]
-        { "‚¨‚í‚é", "‚¨‚í‚è", "‚µ‚ã‚¤‚è‚å‚¤", "‚È‚°‚é", "‚Ó‚é"});
+        { "‚¨‚í‚é", "‚¨‚í‚è", "‚µ‚ã‚¤‚è‚å‚¤", "‚È‚°‚é", "‚Ó‚é","‚Í‚¢","‚Ü‚é","‚¢‚¢‚¦","‚Î‚Â"});
     }
     void Recv(string a)
     {
@@ -39,6 +39,14 @@ public class Main : MonoBehaviour
             BGM.mute = true;
             SE.AUDIO.PlayOneShot(SE.CRIP[5]);
             SceneLoader.Load("Result");
+        }
+        else if(a == "‚Í‚¢" || a == "‚Ü‚é")
+        {
+            Phase = 15;
+        }
+        else if (a == "‚¢‚¢‚¦" || a == "‚Î‚Â")
+        {
+            Phase = 16;
         }
         else
         {
@@ -151,7 +159,7 @@ public class Main : MonoBehaviour
                 cnt += Time.deltaTime * 10;
                 if (Mathf.Sin(cnt) > 0)
                 {
-                    seikai.color = Color.red;
+                    seikai.color = Color.white;
                 }
                 else
                 {
@@ -175,17 +183,17 @@ public class Main : MonoBehaviour
                 cnt += Time.deltaTime * 10;
                 if (Mathf.Sin(cnt) > 0)
                 {
-                    seikai.color = Color.blue;
+                    huseikai.color = Color.white;
                 }
                 else
                 {
-                    seikai.color = Color.clear;
+                    huseikai.color = Color.clear;
                 }
                 if (cnt > 50)
                 {
                     cnt = 0;
                     seflag = false;
-                    seikai.color = Color.clear;
+                    huseikai.color = Color.clear;
                     Stage.textboxs.SetActive(false);
                     Phase = 12;
                 }
@@ -215,6 +223,32 @@ public class Main : MonoBehaviour
                 {
                     Stage.textboxs3.SetActive(false);
                     targetObj[1].GetComponent<Player>().PlayerPass();
+                }
+                break;
+            case 15:
+                Grid.set = false;
+                Grid.se = false;
+                Grid.Gameturn = false;
+                if (Grid.staticquestions[Grid.rand].Answer == true) //KeyCode.£‚È‚çYES‚ğ‘I‘ğ‚È‚Ì‚Åquestions[?].Answer‚ªtrue‚È‚ç³‰ğ‚Æ‚È‚é
+                {
+                    Phase = 9;
+                }
+                else
+                {
+                    Phase = 10;
+                }
+                break;
+            case 16:
+                Grid.set = false;
+                Grid.se = false;
+                Grid.Gameturn = false;
+                if (Grid.staticquestions[Grid.rand].Answer == false) //KeyCode.£‚È‚çYES‚ğ‘I‘ğ‚È‚Ì‚Åquestions[?].Answer‚ªtrue‚È‚ç³‰ğ‚Æ‚È‚é
+                {
+                    Phase = 9;
+                }
+                else
+                {
+                    Phase = 10;
                 }
                 break;
             case 8://ƒS[ƒ‹‚Ìˆ—
