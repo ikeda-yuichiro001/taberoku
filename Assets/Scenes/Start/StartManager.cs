@@ -63,6 +63,7 @@ public class StartManager : MonoBehaviour
         for(int a =0; a < OPTION.menberLen;a++)
         {
             playerDataUIs[a].NAMEImage.color = PlayerColor[playerDataUIs[a].COLOR.value];
+            playerDataUIs[a].NAME.text = playerDatas[playerDataUIs[a].OBJ.value].name;
         }
     }
 

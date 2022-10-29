@@ -490,7 +490,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7537\u306E\u5B50"
+  m_Text: "\u30CB\u30F3\u30B8\u30F3"
 --- !u!1 &2127729711647327597
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,15 +817,25 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: "\u7537\u306E\u5B50"
+    - m_Text: "\u30CB\u30F3\u30B8\u30F3"
       m_Image: {fileID: 0}
-    - m_Text: "\u6599\u7406\u4EBA"
+    - m_Text: "\u30B8\u30E3\u30AC\u30A4\u30E2"
       m_Image: {fileID: 0}
-    - m_Text: "\u5973\u306E\u5B50"
+    - m_Text: "\u30AB\u30DC\u30C1\u30E3"
       m_Image: {fileID: 0}
-    - m_Text: "\u7537\u6027"
+    - m_Text: "\u30BF\u30DE\u30CD\u30AE"
       m_Image: {fileID: 0}
-    - m_Text: "\u5973\u6027"
+    - m_Text: "\u30CA\u30B9"
+      m_Image: {fileID: 0}
+    - m_Text: "\u30EA\u30F3\u30B4"
+      m_Image: {fileID: 0}
+    - m_Text: "\u30D0\u30CA\u30CA"
+      m_Image: {fileID: 0}
+    - m_Text: "\u30B5\u30AB\u30CA"
+      m_Image: {fileID: 0}
+    - m_Text: "\u30EF\u30AB\u30E1"
+      m_Image: {fileID: 0}
+    - m_Text: "\u4F50\u3005\u6728"
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

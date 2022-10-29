@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Stage : MonoBehaviour
 {
     public Vector3[] Linepos;
-    public GameObject player;
+    public GameObject[] player = new GameObject[10];
     public static GameObject[] players;
     //public static int[] num;
     public static int[] masu;
@@ -78,7 +78,7 @@ public class Stage : MonoBehaviour
         }
         for (int len2 = 0; len2 < Menber; len2++)//ƒvƒŒƒCƒ„[‚Ì¶¬
         {
-            players[len2] = Instantiate(player/*[DATA_.userData.data[len2].shape]*/,
+            players[len2] = Instantiate(player[DATA_.userData.data[len2].shape]/*[DATA_.userData.data[len2].shape]*/,
                 grid[0].transform.position ,
                 Quaternion.identity);
             Soys[len2] = Instantiate(Soy,
@@ -86,11 +86,11 @@ public class Stage : MonoBehaviour
                 Quaternion.identity);
             Soys[len2].transform.SetParent(players[len2].transform, false);
             rawImages[len2] = Instantiate(RawImage,
-                new Vector3(0, 1, 0),
+                new Vector3(0, 10, 0),
                 Quaternion.identity);
             rawImages[len2].transform.SetParent(Soys[len2].transform, false);
             texts[len2] = Instantiate(Text,
-                new Vector3(0, 1, 0),
+                new Vector3(0, 10, 0),
                 Quaternion.identity);
             texts[len2].transform.SetParent(Soys[len2].transform, false);
             rawImages[len2].color = StartManager.PlayerColor[DATA_.userData.data[len2].color];
