@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DATA_ : MonoBehaviour
 {
-    public static readonly DATA_<Question> questionData = new DATA_<Question>("question");
+    public static readonly DATA_<Question_> questionData = new DATA_<Question_>("question");
     public static readonly DATA_<Penalty> penaltyData = new DATA_<Penalty>("penalty");
     public static readonly DATA_<Penalty> winner = new DATA_<Penalty>("winner");
     public static readonly DATA_<User> userData = new DATA_<User>("userInfo");
@@ -69,7 +69,7 @@ public static class OPTION
 
 
 [System.Serializable]
-public class Question : DATAB
+public class Question_ : DATAB
 { 
     public string text;
     public ANSWER answer;

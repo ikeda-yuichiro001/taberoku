@@ -36,7 +36,7 @@ public class Stage : MonoBehaviour
         Menber = OPTION.menberLen;
         cam = CAM;
         grid = new GameObject[25 + (5 * Menber)];
-        MiniGame = new int[5 * Menber];
+        MiniGame = new int[18 + (3 * Menber)];
         players = new GameObject[Menber];
         //num = new int[Menber];
         masu = new int[Menber];
@@ -66,11 +66,24 @@ public class Stage : MonoBehaviour
             PreLine.SetPosition(ViewLinePoint - 1, pos[len]);
             //print(A);
         }
-        for (int len0 = 0; len0 < 5 * Menber; len0++)//罰ゲームマスの生成
+        for (int len0 = 0; len0 < MiniGame.Length; len0++)//罰ゲームマスの生成
         {
-            GameLen = Random.Range(1, grid.Length - 1);
             MiniGame[len0] = GameLen;
             //print(GameLen);
+            bool t = true;
+            while (t)
+            {
+                GameLen = Random.Range(1, grid.Length - 1);
+                t = false;
+                foreach(var i in MiniGame)
+                {
+                    if(i == GameLen)
+                    {
+                        t = true;
+                        break;
+                    }
+                }
+            } 
         }
         for(int aaa = 0; aaa < MiniGame.Length;aaa++)
         {

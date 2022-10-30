@@ -19,8 +19,8 @@ public class ThinWallsManager : MonoBehaviour
         if (Qcount < 30 && Qcount >= 0)
         {
             error.SetActive(false);
-            if (YesOrNo.value == 0) DATA_.questionData.data.Add(new Question { text = QQQ.text, answer = ANSWER.YES });
-            if (YesOrNo.value == 1) DATA_.questionData.data.Add(new Question { text = QQQ.text, answer = ANSWER.NO });
+            if (YesOrNo.value == 0) DATA_.questionData.data.Add(new Question_ { text = QQQ.text, answer = ANSWER.YES });
+            if (YesOrNo.value == 1) DATA_.questionData.data.Add(new Question_ { text = QQQ.text, answer = ANSWER.NO });
             AdminToolUIManager.texts[Qcount].text = DATA_.questionData.data[Qcount].text;
             DATA_.questionData.Save();
             QTile.SetActive(false);

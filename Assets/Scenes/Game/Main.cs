@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
+    float a = 0.2f;
+    public LineRenderer CircularLine;
+    private int Wave;
+    float eTime;
+    float ttt;
+    private float e;  //収縮率
     public AudioSource BGM;
     public int Minutes, Seconds;//ゆくゆくはprivateにする
     private float S;
@@ -26,12 +32,12 @@ public class Main : MonoBehaviour
         seikai.color = Color.clear;
         huseikai.color = Color.clear;
         VoiceRec.INIT(Recv, new string[]
-        { "おわる", "おわり", "しゅうりょう", "なげる", "ふる","はい","まる","いいえ","ばつ"});
+        { "げーむをしゅうりょう", "なげる", "ふる","はい","まる","いいえ","ばつ"});
     }
     void Recv(string a)
     {
         if (SceneLoader.IsFade) return;
-        if (a == "おわる" || a == "おわり" || a == "しゅうりょう")
+        if (a == "げーむをしゅうりょう")
         {
             //ゴールしてる人がいるならそのままリザルト画面へ
             //いない場合はもっともゴールに近い人を優勝にする
@@ -72,6 +78,18 @@ public class Main : MonoBehaviour
         }
         Timer.text = "残り時間 " + Minutes.ToString() + "分"　+ Seconds.ToString() + "秒";
         //targetObj[1].GetComponent<Player>().PlayerCircular();
+        /*ttt += Time.deltaTime;
+        if (ttt > 0.01f)
+        {
+            eTime += Time.deltaTime;
+            e = Mathf.Cos(eTime) * 1.0f;
+            Wave++;
+            CircularLine.positionCount = Wave;
+            CircularLine.SetPosition(Wave - 1,
+                Stage.players[Player.Num].transform.position
+                + new Vector3(5, 0, 5) * e);
+            ttt = 0;
+        }*/
         //print("Phase " + Phase + "ダヨーン");
         switch (Phase)
         {
@@ -157,13 +175,10 @@ public class Main : MonoBehaviour
                     seflag = true;
                 }
                 cnt += Time.deltaTime * 10;
-                if (Mathf.Sin(cnt) > 0)
+                seikai.color = new Color(1, 1, 1, a+(1-a)*(1 - ((Mathf.Sin(cnt) + 1) * (Mathf.Sin(cnt) + 1))));
+                if (cnt > 35)
                 {
                     seikai.color = Color.white;
-                }
-                else
-                {
-                    seikai.color = Color.clear;
                 }
                 if (cnt > 50)
                 {
@@ -181,13 +196,10 @@ public class Main : MonoBehaviour
                     seflag = true;
                 }
                 cnt += Time.deltaTime * 10;
-                if (Mathf.Sin(cnt) > 0)
+                huseikai.color = new Color(1, 1, 1, a + (1 - a) * (1 - ((Mathf.Sin(cnt) + 1) * (Mathf.Sin(cnt) + 1))));
+                if( cnt > 35)
                 {
                     huseikai.color = Color.white;
-                }
-                else
-                {
-                    huseikai.color = Color.clear;
                 }
                 if (cnt > 50)
                 {

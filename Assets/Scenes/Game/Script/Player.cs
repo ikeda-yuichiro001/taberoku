@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public LineRenderer CircularLine;
-    private int Wave;
-    private float e;  //Žûk—¦
     public static int Num = 0, goal = 0, Len = 0;
     public float scl;
     int l = 0;
     float set = 0;
     float TT;
-    float eTime;
-    float ttt;
     bool Moooove = false;
     bool Cheak = false;
     /*
@@ -114,21 +109,6 @@ public class Player : MonoBehaviour
 
     public void PlayerCircular()
     {
-        ttt += Time.deltaTime;
-        if(ttt > 0.01f)
-        {
-            eTime += Time.deltaTime;
-            e = Mathf.Sin(eTime) * 1.0f;
-            for (Wave = 0; Wave < 360;)
-            {
-                Wave++;
-                CircularLine.positionCount = Wave;
-                CircularLine.SetPosition(Wave - 1,
-                    Stage.players[Num].transform.position
-                    + new Vector3(Mathf.Sin(Wave), 0, Mathf.Cos(Wave)) * e);
-            }
-            ttt = 0;
-        }
     }
 
     public void PlayerPass()

@@ -24,9 +24,9 @@ public class test : MonoBehaviour
         OPTION.useDevice = true;//デバイスの設定
 
         //問題データ----------------------------------------------------------------------------------------------
-        Question[] data = DATA_.questionData.data.ToArray(); //問題データの配列の取得
-        DATA_.questionData.data.Add(new Question() { text = "ここに問題文", answer = ANSWER.NO }); //問題の追加
-        DATA_.questionData.data.Remove(new Question() { text = "ここに問題文", answer = ANSWER.NO }); //問題の削除
+        Question_[] data = DATA_.questionData.data.ToArray(); //問題データの配列の取得
+        DATA_.questionData.data.Add(new Question_() { text = "ここに問題文", answer = ANSWER.NO }); //問題の追加
+        DATA_.questionData.data.Remove(new Question_() { text = "ここに問題文", answer = ANSWER.NO }); //問題の削除
         DATA_.questionData.data.RemoveAt(10); //問題を配列番号で削除
         DATA_.questionData.Save(); //問題の保存
         DATA_.questionData.Load(); //問題のデータを読み込み

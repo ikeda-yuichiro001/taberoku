@@ -109,40 +109,46 @@ public class Grid : MonoBehaviour
     }
     public void Explanat()
     {
-        h2.text = "‰ğà" + (rand + 1);
+        h2.text = "‰ğà";
         bun2.text = explanations[rand].explanationText;
     }
     public void SinGames()
     {
-        h3.text = "”±ƒQ[ƒ€" + (rand + 1);
+        h3.text = "”±ƒQ[ƒ€";
         bun3.text = singames[rand].singameText;
     }
 
     public static Question[] staticquestions = new Question[10];
     public Question[] questions = new Question[10];
-    [System.Serializable]
-    public class Question
-    {
-        [Multiline]
-        public string questionText;
-        public bool Answer;//yes => true, no => false;
-    }
+    
 
     public Explanation[] explanations = new Explanation[10];
-    [System.Serializable]
-    public class Explanation
-    {
-        [Multiline]
-        public string explanationText;
-        //public bool Answer;//yes => true, no => false;
-    }
+    
 
     public SinGame[] singames = new SinGame[10];
-    [System.Serializable]
-    public class SinGame
-    {
-        [Multiline]
-        public string singameText;
-        //public bool Answer;//yes => true, no => false;
-    }
+    
+}
+
+[System.Serializable]
+public class Question
+{
+    [Multiline]
+    public string questionText;
+    public bool Answer;//yes => true, no => false;
+}
+
+[System.Serializable]
+public class Explanation
+{
+    [Multiline]
+    public string explanationText;
+    //public bool Answer;//yes => true, no => false;
+}
+
+[System.Serializable]
+public class SinGame
+{
+    [Multiline]
+    public string singameText;
+    //public bool Answer;//yes => true, no => false;
 }
