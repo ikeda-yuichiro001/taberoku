@@ -741,7 +741,7 @@ MonoBehaviour:
   - name: "\u30EF\u30AB\u30E1\u30C1\u30FC\u30E0"
     color: 8
     obj: 8
-  - name: "\u4F50\u3005\u6728\u5065\u6597"
+  - name: "\u30BF\u30DE\u30B4\u30C1\u30FC\u30E0"
     color: 9
     obj: 9
   playerDataUIs: []
