@@ -10,18 +10,18 @@ public class DescriptionManager : MonoBehaviour
     void Start()
     {
         next = -1;
-        VoiceRec.INIT(Recv, new string[] { "‚Â‚¬‚Ö", "‚Â‚¬‚¦", "‚Â‚¬", "‚Â‚¬", "‚¬‚Ö", "‚¬‚¦" ,"‚Â‚¬‚É‚·‚·‚Þ","‚±‚Ü‚¨‚«‚ß‚é"});
+        VoiceRec.INIT(Recv, new string[] {"‚Â‚¬‚É‚·‚·‚Þ","‚±‚Ü‚¨‚«‚ß‚é"});
     }
     void Recv(string a)
     {
         if (SceneLoader.IsFade) return;
-        if (a == "‚±‚Ü‚¨‚«‚ß‚é")
+        if (a == "‚±‚Ü‚¨‚«‚ß‚é" && Input.GetKey(KeyCode.Space))
         {
             next = -1;
             SE.PlayOneShot(clips[0]);
             SceneLoader.Load("Start");
         }
-        else
+        else if(a == "‚Â‚¬‚É‚·‚·‚Þ" && Input.GetKey(KeyCode.Space))
         {
             next++;
             SE.PlayOneShot(clips[1]);
@@ -29,8 +29,13 @@ public class DescriptionManager : MonoBehaviour
     }
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            next++;
+            SE.PlayOneShot(clips[1]);
+        }
         //if (Input.GetMouseButtonDown(0)) SceneLoader.Load("Start");
-        switch(next)
+        switch (next)
         {
             case 0:
                 images[0].color -= new Color(0, 0, 0, Time.deltaTime);
