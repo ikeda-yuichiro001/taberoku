@@ -711,37 +711,33 @@ MonoBehaviour:
   panel: {fileID: 1166719445}
   Pre1: {fileID: 6055438501870655784, guid: 5f739ace43c2019468ab7e1b97695dba, type: 3}
   Pre1_I: {fileID: 3985675229448705318, guid: 31efa499abcd5cf4f865f8d6928e5a7f, type: 3}
-  Pre2: {fileID: 7774262091715258127, guid: 911b87b80aa40214f8e874090d11e11c, type: 3}
   Pre3: {fileID: 2127729712317641547, guid: 827e17eb865979d4fa19ce2961678b6f, type: 3}
   playerDatas:
   - name: "\u30CB\u30F3\u30B8\u30F3\u30C1\u30FC\u30E0"
     color: 0
     obj: 0
-  - name: "\u30B8\u30E3\u30AC\u30A4\u30E2\u30C1\u30FC\u30E0"
+  - name: "\u30CA\u30B9\u30C1\u30FC\u30E0"
     color: 1
     obj: 1
-  - name: "\u30AB\u30DC\u30C1\u30E3\u30C1\u30FC\u30E0"
+  - name: "\u30D4\u30FC\u30DE\u30F3\u30C1\u30FC\u30E0"
     color: 2
     obj: 2
-  - name: "\u30BF\u30DE\u30CD\u30AE\u30C1\u30FC\u30E0"
+  - name: "\u30C0\u30A4\u30B3\u30F3\u30C1\u30FC\u30E0"
     color: 3
     obj: 3
-  - name: "\u30CA\u30B9\u30C1\u30FC\u30E0"
+  - name: "\u30C8\u30DE\u30C8\u30C1\u30FC\u30E0"
     color: 4
     obj: 4
-  - name: "\u30EA\u30F3\u30B4\u30C1\u30FC\u30E0"
+  - name: "\u30DF\u30AB\u30F3\u30C1\u30FC\u30E0"
     color: 5
     obj: 5
-  - name: "\u30D0\u30CA\u30CA\u30C1\u30FC\u30E0"
+  - name: "\u30B8\u30E3\u30AC\u30A4\u30E2\u30C1\u30FC\u30E0"
     color: 6
     obj: 6
-  - name: "\u30B5\u30AB\u30CA\u30C1\u30FC\u30E0"
-    color: 7
-    obj: 7
-  - name: "\u30EF\u30AB\u30E1\u30C1\u30FC\u30E0"
+  - name: "\u30E2\u30E2\u30C1\u30FC\u30E0"
     color: 8
     obj: 8
-  - name: "\u30BF\u30DE\u30B4\u30C1\u30FC\u30E0"
+  - name: "\u30B5\u30C4\u30DE\u30A4\u30E2\u30C1\u30FC\u30E0"
     color: 9
     obj: 9
   playerDataUIs: []
