@@ -531,25 +531,23 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: "\u8D64"
-      m_Image: {fileID: 0}
-    - m_Text: "\u7DD1"
-      m_Image: {fileID: 0}
-    - m_Text: "\u9752"
-      m_Image: {fileID: 0}
-    - m_Text: "\u9EC4"
-      m_Image: {fileID: 0}
-    - m_Text: "\u6843"
-      m_Image: {fileID: 0}
-    - m_Text: "\u6C34"
-      m_Image: {fileID: 0}
-    - m_Text: "\u767D"
-      m_Image: {fileID: 0}
     - m_Text: "\u6A59"
       m_Image: {fileID: 0}
     - m_Text: "\u7D2B"
       m_Image: {fileID: 0}
+    - m_Text: "\u7DD1"
+      m_Image: {fileID: 0}
+    - m_Text: "\u767D"
+      m_Image: {fileID: 0}
+    - m_Text: "\u8D64"
+      m_Image: {fileID: 0}
+    - m_Text: "\u9EC4"
+      m_Image: {fileID: 0}
     - m_Text: "\u8336"
+      m_Image: {fileID: 0}
+    - m_Text: "\u6843"
+      m_Image: {fileID: 0}
+    - m_Text: "\u8D64\u7D2B"
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

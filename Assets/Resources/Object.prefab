@@ -728,7 +728,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -73.91974, y: -120.83333}
-  m_SizeDelta: {x: 130, y: 50}
+  m_SizeDelta: {x: 170, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2127729712317641545
 CanvasRenderer:
@@ -819,23 +819,21 @@ MonoBehaviour:
     m_Options:
     - m_Text: "\u30CB\u30F3\u30B8\u30F3"
       m_Image: {fileID: 0}
-    - m_Text: "\u30B8\u30E3\u30AC\u30A4\u30E2"
-      m_Image: {fileID: 0}
-    - m_Text: "\u30AB\u30DC\u30C1\u30E3"
-      m_Image: {fileID: 0}
-    - m_Text: "\u30BF\u30DE\u30CD\u30AE"
-      m_Image: {fileID: 0}
     - m_Text: "\u30CA\u30B9"
       m_Image: {fileID: 0}
-    - m_Text: "\u30EA\u30F3\u30B4"
+    - m_Text: "\u30D4\u30FC\u30DE\u30F3"
       m_Image: {fileID: 0}
-    - m_Text: "\u30D0\u30CA\u30CA"
+    - m_Text: "\u30C0\u30A4\u30B3\u30F3"
       m_Image: {fileID: 0}
-    - m_Text: "\u30B5\u30AB\u30CA"
+    - m_Text: "\u30C8\u30DE\u30C8"
       m_Image: {fileID: 0}
-    - m_Text: "\u30EF\u30AB\u30E1"
+    - m_Text: "\u30DF\u30AB\u30F3"
       m_Image: {fileID: 0}
-    - m_Text: "\u30BF\u30DE\u30B4"
+    - m_Text: "\u30B8\u30E3\u30AC\u30A4\u30E2"
+      m_Image: {fileID: 0}
+    - m_Text: "\u30E2\u30E2"
+      m_Image: {fileID: 0}
+    - m_Text: "\u30B5\u30C4\u30DE\u30A4\u30E2"
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
