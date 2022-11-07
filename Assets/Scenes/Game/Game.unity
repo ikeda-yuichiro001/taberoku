@@ -770,11 +770,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52037d15f8a0b6947b8f62aad28d4084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartGrid: {fileID: 0}
-  NormalGrid: {fileID: 0}
-  QuestionGrid: {fileID: 0}
-  EndGrid: {fileID: 0}
-  Stage: {fileID: 0}
+  StartGrid: {fileID: 2974817495087743171, guid: b40c3d52d0ca45146a28007846552fb1, type: 3}
+  NormalGrid: {fileID: 7520496787504977569, guid: 739953900cfa71f4ea90c73cee09dd39, type: 3}
+  QuestionGrid: {fileID: 8553792390867157301, guid: 72869b0b30e9ba34f892e09f80cf6714, type: 3}
+  EndGrid: {fileID: 2974817495087743171, guid: b40c3d52d0ca45146a28007846552fb1, type: 3}
+  Stage: {fileID: 1860588184}
   GridDetas:
   - MASUOBJ: {fileID: 0}
     GridNum: 0
