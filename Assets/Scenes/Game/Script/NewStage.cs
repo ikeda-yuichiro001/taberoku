@@ -7,6 +7,7 @@ public class NewStage : MonoBehaviour
     public GameObject StartGrid, NormalGrid, QuestionGrid, EndGrid;//マスのコピー元
     public GameObject Stage;//ステージを入れるオブジェクト
     public GridDeta[] GridDetas = new GridDeta[25 + (5 * OPTION.menberLen)];//マスの生成
+    public static int GridLength = 0;
     public int[] MiniGame = new int[18 + (3 * OPTION.menberLen)];
     private int R;//問題マスの順番
     private int SetPoint = 0;
@@ -37,6 +38,7 @@ public class NewStage : MonoBehaviour
     {
         for(int c = 0;c < GridDetas.Length - 1; c++)
         {
+            GridLength++;
             GridDetas[c].MASUOBJ.transform.position =
                 Pos.GetPosition(Pos.positionCount / GridDetas.Length * c)//LineRendererをマスで割った数にマス目を掛けた値のポジションにしている
                 ;//+ Vector3.up*0.04f//調整

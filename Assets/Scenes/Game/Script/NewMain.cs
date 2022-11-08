@@ -12,6 +12,7 @@ public class NewMain : MonoBehaviour
         OPTION.Load();
         DATA_.userData.Load();
         Phase = 0;
+        NewStage.GridLength = 0;
     }
     void Recv(string a)
     {
@@ -27,6 +28,13 @@ public class NewMain : MonoBehaviour
                 Stage_obj.GetComponent<NewStage>().CreateStage();//マスとラインの生成
                 Player_obj.GetComponent<NewPlayer>().CreatePlayer();//プレイヤーの生成
                 Phase = 1;//Phaseを次に進める
+                break;
+            case 1://プレイヤーの場所を確認
+                Player_obj.GetComponent<NewPlayer>().PlayerPositionCheak();
+                break;
+            case 2://プレイヤー待機状態
+                Player_obj.GetComponent<NewPlayer>().OnPlayerName();//名前を表示
+                Player_obj.GetComponent<NewPlayer>().PlayerCircular();//サークル
                 break;
         }
     }

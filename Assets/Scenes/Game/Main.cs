@@ -98,7 +98,7 @@ public class Main : MonoBehaviour
                 Phase = 1;
                 break;
             case 1://プレイヤーの行動(位置をみる)
-                Stage.Soys[Player.Num].SetActive(true);
+                Stage.Soys[Player.Num].SetActive(true);//名前の表示
                 targetObj[0].GetComponent<Stage>().MoveCam();//視点移動
                 targetObj[1].GetComponent<Player>().PlayerMove0();//駒の位置調整
                 if (Player.goal<OPTION.menberLen)
