@@ -72,10 +72,10 @@ public class NewPlayer : MonoBehaviour
 
                 }
             }
-            else Main.Phase = 2;
+            else NewMain.Phase = 2;
         }
     }
-
+    
     public void OnPlayerName()//Standby()
     {
         playerDetas[Num].NameTag.SetActive(true);
