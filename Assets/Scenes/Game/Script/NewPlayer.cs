@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewPlayer : MonoBehaviour
 {
@@ -26,12 +27,14 @@ public class NewPlayer : MonoBehaviour
             Serializable_playerDetas[C].Goal = playerDetas[C].Goal = false;
             */
             playerDetas[C].KOMAOBJ = PlayerOBJ[DATA_.userData.data[C].shape];
-            playerDetas[C].NameTag = PreNameTag;
             playerDetas[C].NameTag.SetActive(false);
             playerDetas[C].PlayerColor = StartManager.PlayerColor[DATA_.userData.data[C].color];
             playerDetas[C].PlayerName = DATA_.userData.data[C].name;
             playerDetas[C].NowGridNum = 0;
             playerDetas[C].Goal = false;
+            playerDetas[C].NameTag = PreNameTag.transform.GetChild(0).gameObject;//PreNameTag.GetChild(0);
+            //playerDetas[C].NameTag = playerDetas[C].PlayerColor;
+            //playerDetas[C].NameTag = playerDetas[C].PlayerName;
         }
         Num = goal = 0;
     }
