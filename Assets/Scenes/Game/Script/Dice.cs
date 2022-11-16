@@ -44,6 +44,6 @@ public class Dice : MonoBehaviour
         dice.transform.Rotate(rotateX, rotateY, rotateZ);
         print("プレイヤー " + Player.Num + " がサイコロを振ったZOI!");
         SE.AUDIO.PlayOneShot(SE.CRIP[1]);
-        Main.Phase = 3;
+        Main.Phase = 3;//新しい方では消す
     }
 }

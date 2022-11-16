@@ -8,10 +8,12 @@ public class NewPlayer : MonoBehaviour
     public static int Num;//今のプレイヤーの順番
     public static int goal;//ゴールしてる人の数
     public GameObject PreNameTag;//プレイヤーの名前の元を入れる箱
+    public RawImage PreNameCol;//プレイヤーの名前(色)の元を入れる箱
+    public Text PreNameStr;//プレイヤーの名前(文字)の元を入れる箱
     public GameObject[] PlayerOBJ;//プレイヤーのオブジェクトを入れとく箱
-    public PlayerDeta[] playerDetas = new PlayerDeta[OPTION.menberLen];//プレイヤー
+    public PlayerDeta[] playerDetas = new PlayerDeta[OPTION.menberLen];//プレイヤーのデータ
     //public static PlayerDeta[] Serializable_playerDetas = new PlayerDeta[OPTION.menberLen];
-    public LineRenderer CircularLine;
+    public LineRenderer CircularLine;//プレイヤーの強調
     private int CircularPoint;
     private float CircularTime;
 
@@ -27,14 +29,19 @@ public class NewPlayer : MonoBehaviour
             Serializable_playerDetas[C].Goal = playerDetas[C].Goal = false;
             */
             playerDetas[C].KOMAOBJ = PlayerOBJ[DATA_.userData.data[C].shape];
-            playerDetas[C].NameTag.SetActive(false);
             playerDetas[C].PlayerColor = StartManager.PlayerColor[DATA_.userData.data[C].color];
             playerDetas[C].PlayerName = DATA_.userData.data[C].name;
             playerDetas[C].NowGridNum = 0;
             playerDetas[C].Goal = false;
-            playerDetas[C].NameTag = PreNameTag.transform.GetChild(0).gameObject;//PreNameTag.GetChild(0);
-            //playerDetas[C].NameTag = playerDetas[C].PlayerColor;
-            //playerDetas[C].NameTag = playerDetas[C].PlayerName;
+            playerDetas[C].NameTag = PreNameTag;
+            //KOMAOBJの子オブジェクト化
+            playerDetas[C].NameCol = PreNameCol;
+            playerDetas[C].NameCol.color = playerDetas[C].PlayerColor;
+            //NameTagの子オブジェクト化
+            playerDetas[C].NameStr = PreNameStr;
+            playerDetas[C].NameStr.text = playerDetas[C].PlayerName;
+            //NameTagの子オブジェクト化
+            playerDetas[C].NameTag.SetActive(false);
         }
         Num = goal = 0;
     }
@@ -75,7 +82,7 @@ public class NewPlayer : MonoBehaviour
 
                 }
             }
-            else NewMain.Phase = 2;
+            else NewMain.Phase = 2;//Phaseを次に進める
         }
     }
     
@@ -94,6 +101,8 @@ public class PlayerDeta
 {
     public GameObject KOMAOBJ;//駒のオブジェクトを入れる箱
     public GameObject NameTag;//プレイヤーの名前を入れる箱
+    public RawImage NameCol;//プレイヤーの名前(色)を入れる箱
+    public Text NameStr;//プレイヤーの名前(文字)を入れる箱
     public Color PlayerColor;//playerの色
     public string PlayerName;//playerの名前
     public int NowGridNum;//今のマス目
