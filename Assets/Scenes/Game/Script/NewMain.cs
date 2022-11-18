@@ -34,11 +34,11 @@ public class NewMain : MonoBehaviour
         }
         else if (a == "はい" || a == "まる")
         {
-            //Phase = 15;
+            Phase = 9;
         }
         else if (a == "いいえ" || a == "ばつ")
         {
-            //Phase = 16;
+            Phase = 10;
         }
         else if(Phase == 3 && (a == "なげる" || a == "ふる"))//サイコロを投げる処理に飛ばす
         {
@@ -154,7 +154,7 @@ public class NewMain : MonoBehaviour
                     seflag = false;
                     seikai.color = Color.clear;
                     Stage.textboxs.SetActive(false);
-                    Phase = 11;
+                    Phase = 13;
                 }
                 break;
             case 12://不正解  
@@ -175,8 +175,48 @@ public class NewMain : MonoBehaviour
                     seflag = false;
                     huseikai.color = Color.clear;
                     Stage.textboxs.SetActive(false);
-                    Phase = 12;
+                    Phase = 14;
                 }
+                break;
+            case 13://解説ターン
+                Stage.textboxs2.SetActive(true);
+                //targetObj[2].GetComponent<Grid>().Explanat();
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Stage.textboxs2.SetActive(false);
+                    Phase = 16;//targetObj[1].GetComponent<Player>().PlayerPass();
+                }
+                break;
+            case 14://解説&罰ゲームターン(解説ターン)
+                Stage.textboxs2.SetActive(true);
+                //targetObj[2].GetComponent<Grid>().Explanat();
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Stage.textboxs2.SetActive(false);
+                    Phase = 15;
+                }
+                break;
+            case 15://解説&罰ゲームターン(罰ゲームターン)
+                Stage.textboxs3.SetActive(true);
+                //targetObj[2].GetComponent<Grid>().SinGames();
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Stage.textboxs3.SetActive(false);
+                    Phase = 16;//targetObj[1].GetComponent<Player>().PlayerPass();
+                }
+                break;
+            case 16://masuに何もながっだから次の人に回す
+                delay += Time.deltaTime;
+                if (delay > 1.4f)
+                {
+                    Player_obj.GetComponent<Player>().PlayerPass();
+                    delay = 0;
+                }
+                //print("Phase 7ダヨーン");
+                break;
+            case 17://ゴールの処理
+                //targetObj[5].GetComponent<Fin>().Finish();
+                print("終了！");
                 break;
             default:
                 print("Oops,I did it!");

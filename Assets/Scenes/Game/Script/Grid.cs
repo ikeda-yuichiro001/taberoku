@@ -28,7 +28,7 @@ public class Grid : MonoBehaviour
         }
         if (Gameturn == false)
         {
-            Main.Phase = 7;//NewMain.Phase = 8;
+            Main.Phase = 7;//NewMain.Phase = 16;
         }
         print("罰ゲームの有無を確認したZOI!");
     }
@@ -77,11 +77,11 @@ public class Grid : MonoBehaviour
             Gameturn = false;
             if (questions[rand].Answer == true) //KeyCode.▲ならYESを選択なのでquestions[?].Answerがtrueなら正解となる
             {
-                Main.Phase = 9;//NewMain.Phase = 9;
+                Main.Phase = 9;//NewMain.Phase = 11;
             }
             else
             {
-                Main.Phase = 10;//NewMain.Phase = 10;
+                Main.Phase = 10;//NewMain.Phase = 12;
             }
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -91,11 +91,11 @@ public class Grid : MonoBehaviour
             Gameturn = false;
             if (questions[rand].Answer == false) //KeyCode.▽ならNoを選択なのでquestions[?].Answerがfalseなら正解となる
             {
-                Main.Phase = 9;//NewMain.Phase = 9;
+                Main.Phase = 9;//NewMain.Phase = 11;
             }
             else
             {
-                Main.Phase = 10;//NewMain.Phase = 10;
+                Main.Phase = 10;//NewMain.Phase = 12;
             }
         }
         /*if (Input.GetKeyDown(KeyCode.Return))

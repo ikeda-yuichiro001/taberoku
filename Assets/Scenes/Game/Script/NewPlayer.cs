@@ -175,6 +175,21 @@ public class NewPlayer : MonoBehaviour
             NewMain.Phase = 7;
         }
     }
+    public void PlayerPass()
+    {
+        if (Num < OPTION.menberLen - 1)
+        {
+            Num++;
+            print("ÉvÉåÉCÉÑÅ[ " + Num + " Ç…âÒÇµÇΩZOI!");
+            NewMain.Phase = 1;
+        }
+        else if (Num >= OPTION.menberLen - 1)
+        {
+            Num = 0;
+            print("àÍèÑÇµÇΩZOI");
+            NewMain.Phase = 1;
+        }
+    }
 }
 
 [System.Serializable]
