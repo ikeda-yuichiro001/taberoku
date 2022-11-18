@@ -7,6 +7,7 @@ public class NewStage : MonoBehaviour
     public GameObject StartGrid, NormalGrid, QuestionGrid, EndGrid;//マスのコピー元
     public GameObject Stage;//ステージを入れるオブジェクト
     public GridDeta[] GridDetas = new GridDeta[25 + (5 * OPTION.menberLen)];//マスの生成
+    public static GridPositionDeta[] GridPositions = new GridPositionDeta[25 + (5 * OPTION.menberLen)];//マスの生成
     public static int GridLength = 0;
     public int[] MiniGame = new int[18 + (3 * OPTION.menberLen)];
     private int R;//問題マスの順番
@@ -43,7 +44,7 @@ public class NewStage : MonoBehaviour
                 Pos.GetPosition(Pos.positionCount / GridDetas.Length * c)//LineRendererをマスで割った数にマス目を掛けた値のポジションにしている
                 ;//+ Vector3.up*0.04f//調整
             GridDetas[c].MASUOBJ.transform.SetParent(Stage.transform, false);//Stageの子階層に入れる
-            GridDetas[c].GridPos = GridDetas[c].MASUOBJ.transform.position;//インスペクターで見る用
+            GridPositions[c].GridPos = GridDetas[c].MASUOBJ.transform.position;//他スクリプトで使用できる用
             SetPoint++;//ステージに生成するLineRendererの順番
             StageLine.positionCount = SetPoint;//ステージに生成するLineRendererの順番
             StageLine.SetPosition(SetPoint - 1, Pos.GetPosition(Pos.positionCount / GridDetas.Length * c));//ステージにラインを生成する
@@ -56,6 +57,11 @@ public class GridDeta
 {
     public GameObject MASUOBJ;//マスのオブジェクトを入れる箱
     public int GridNum;//配置するマス目
-    public Vector3 GridPos;//マスの場所
     public bool Question;//問題の有無
+}
+
+[System.Serializable]
+public class GridPositionDeta
+{
+    public Vector3 GridPos;//マスの場所
 }

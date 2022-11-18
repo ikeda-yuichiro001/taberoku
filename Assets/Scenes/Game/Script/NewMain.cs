@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewMain : MonoBehaviour
 {
     public static int Phase;//switch文で動かす部分を決める
-    public GameObject Player_obj,Stage_obj,Dice_obj;//スクリプトを入れてるオブジェクト
+    public GameObject Player_obj, Stage_obj, Dice_obj, Grid_obj;//スクリプトを入れてるオブジェクト
     public GameObject CAM;//メインカメラ
-    float delay;
+    public RawImage seikai, huseikai;
+    float delay, cnt, a;
+    bool One, Rot, seflag;
     void Start()
     {
         OPTION.Load();
@@ -37,9 +40,10 @@ public class NewMain : MonoBehaviour
         {
             //Phase = 16;
         }
-        else if(Phase == 2 && (a == "なげる" || a == "ふる"))//サイコロを投げる処理に飛ばす
+        else if(Phase == 3 && (a == "なげる" || a == "ふる"))//サイコロを投げる処理に飛ばす
         {
             Phase = 4;//Phaseを次に進める
+            One = false;
         }
     }
     void Update()
@@ -48,13 +52,18 @@ public class NewMain : MonoBehaviour
         switch (Phase)
         {
             case 0://ゲームの初めに設定を反映させる
-                Stage_obj.GetComponent<NewStage>().ReserveGrid();//マスの生成準備
-                Stage_obj.GetComponent<NewStage>().CreateStage();//マスとラインの生成
-                Player_obj.GetComponent<NewPlayer>().CreatePlayer();//プレイヤーの生成
+                if(!One)
+                {
+                    Stage_obj.GetComponent<NewStage>().ReserveGrid();//マスの生成準備
+                    Stage_obj.GetComponent<NewStage>().CreateStage();//マスとラインの生成
+                    Player_obj.GetComponent<NewPlayer>().CreatePlayer();//プレイヤーの生成
+                    One = true;
+                }
                 delay += Time.deltaTime;
                 if (delay > 1.5f)
                 {
                     delay = 0;
+                    One = false;
                     Phase = 1;//Phaseを次に進める
                 }
                 break;
@@ -64,22 +73,110 @@ public class NewMain : MonoBehaviour
             case 2://ターンの開始にUI表示
                 break;
             case 3://プレイヤーが待機状態の時
-                Player_obj.GetComponent<NewPlayer>().OnPlayerName();//名前を表示
-                Player_obj.GetComponent<NewPlayer>().PlayerCircular();//サークル
-                Dice_obj.GetComponent<Dice>().DiceSetting();//サイコロ待機
+                if (!One)
+                {
+                    Player_obj.GetComponent<NewPlayer>().OnPlayerName();//名前を表示
+                    Player_obj.GetComponent<NewPlayer>().PlayerCircular();//サークル
+                    Dice_obj.GetComponent<Dice>().DiceSetting();//サイコロ待機
+                    One = true;
+                }
                 break;
             case 4://サイコロを投げる処理
-                Player_obj.GetComponent<NewPlayer>().OffPlayerName();//名前を非表示
-                Dice_obj.GetComponent<Dice>().DiceRotate();
-                delay += Time.deltaTime;
+                if (!Rot)
+                {
+                    Player_obj.GetComponent<NewPlayer>().OffPlayerName();//名前を非表示
+                    Dice_obj.GetComponent<Dice>().DiceRotate();
+                    Rot = true;
+                }
+                else delay += Time.deltaTime;
                 if (delay > 1.5f)
                 {
                     Dice_obj.GetComponent<Dice>().DiceThrow();
                     delay = 0;
+                    Rot = false;
                     Main.Phase = 5;//Phaseを次に進める
                 }
                 break;
-            case 5:
+            case 5://サイコロの目の確認
+                break;
+            case 6://プレイヤーの行動(コマの移動)//と残りの進むマスの表示
+                Player_obj.GetComponent<NewPlayer>().MoveCam();//視点移動
+                Player_obj.GetComponent<NewPlayer>().PlayerMoveAvoid();
+                Player_obj.GetComponent<NewPlayer>().PlayerMove();
+                break;
+            case 7://止まったマスの処理
+                Grid_obj.GetComponent<Grid>().GridProcessing();
+                break;
+            case 8://止まったマスの効果の処理
+                Grid_obj.GetComponent<Grid>().Creating();
+                break;
+            case 9:
+                Grid.set = false;
+                Grid.se = false;
+                Grid.Gameturn = false;
+                if (Grid.staticquestions[Grid.rand].Answer == true) //KeyCode.▲ならYESを選択なのでquestions[?].Answerがtrueなら正解となる
+                {
+                    Phase = 11;
+                }
+                else
+                {
+                    Phase = 12;
+                }
+                break;
+            case 10:
+                Grid.set = false;
+                Grid.se = false;
+                Grid.Gameturn = false;
+                if (Grid.staticquestions[Grid.rand].Answer == false) //KeyCode.▲ならYESを選択なのでquestions[?].Answerがtrueなら正解となる
+                {
+                    Phase = 11;
+                }
+                else
+                {
+                    Phase = 12;
+                }
+                break;
+            case 11://正解!!
+                if (!seflag)
+                {
+                    SE.AUDIO.PlayOneShot(SE.CRIP[3]);//正解!!
+                    seflag = true;
+                }
+                cnt += Time.deltaTime * 10;
+                seikai.color = new Color(1, 1, 1, a + (1 - a) * (1 - ((Mathf.Sin(cnt) + 1) * (Mathf.Sin(cnt) + 1))));
+                if (cnt > 35)
+                {
+                    seikai.color = Color.white;
+                }
+                if (cnt > 50)
+                {
+                    cnt = 0;
+                    seflag = false;
+                    seikai.color = Color.clear;
+                    Stage.textboxs.SetActive(false);
+                    Phase = 11;
+                }
+                break;
+            case 12://不正解  
+                if (!seflag)
+                {
+                    SE.AUDIO.PlayOneShot(SE.CRIP[4]);
+                    seflag = true;
+                }
+                cnt += Time.deltaTime * 10;
+                huseikai.color = new Color(1, 1, 1, a + (1 - a) * (1 - ((Mathf.Sin(cnt) + 1) * (Mathf.Sin(cnt) + 1))));
+                if (cnt > 35)
+                {
+                    huseikai.color = Color.white;
+                }
+                if (cnt > 50)
+                {
+                    cnt = 0;
+                    seflag = false;
+                    huseikai.color = Color.clear;
+                    Stage.textboxs.SetActive(false);
+                    Phase = 12;
+                }
                 break;
             default:
                 print("Oops,I did it!");

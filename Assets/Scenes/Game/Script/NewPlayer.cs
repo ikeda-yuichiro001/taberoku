@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class NewPlayer : MonoBehaviour
 {
+    public static int DiceNum;//サイコロの出た目
     public static int Num;//今のプレイヤーの順番
     public static int goal;//ゴールしてる人の数
+    public GameObject Camera;//カメラを入れる箱
     public GameObject PreNameTag;//プレイヤーの名前の元を入れる箱
     public RawImage PreNameCol;//プレイヤーの名前(色)の元を入れる箱
     public Text PreNameStr;//プレイヤーの名前(文字)の元を入れる箱
@@ -16,6 +18,9 @@ public class NewPlayer : MonoBehaviour
     public LineRenderer CircularLine;//プレイヤーの強調
     private int CircularPoint;
     private float CircularTime;
+    float MoveTime, set;
+    int NumSet;
+    bool Cheak, Move;
 
     public void CreatePlayer()//駒の生成
     {
@@ -28,22 +33,25 @@ public class NewPlayer : MonoBehaviour
             Serializable_playerDetas[C].NowGridNum = playerDetas[C].NowGridNum = 0;
             Serializable_playerDetas[C].Goal = playerDetas[C].Goal = false;
             */
-            playerDetas[C].KOMAOBJ = PlayerOBJ[DATA_.userData.data[C].shape];
-            playerDetas[C].PlayerColor = StartManager.PlayerColor[DATA_.userData.data[C].color];
-            playerDetas[C].PlayerName = DATA_.userData.data[C].name;
-            playerDetas[C].NowGridNum = 0;
-            playerDetas[C].Goal = false;
-            playerDetas[C].NameTag = PreNameTag;
+            playerDetas[C].KOMAOBJ = PlayerOBJ[DATA_.userData.data[C].shape];//駒の指定
+            playerDetas[C].KOMAOBJ.transform.position = NewStage.GridPositions[C].GridPos;//駒の生成位置
+            playerDetas[C].PlayerPos = NewStage.GridPositions[C].GridPos;//インスペクターで見る用
+            playerDetas[C].PlayerColor = StartManager.PlayerColor[DATA_.userData.data[C].color];//色の指定
+            playerDetas[C].PlayerName = DATA_.userData.data[C].name;//名前の指定
+            playerDetas[C].NowGridNum = 0;//今のマス目
+            playerDetas[C].Goal = false;//ゴール判定
+            playerDetas[C].NameTag = PreNameTag;//キャンバスの指定
+            //生成位置の指定
             //KOMAOBJの子オブジェクト化
-            playerDetas[C].NameCol = PreNameCol;
+            playerDetas[C].NameCol = PreNameCol;//色の指定
             playerDetas[C].NameCol.color = playerDetas[C].PlayerColor;
             //NameTagの子オブジェクト化
-            playerDetas[C].NameStr = PreNameStr;
+            playerDetas[C].NameStr = PreNameStr;//名前の指定
             playerDetas[C].NameStr.text = playerDetas[C].PlayerName;
             //NameTagの子オブジェクト化
-            playerDetas[C].NameTag.SetActive(false);
+            playerDetas[C].NameTag.SetActive(false);//キャンバスの非アクティブ化
         }
-        Num = goal = 0;
+        Num = goal = 0;//初期化
     }
 
     public void PlayerCircular()//駒の強調
@@ -94,6 +102,79 @@ public class NewPlayer : MonoBehaviour
     {
         playerDetas[Num].NameTag.SetActive(false);
     }
+
+    public void MoveCam()//カメラの移動
+    {
+        Camera.transform.position =
+            playerDetas[Num].PlayerPos
+            + new Vector3(0, 4, -5);
+    }
+
+    public void PlayerMoveAvoid()//駒が被ったときによける処理
+    {
+        for (int leep = 0; leep < Stage.Menber; leep++)
+        {
+            //playerDetas[Num].KOMAOBJ.transform.position = NewStage.GridPositions[Num];
+            if (Num != leep)
+            {
+                Cheak = false;
+                if (Stage.masu[Num] == Stage.masu[leep])
+                {
+                    if (Cheak == false)
+                    {
+                        Vector3 Newpos = Stage.players[Num].transform.position
+                                             + new Vector3(Mathf.Sin(leep), 0, Mathf.Cos(leep));// * scl;
+                        Stage.players[leep].transform.position = Newpos;//移動的な奴
+                        Cheak = true;
+                        //print("プレイヤー" + Num + "とプレイヤー" + leep + "を比べてるンゴ");
+                    }
+                }
+            }
+        }
+    }
+    public void PlayerMove()//コマの移動
+    {
+        //Debug.Log("マス目の合計は" + Stage.grid.Length + "Deth。");
+        if (NumSet < DiceNum)
+        {
+            if (Move == false && playerDetas[Num].NowGridNum < NewStage.GridPositions.Length - 1)
+            {
+                playerDetas[Num].NowGridNum++;
+                Move = true;
+            }
+            else if (Move == false && (playerDetas[Num].NowGridNum > NewStage.GridPositions.Length - 1 || playerDetas[Num].NowGridNum == NewStage.GridPositions.Length - 1))
+            {
+                SE.AUDIO.PlayOneShot(SE.CRIP[0]);//ゴールっぽいやつを選んどく
+                NumSet++;
+            }
+            if (Move == true)
+            {
+                MoveTime += Time.deltaTime;
+                if (MoveTime >= 0.01f)
+                {
+                    set += 0.05f;
+                    Stage.players[Num].transform.position =
+                        Vector3.Lerp(Stage.grid[Stage.masu[Num] - 1].transform.position,
+                        Stage.grid[Stage.masu[Num]].transform.position, set);
+                    MoveTime = 0;
+                    if (set >= 1)
+                    {
+                        set = 0;
+                        Move = false;//移動の終了
+                        NumSet++;
+                        SE.AUDIO.PlayOneShot(SE.CRIP[0]);
+                        print("プレイヤー " + Num + " がコマを動かしたZOI!");
+                    }
+                }
+            }
+        }
+        else if (NumSet == DiceNum)
+        {
+            NumSet = 0;
+            print("プレイヤー " + Num + " のマス目は " + playerDetas[Num].NowGridNum + " だZOI!");
+            NewMain.Phase = 7;
+        }
+    }
 }
 
 [System.Serializable]
@@ -103,6 +184,7 @@ public class PlayerDeta
     public GameObject NameTag;//プレイヤーの名前を入れる箱
     public RawImage NameCol;//プレイヤーの名前(色)を入れる箱
     public Text NameStr;//プレイヤーの名前(文字)を入れる箱
+    public Vector3 PlayerPos;//プレイヤーの場所
     public Color PlayerColor;//playerの色
     public string PlayerName;//playerの名前
     public int NowGridNum;//今のマス目

@@ -7,7 +7,7 @@ public class DiceNumber : MonoBehaviour
     public static int number;
     void OnTriggerStay(Collider collider)
     {
-        if (Main.Phase == 3)
+        if (Main.Phase == 3)//NewMain.Phase = 5;
         {
             if (collider.gameObject.name == "1")
             {
@@ -50,8 +50,10 @@ public class DiceNumber : MonoBehaviour
             Dice.Wait = true;
             Debug.Log("ƒTƒCƒRƒ‚Ì–Ú‚Í..." + number);
             Player.Len = number;
+            //NewPlayer.DiceNum = number;
             number = 0;
             Main.Phase = 4;
+            //NewMain.Phase = 6;
         }
     }
 }
