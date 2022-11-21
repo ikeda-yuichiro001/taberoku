@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BGM : MonoBehaviour
 {
@@ -8,9 +7,13 @@ public class BGM : MonoBehaviour
     void Start()
     {
         OPTION.Load();
+        bgm.volume = 0;
     }
     void Update()
     {
-        bgm.volume = OPTION.bgm;
+        if(bgm.volume < OPTION.bgm)
+        {
+            bgm.volume += OPTION.bgm/10;
+        }
     }
 }

@@ -48,7 +48,7 @@ public class NewMain : MonoBehaviour
     }
     void Update()
     {
-        Player_obj.GetComponent<NewPlayer>().PlayerCircular();
+        //Player_obj.GetComponent<NewPlayer>().PlayerCircular();//サークル
         switch (Phase)
         {
             case 0://ゲームの初めに設定を反映させる
@@ -76,8 +76,8 @@ public class NewMain : MonoBehaviour
                 if (!One)
                 {
                     Player_obj.GetComponent<NewPlayer>().OnPlayerName();//名前を表示
-                    Player_obj.GetComponent<NewPlayer>().PlayerCircular();//サークル
                     Dice_obj.GetComponent<Dice>().DiceSetting();//サイコロ待機
+                    Player_obj.GetComponent<NewPlayer>().PlayerCircular();
                     One = true;
                 }
                 break;

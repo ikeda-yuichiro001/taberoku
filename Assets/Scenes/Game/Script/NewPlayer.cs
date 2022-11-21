@@ -16,7 +16,7 @@ public class NewPlayer : MonoBehaviour
     public PlayerDeta[] playerDetas = new PlayerDeta[OPTION.menberLen];//プレイヤーのデータ
     //public static PlayerDeta[] Serializable_playerDetas = new PlayerDeta[OPTION.menberLen];
     public LineRenderer CircularLine;//プレイヤーの強調
-    private int CircularPoint;
+    int CircularPoint;
     private float CircularTime;
     float MoveTime, set;
     int NumSet;
@@ -56,15 +56,15 @@ public class NewPlayer : MonoBehaviour
 
     public void PlayerCircular()//駒の強調
     {
-        if (CircularTime < 1) CircularTime += 0.01f;
-        else CircularTime = 0;
-        for (int c = 0;c < 360;c++)
+        CircularTime += Time.deltaTime;
+        if (CircularTime > 0.01f)
         {
             CircularPoint++;
             CircularLine.positionCount = CircularPoint;
             CircularLine.SetPosition(CircularPoint - 1,
-                playerDetas[c].KOMAOBJ.transform.position
-                + new Vector3(Mathf.Sin(CircularTime),0,Mathf.Cos(CircularTime)));
+                playerDetas[Num].KOMAOBJ.transform.position
+                + new Vector3(Mathf.Sin(CircularPoint), 0, Mathf.Cos(CircularPoint)));
+            if (CircularPoint < 360) CircularPoint = 0;
         }
     }
 

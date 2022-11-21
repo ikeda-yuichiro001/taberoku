@@ -35,8 +35,8 @@ public class InformUI : MonoBehaviour
 
         if (SmokeTime < 4)
         {
-            InformBoxs.GetComponent<RawImage>().color -= Color.black * Time.deltaTime / 4;
-            newInformBoxs.GetComponent<RawImage>().color += Color.black * Time.deltaTime / 4;
+            InformBoxs.GetComponent<RawImage>().color -= Color.white * Time.deltaTime / 4;
+            newInformBoxs.GetComponent<RawImage>().color += Color.white * Time.deltaTime / 4;
         }
 
         else if (SmokeTime < 5)
@@ -46,7 +46,7 @@ public class InformUI : MonoBehaviour
         }
         else
         {
-            newInformBoxs.GetComponent<RawImage>().color -= Color.black * Time.deltaTime * 2;
+            newInformBoxs.GetComponent<RawImage>().color -= Color.white * Time.deltaTime * 2;
         }
 
         /*
