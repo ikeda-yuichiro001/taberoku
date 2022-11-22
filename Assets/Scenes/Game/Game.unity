@@ -1192,20 +1192,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023aa15c16445e143a734ac9f4676ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 0}
+  Camera: {fileID: 184792699}
   PreNameTag: {fileID: 4244687941809182685, guid: 1a31f411a4b14a44a8c20df99c123760, type: 3}
   PreNameCol: {fileID: 6293928610869099874, guid: 35cb40764dcf9c64e88e90fc726fa5f6, type: 3}
   PreNameStr: {fileID: 2777052470887122726, guid: ab3129499824dbc41ab4642e6a444d47, type: 3}
   PlayerOBJ:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4977383994057507153, guid: 8beeef3b2432fc749a67507eb7f6a2f8, type: 3}
+  - {fileID: 6197406592311391949, guid: 1edf393a660fc1843b0c013a80330bd2, type: 3}
+  - {fileID: 5781279758329956913, guid: fb834bf35edfcea418957a2a21a9f289, type: 3}
+  - {fileID: 5039307843367917347, guid: e327c6ae48c3f734691cd09038ff2ef2, type: 3}
+  - {fileID: 3736320359728964623, guid: f5b0690c2a208a24b8b6bd14f6d24599, type: 3}
+  - {fileID: 6196125828621599906, guid: 3acd824da074db243bd8dd4e578806f0, type: 3}
+  - {fileID: 3986668317991416696, guid: f224f23e68b236e41a266d3b60c7ca7d, type: 3}
+  - {fileID: 7449707375229944092, guid: 40103c39b89a2d047ae369ee72a0eabb, type: 3}
+  - {fileID: 4797730531373594677, guid: 7fdffa183d2f3144195b771226d1b0e4, type: 3}
   playerDetas:
   - KOMAOBJ: {fileID: 0}
     NameTag: {fileID: 0}
@@ -2316,7 +2316,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021658377}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8d5f24ecebd9c847a43b95d4753de9a, type: 3}
   m_Name: 
@@ -2356,7 +2356,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021658377}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaa3b4f97ade6e944b2ad610750f5b88, type: 3}
   m_Name: 
@@ -2366,8 +2366,8 @@ MonoBehaviour:
   Dice_obj: {fileID: 1465262526}
   Grid_obj: {fileID: 913696021}
   CAM: {fileID: 184792699}
-  seikai: {fileID: 0}
-  huseikai: {fileID: 0}
+  seikai: {fileID: 805000354}
+  huseikai: {fileID: 575504885}
 --- !u!1 &1084892412
 GameObject:
   m_ObjectHideFlags: 0

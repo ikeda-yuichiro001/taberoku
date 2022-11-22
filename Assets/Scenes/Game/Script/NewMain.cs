@@ -52,6 +52,10 @@ public class NewMain : MonoBehaviour
         switch (Phase)
         {
             case 0://ゲームの初めに設定を反映させる
+                Stage_obj.GetComponent<NewStage>().ReserveGrid();//マスの生成準備
+                //Stage_obj.GetComponent<NewStage>().CreateStage();//マスとラインの生成
+                Phase = 1;//Phaseを次に進める
+                /*
                 if(!One)
                 {
                     Stage_obj.GetComponent<NewStage>().ReserveGrid();//マスの生成準備
@@ -66,6 +70,7 @@ public class NewMain : MonoBehaviour
                     One = false;
                     Phase = 1;//Phaseを次に進める
                 }
+                 */
                 break;
             case 1://プレイヤーの場所を確認
                 Player_obj.GetComponent<NewPlayer>().PlayerPositionCheak();
@@ -209,7 +214,7 @@ public class NewMain : MonoBehaviour
                 delay += Time.deltaTime;
                 if (delay > 1.4f)
                 {
-                    Player_obj.GetComponent<Player>().PlayerPass();
+                    Player_obj.GetComponent<NewPlayer>().PlayerPass();
                     delay = 0;
                 }
                 //print("Phase 7ダヨーン");

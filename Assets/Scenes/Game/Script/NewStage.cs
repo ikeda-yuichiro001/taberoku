@@ -45,6 +45,7 @@ public class NewStage : MonoBehaviour
                 ;//+ Vector3.up*0.04f//調整
             GridDetas[c].MASUOBJ.transform.SetParent(Stage.transform, false);//Stageの子階層に入れる
             GridPositions[c].GridPos = GridDetas[c].MASUOBJ.transform.position;//他スクリプトで使用できる用
+            /*Object reference not set to an instance of an object:オブジェクトの参照がオブジェクトのインスタンスに設定されていない*/
             SetPoint++;//ステージに生成するLineRendererの順番
             StageLine.positionCount = SetPoint;//ステージに生成するLineRendererの順番
             StageLine.SetPosition(SetPoint - 1, Pos.GetPosition(Pos.positionCount / GridDetas.Length * c));//ステージにラインを生成する
