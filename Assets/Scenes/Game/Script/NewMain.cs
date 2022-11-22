@@ -52,8 +52,7 @@ public class NewMain : MonoBehaviour
         switch (Phase)
         {
             case 0://ゲームの初めに設定を反映させる
-                Stage_obj.GetComponent<NewStage>().ReserveGrid();//マスの生成準備
-                //Stage_obj.GetComponent<NewStage>().CreateStage();//マスとラインの生成
+                Stage_obj.GetComponent<NewStage>().ReserveStage();//マスの生成準備
                 Phase = 1;//Phaseを次に進める
                 /*
                 if(!One)
