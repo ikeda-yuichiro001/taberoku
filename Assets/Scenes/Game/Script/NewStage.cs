@@ -49,6 +49,7 @@ public class NewStage : MonoBehaviour
             GridDetas[c].PubGridPos = GridDetas[c].MASUOBJ.transform.position;//インスペクターで見る用
             GridDetas[c].MASUOBJ.transform.SetParent(Stage.transform, false);//Stageの子階層に入れる
             GridDetas[c].GridNum = c;//マス目の数
+            //GridPositions[c].GridPos = GridDetas[c].MASUOBJ.transform.position;//他スクリプトで使う用
 
             ///マス目をつなぐ線
             SetPoint++;//ステージに生成するLineRendererの順番

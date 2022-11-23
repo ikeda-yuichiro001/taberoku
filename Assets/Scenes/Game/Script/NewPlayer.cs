@@ -26,30 +26,20 @@ public class NewPlayer : MonoBehaviour
     {
         for (int C = 0;C < OPTION.menberLen;C++)
         {
-            /*
-            Serializable_playerDetas[C].KOMAOBJ = playerDetas[C].KOMAOBJ = PlayerOBJ[DATA_.userData.data[C].shape];
-            Serializable_playerDetas[C].PlayerColor = playerDetas[C].PlayerColor = StartManager.PlayerColor[DATA_.userData.data[C].color];
-            Serializable_playerDetas[C].PlayerName = playerDetas[C].PlayerName = DATA_.userData.data[C].name;
-            Serializable_playerDetas[C].NowGridNum = playerDetas[C].NowGridNum = 0;
-            Serializable_playerDetas[C].Goal = playerDetas[C].Goal = false;
-            */
-            playerDetas[C].KOMAOBJ = PlayerOBJ[DATA_.userData.data[C].shape];//駒の指定
-            playerDetas[C].KOMAOBJ.transform.position = NewStage.GridPositions[C].GridPos;//駒の生成位置
+            playerDetas[C].KOMAOBJ = Instantiate(PlayerOBJ[DATA_.userData.data[C].shape],
+                NewStage.GridPositions[C].GridPos, Quaternion.identity);//駒の指定
             playerDetas[C].PlayerPos = NewStage.GridPositions[C].GridPos;//インスペクターで見る用
-            playerDetas[C].PlayerColor = StartManager.PlayerColor[DATA_.userData.data[C].color];//色の指定
-            playerDetas[C].PlayerName = DATA_.userData.data[C].name;//名前の指定
             playerDetas[C].NowGridNum = 0;//今のマス目
             playerDetas[C].Goal = false;//ゴール判定
-            playerDetas[C].NameTag = PreNameTag;//キャンバスの指定
-            //生成位置の指定
-            //KOMAOBJの子オブジェクト化
-            playerDetas[C].NameCol = PreNameCol;//色の指定
-            playerDetas[C].NameCol.color = playerDetas[C].PlayerColor;
-            //NameTagの子オブジェクト化
-            playerDetas[C].NameStr = PreNameStr;//名前の指定
-            playerDetas[C].NameStr.text = playerDetas[C].PlayerName;
-            //NameTagの子オブジェクト化
-            playerDetas[C].NameTag.SetActive(false);//キャンバスの非アクティブ化
+            playerDetas[C].NameTag = Instantiate(PreNameTag, new Vector3(0, 0, 0)/*生成位置の指定*/, Quaternion.identity);//キャンバスの指定            
+            playerDetas[C].KOMAOBJ.transform.SetParent(playerDetas[C].NameTag.transform, false);//KOMAOBJの子オブジェクト化
+            playerDetas[C].NameCol = Instantiate(PreNameCol, new Vector3(0, 0, 0), Quaternion.identity);//Imageオブジェクトを入れる
+            playerDetas[C].NameCol.color = StartManager.PlayerColor[DATA_.userData.data[C].color];//色の指定
+            playerDetas[C].NameTag.transform.SetParent(playerDetas[C].NameCol.transform, false);//NameTagの子オブジェクト化
+            playerDetas[C].NameStr = Instantiate(PreNameStr, new Vector3(0,0,0), Quaternion.identity);//Textオブジェクトを入れる
+            playerDetas[C].NameStr.text = DATA_.userData.data[C].name;//名前の指定
+            playerDetas[C].NameTag.transform.SetParent(playerDetas[C].NameStr.transform, false);//NameTagの子オブジェクト化
+            //playerDetas[C].NameTag;//キャンバスの透明度を上げる
         }
         Num = goal = 0;//初期化
     }
