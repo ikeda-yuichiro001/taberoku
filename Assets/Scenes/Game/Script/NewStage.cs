@@ -28,10 +28,11 @@ public class NewStage : MonoBehaviour
         }
 
         var Pos = new Vector3[Line.positionCount];
-        ///È—ªint cnt = Line.GetPositions(Pos);È—ª///
+        int cnt = Line.GetPositions(Pos);
         for (int set = 0; set < GridDetas.Length; set++)
         {
-            Pos[set] = Line.GetPosition(Line.GetPositions(Pos) / GridDetas.Length * set);
+            int A = cnt / GridDetas.Length * set;
+            Pos[set] = Line.GetPosition(A);
         }
 
         GridDetas[0].MASUOBJ = Instantiate(StartGrid, Pos[0] + Vector3.up * 0.04f, Quaternion.identity);//Å‰‚Ìƒ}ƒX
