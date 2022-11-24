@@ -11,8 +11,8 @@ public class Stage : MonoBehaviour
     //public static int[] num;
     public static int[] masu;
     public static bool[] Goal;
-    public GameObject stage, CAM, textboxes, textboxes2, textboxes3, evocations,dicenum;
-    public static GameObject textboxs, textboxs2, textboxs3, evocation, cam;
+    public GameObject stage, CAM, textboxes, textboxes2, textboxes3, evocations, dicenum,IRASUTO;
+    public static GameObject textboxs, textboxs2, textboxs3, evocation, IRASUTOs, cam;
     public LineRenderer Line;
     public LineRenderer PreLine;
     int ViewLinePoint;
@@ -54,6 +54,8 @@ public class Stage : MonoBehaviour
         evocation = evocations;
         evocation.SetActive(false);
         dicenum.SetActive(false);
+        IRASUTOs = IRASUTO;
+        IRASUTO.SetActive(false);
         ViewLinePoint = 0;
         var pos = new Vector3[Line.positionCount];
         int cnt = Line.GetPositions(pos);
@@ -61,7 +63,7 @@ public class Stage : MonoBehaviour
         {
             A = (cnt / grid.Length) * len;
             pos[len] = Line.GetPosition(A);
-            grid[len] = Instantiate(G, pos[len]+ Vector3.up*0.04f, Quaternion.identity);//Random.Range(-0.3f, 0.3f)
+            grid[len] = Instantiate(G, pos[len]+ Vector3.up*0.2f, Quaternion.identity);//Random.Range(-0.3f, 0.3f)
             grid[len].transform.SetParent(stage.transform, false);
             ViewLinePoint++;
             PreLine.positionCount = ViewLinePoint;

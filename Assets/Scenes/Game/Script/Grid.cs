@@ -12,7 +12,7 @@ public class Grid : MonoBehaviour
     public static bool set = false;
     bool set2, set3;
     public static bool se = false;
-    public RawImage Back, Back2, Back3;
+    public RawImage Irasuto,Back, Back2, Back3;
     public Text h1, bun, h2, bun2, h3, bun3;
     public static bool Gameturn;
     public void GridProcessing()
@@ -42,9 +42,11 @@ public class Grid : MonoBehaviour
                 staticquestions[q] = questions[q];
             }*/
             Stage.textboxs.SetActive(true);
+            Stage.IRASUTOs.SetActive(true);
             Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, 0);
             h1.color = Color.clear;
             bun.color = Color.clear;
+            Irasuto.color = Color.clear;
             rand = Random.Range(0, 10);
             h1.text = "–â‘è";
             bun.text = questions[rand].questionText;
@@ -56,12 +58,14 @@ public class Grid : MonoBehaviour
         if (GT < 2)
         {
             Back.color += new Color(0, 0, 0, Time.deltaTime);
+            Irasuto.color += Color.white * Time.deltaTime;
             h1.color += Color.black * Time.deltaTime;
             bun.color += Color.black * Time.deltaTime;
         }
         else if (GT < 2.5f)
         {
             Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, 1.0f);
+            Irasuto.color = Color.white;
             h1.color = Color.black;
             bun.color = Color.black;
             if (se == false)
