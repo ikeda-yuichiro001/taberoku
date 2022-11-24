@@ -7,7 +7,7 @@ public class Line : MonoBehaviour
     private LineRenderer lineRenderer;
     private int positionCount;
     public Camera mainCamera;
-    public float X;
+    public float X,tim;
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -25,20 +25,25 @@ public class Line : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            // 座標指定の設定をローカル座標系にしたため、与える座標にも手を加える
-            Vector3 pos = Input.mousePosition;
-            pos.z = 10.0f;
+            tim = Time.deltaTime;
+            if(tim < 0.1f)
+            {
+                // 座標指定の設定をローカル座標系にしたため、与える座標にも手を加える
+                Vector3 pos = Input.mousePosition;
+                pos.z = 10.0f;
 
-            // マウススクリーン座標をワールド座標に直す
-            pos = mainCamera.ScreenToWorldPoint(pos);
+                // マウススクリーン座標をワールド座標に直す
+                pos = mainCamera.ScreenToWorldPoint(pos);
 
-            // さらにそれをローカル座標に直す。
-            //pos = transform.InverseTransformPoint(pos);
+                // さらにそれをローカル座標に直す。
+                //pos = transform.InverseTransformPoint(pos);
 
-            // 得られたローカル座標をラインレンダラーに追加する
-            positionCount++;
-            lineRenderer.positionCount = positionCount;
-            lineRenderer.SetPosition(positionCount - 1, new Vector3( pos.x * X,20.26f,pos.z * X));
+                // 得られたローカル座標をラインレンダラーに追加する
+                positionCount++;
+                lineRenderer.positionCount = positionCount;
+                lineRenderer.SetPosition(positionCount - 1, new Vector3(pos.x * X, 20.26f, pos.z * X));
+                tim = 0;
+            }
         }
         //リセットする
         if (!(Input.GetMouseButton(0)))

@@ -12,7 +12,7 @@ public class Grid : MonoBehaviour
     public static bool set = false;
     bool set2, set3;
     public static bool se = false;
-    public RawImage Back;
+    public RawImage Back, Back2, Back3;
     public Text h1, bun, h2, bun2, h3, bun3;
     public static bool Gameturn;
     public void GridProcessing()
@@ -62,13 +62,17 @@ public class Grid : MonoBehaviour
         else if (GT < 2.5f)
         {
             Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, 1.0f);
-            h1.color = new Color(0, 0, 0, 1.0f);
-            bun.color = new Color(0, 0, 0, 1.0f);
+            h1.color = Color.black;
+            bun.color = Color.black;
             if (se == false)
             {
                 SE.AUDIO.PlayOneShot(SE.CRIP[2]);
                 se = true;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            set = false;
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -104,36 +108,31 @@ public class Grid : MonoBehaviour
         if (!set2)
         {
             Stage.textboxs2.SetActive(true);
+            Back2.color = new Color(Back2.color.r, Back2.color.g, Back2.color.b, 0);
             h2.color = Color.clear;
             bun2.color = Color.clear;
             GT = 0;
             print("âê‡Çï\é¶Ç∑ÇÈZOI!");
             set2 = true;
+            h2.text = "âê‡";
+            bun2.text = explanations[rand].explanationText;
+            GT = 0;
         }
         GT += Time.deltaTime;
         if (GT < 2)
         {
-            h1.color += Color.clear * Time.deltaTime;
-            bun.color += Color.clear * Time.deltaTime;
+            Back2.color += new Color(0, 0, 0, Time.deltaTime);
+            h2.color += Color.black * Time.deltaTime;
+            bun2.color += Color.black * Time.deltaTime;
         }
-        if (GT < 5)
+        else if (GT < 2.5f)
         {
-            h1.color = Color.clear * Time.deltaTime;
-            bun.color = Color.clear * Time.deltaTime;
-            h2.color -= Color.black * Time.deltaTime;
-            bun2.color -= Color.black * Time.deltaTime;
+            Back2.color = new Color(Back2.color.r, Back2.color.g, Back2.color.b, 1.0f);
+            h2.color = Color.black;
+            bun2.color = Color.black;
         }
-        if (GT < 9)
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            h2.color = Color.black * Time.deltaTime;
-            bun2.color = Color.black * Time.deltaTime;
-        }
-        if (h2.color.a >= 1.0f)
-        {
-            h2.color = new Color(0, 0, 0, 1.0f);
-            bun2.color = new Color(0, 0, 0, 1.0f);
-            h2.text = "âê‡";
-            bun2.text = explanations[rand].explanationText;
             set2 = false;
         }
     }
@@ -142,27 +141,31 @@ public class Grid : MonoBehaviour
         if (!set3)
         {
             Stage.textboxs3.SetActive(true);
+            Back3.color = new Color(Back3.color.r, Back3.color.g, Back3.color.b, 0);
             h3.color = Color.clear;
             bun3.color = Color.clear;
+            GT = 0;
             print("î±ÉQÅ[ÉÄÇï\é¶Ç∑ÇÈZOI!");
             set3 = true;
-        }
-        GT += Time.deltaTime;
-        if (GT >= 0.01f)
-        {
-            if (Back.color.a < 1.0f)
-            {
-                alf += Time.deltaTime;
-                GT = 0;
-            }
-        }
-        Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, alf);
-        if (Back.color.a >= 1.0f)
-        {
-            h3.color = new Color(0, 0, 0, 1.0f);
-            bun3.color = new Color(0, 0, 0, 1.0f);
             h3.text = "î±ÉQÅ[ÉÄ";
             bun3.text = singames[rand].singameText;
+        }
+        GT += Time.deltaTime;
+        if (GT < 2)
+        {
+            Back3.color += new Color(0, 0, 0, Time.deltaTime);
+            h3.color += Color.white * Time.deltaTime;
+            bun3.color += Color.white * Time.deltaTime;
+        }
+        else if (GT < 2.5f)
+        {
+            Back3.color = new Color(Back3.color.r, Back3.color.g, Back3.color.b, 1.0f);
+            h3.color = Color.white;
+            bun3.color = Color.white;
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            set3 = false;
         }
     }
 

@@ -74,24 +74,24 @@ public class InformUI : MonoBehaviour
         {
             DiceNum.SetActive(true);
             UIset2 = true;
-
             DiceNum.GetComponent<Text>().text = a.ToString();
             DiceNum.GetComponent<Text>().color = Color.clear;
+            SmokeTime = 0;
         }
         SmokeTime += Time.deltaTime;
-        if (SmokeTime < 4)
+        if (SmokeTime < 2)
         {
-            DiceNum.GetComponent<Text>().color += Color.white * Time.deltaTime / 4;
+            DiceNum.GetComponent<Text>().color += Color.black * Time.deltaTime;
+        }
+        else if (SmokeTime < 3)
+        {
+            DiceNum.GetComponent<Text>().color = Color.black;
         }
         else if (SmokeTime < 5)
         {
-            DiceNum.GetComponent<Text>().color = Color.white;
+            DiceNum.GetComponent<Text>().color -= Color.black * Time.deltaTime;
         }
-        else
-        {
-            DiceNum.GetComponent<Text>().color -= Color.white * Time.deltaTime * 2;
-        }
-        if (SmokeTime < 6)
+        else if (SmokeTime < 6)
         {
             DiceNum.GetComponent<Text>().color = Color.clear;
             UIset2 = false;
