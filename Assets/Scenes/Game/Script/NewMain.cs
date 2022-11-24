@@ -53,7 +53,7 @@ public class NewMain : MonoBehaviour
         {
             case 0://ゲームの初めに設定を反映させる
                 Stage_obj.GetComponent<NewStage>().ReserveStage();//マスとラインの生成
-                Player_obj.GetComponent<NewPlayer>().CreatePlayer();//プレイヤーの生成
+                //Player_obj.GetComponent<NewPlayer>().CreatePlayer();//プレイヤーの生成
                 Phase = 1;//Phaseを次に進める
                 /*
                 if(!One)

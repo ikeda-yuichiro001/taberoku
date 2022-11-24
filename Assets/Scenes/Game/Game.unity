@@ -304,6 +304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 130955233}
+  - component: {fileID: 130955234}
   m_Layer: 5
   m_Name: TextBox
   m_TagString: Untagged
@@ -338,6 +339,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &130955234
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130955232}
+  m_CullTransparentMesh: 1
 --- !u!1 &136957922
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +516,7 @@ GameObject:
   - component: {fileID: 231809167}
   - component: {fileID: 231809166}
   - component: {fileID: 231809165}
+  - component: {fileID: 231809169}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -607,6 +617,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &231809169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231809164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd4789b4844b3984a860d22a65141fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  back1: {fileID: 681129718}
+  back2: {fileID: 1278281697}
+  back3: {fileID: 418552181}
+  cap1: {fileID: 1689719164}
+  cap2: {fileID: 781968681}
+  cap3: {fileID: 1973049265}
+  text1: {fileID: 1928202790}
+  text2: {fileID: 447265334}
+  text3: {fileID: 679013939}
 --- !u!1 &334734527
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,207 +806,8 @@ MonoBehaviour:
   QuestionGrid: {fileID: 8553792390867157301, guid: 72869b0b30e9ba34f892e09f80cf6714, type: 3}
   EndGrid: {fileID: 2974817495087743171, guid: b40c3d52d0ca45146a28007846552fb1, type: 3}
   Stage: {fileID: 1860588184}
-  GridDetas:
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
-  - MASUOBJ: {fileID: 0}
-    GridNum: 0
-    Question: 0
-    PubGridPos: {x: 0, y: 0, z: 0}
+  GridDetas: []
+  GridPositions: []
   MiniGame: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   Line: {fileID: 1427537035}
   StageLine: {fileID: 363021570}
@@ -2361,7 +2193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021658377}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8d5f24ecebd9c847a43b95d4753de9a, type: 3}
   m_Name: 
@@ -2380,6 +2212,7 @@ MonoBehaviour:
   - {fileID: 1465262526}
   - {fileID: 1409477986}
   - {fileID: 1403818478}
+  - {fileID: 231809164}
 --- !u!4 &1021658379
 Transform:
   m_ObjectHideFlags: 0
@@ -2401,7 +2234,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021658377}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaa3b4f97ade6e944b2ad610750f5b88, type: 3}
   m_Name: 
@@ -3907,7 +3740,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772930830}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
@@ -4766,7 +4599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2270784779906078763, guid: 1c34f69055d218c4d9c283c1bc4ed930, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853985450988238484, guid: 1c34f69055d218c4d9c283c1bc4ed930, type: 3}
       propertyPath: m_Pivot.x

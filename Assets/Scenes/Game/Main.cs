@@ -16,11 +16,12 @@ public class Main : MonoBehaviour
     private float S;
     float delay;
     public static int Phase;
-    bool seflag , dSet, Rot;
+    bool seflag , dSet, Rot, Zero;
     float cnt,cnt2;
     public Text Timer;
     public RawImage seikai, huseikai;
     public GameObject[] targetObj;
+
     void Start()
     {
         OPTION.Load();
@@ -94,8 +95,18 @@ public class Main : MonoBehaviour
         switch (Phase)
         {
             case 0://ステージ&プレイヤーの生成
-                targetObj[0].GetComponent<Stage>().StageCreate();
-                Phase = 1;
+                if (!Zero)
+                {
+                    targetObj[0].GetComponent<Stage>().StageCreate();
+                    Zero = true;
+                }
+                delay += Time.deltaTime;
+                if (delay > 1.5f)
+                {
+
+                    Zero = false;
+                    Phase = 1;
+                }
                 break;
             case 1://プレイヤーの行動(位置をみる)
                 Stage.Soys[Player.Num].SetActive(true);//名前の表示

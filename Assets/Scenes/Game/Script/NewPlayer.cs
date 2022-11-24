@@ -26,9 +26,9 @@ public class NewPlayer : MonoBehaviour
     {
         for (int C = 0;C < OPTION.menberLen;C++)
         {
-            playerDetas[C].KOMAOBJ = Instantiate(PlayerOBJ[DATA_.userData.data[C].shape],
-                NewStage.GridPositions[C].GridPos, Quaternion.identity);//駒の指定
-            playerDetas[C].PlayerPos = NewStage.GridPositions[C].GridPos;//インスペクターで見る用
+            //playerDetas[C].KOMAOBJ = Instantiate(PlayerOBJ[DATA_.userData.data[C].shape],
+            //    NewStage.GridPositions[C], Quaternion.identity);//駒の指定
+            //playerDetas[C].PlayerPos = NewStage.GridPositions[C];//インスペクターで見る用
             playerDetas[C].NowGridNum = 0;//今のマス目
             playerDetas[C].Goal = false;//ゴール判定
             playerDetas[C].NameTag = Instantiate(PreNameTag, new Vector3(0, 0, 0)/*生成位置の指定*/, Quaternion.identity);//キャンバスの指定            
@@ -122,17 +122,18 @@ public class NewPlayer : MonoBehaviour
             }
         }
     }
+
     public void PlayerMove()//コマの移動
     {
         //Debug.Log("マス目の合計は" + Stage.grid.Length + "Deth。");
         if (NumSet < DiceNum)
         {
-            if (Move == false && playerDetas[Num].NowGridNum < NewStage.GridPositions.Length - 1)
+            if (Move == false && playerDetas[Num].NowGridNum < NewStage.GridLength)
             {
                 playerDetas[Num].NowGridNum++;
                 Move = true;
             }
-            else if (Move == false && (playerDetas[Num].NowGridNum > NewStage.GridPositions.Length - 1 || playerDetas[Num].NowGridNum == NewStage.GridPositions.Length - 1))
+            else if (Move == false && (playerDetas[Num].NowGridNum > NewStage.GridLength || playerDetas[Num].NowGridNum == NewStage.GridLength))
             {
                 SE.AUDIO.PlayOneShot(SE.CRIP[0]);//ゴールっぽいやつを選んどく
                 NumSet++;
@@ -165,6 +166,7 @@ public class NewPlayer : MonoBehaviour
             NewMain.Phase = 7;
         }
     }
+
     public void PlayerPass()
     {
         if (Num < OPTION.menberLen - 1)
