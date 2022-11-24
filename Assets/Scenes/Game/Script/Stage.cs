@@ -11,7 +11,7 @@ public class Stage : MonoBehaviour
     //public static int[] num;
     public static int[] masu;
     public static bool[] Goal;
-    public GameObject stage, CAM, textboxes, textboxes2, textboxes3, evocations;
+    public GameObject stage, CAM, textboxes, textboxes2, textboxes3, evocations,dicenum;
     public static GameObject textboxs, textboxs2, textboxs3, evocation, cam;
     public LineRenderer Line;
     public LineRenderer PreLine;
@@ -30,6 +30,7 @@ public class Stage : MonoBehaviour
     public static RawImage[] rawImages;
     public static Text[] texts;
     public Material red;
+    float CT, set;
 
     public void StageCreate()
     {
@@ -52,6 +53,7 @@ public class Stage : MonoBehaviour
         textboxs3.SetActive(false);
         evocation = evocations;
         evocation.SetActive(false);
+        dicenum.SetActive(false);
         ViewLinePoint = 0;
         var pos = new Vector3[Line.positionCount];
         int cnt = Line.GetPositions(pos);
@@ -118,7 +120,18 @@ public class Stage : MonoBehaviour
     }
     public void MoveCam()
     {
-        cam.transform.position =
-            players[Player.Num].transform.position + new Vector3(0, 4, -5);// * Menber;
+        CT += Time.deltaTime;
+        if (CT >= 0.01f)
+        {
+            set += 0.05f;
+            cam.transform.position = Vector3.Lerp(new Vector3(0, 36, -15), 
+                players[Player.Num].transform.position + new Vector3(0, 4, -5),set);// * Menber;
+            CT = 0;
+        }
+        if(CT > 1)
+        {
+            set = 0;
+            Main.Phase = 2;
+        }
     }
 }

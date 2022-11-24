@@ -21,6 +21,7 @@ public class Main : MonoBehaviour
     public Text Timer;
     public RawImage seikai, huseikai;
     public GameObject[] targetObj;
+    public GameObject camera_;
 
     void Start()
     {
@@ -95,22 +96,12 @@ public class Main : MonoBehaviour
         switch (Phase)
         {
             case 0://ステージ&プレイヤーの生成
-                if (!Zero)
-                {
-                    targetObj[0].GetComponent<Stage>().StageCreate();
-                    Zero = true;
-                }
-                delay += Time.deltaTime;
-                if (delay > 1.5f)
-                {
-
-                    Zero = false;
-                    Phase = 1;
-                }
+                targetObj[0].GetComponent<Stage>().StageCreate();
+                Phase = 1;
                 break;
             case 1://プレイヤーの行動(位置をみる)
                 Stage.Soys[Player.Num].SetActive(true);//名前の表示
-                targetObj[0].GetComponent<Stage>().MoveCam();//視点移動
+                camera_.transform.position = new Vector3(0, 36, -15);//視点移動
                 targetObj[1].GetComponent<Player>().PlayerMove0();//駒の位置調整
                 if (Player.goal<OPTION.menberLen)
                 {
@@ -124,13 +115,21 @@ public class Main : MonoBehaviour
                 }
                 break;
             case 13://名前のUI出すところ
-                targetObj[4].GetComponent<InformUI>().Inform();
+                delay += Time.deltaTime;
+                if (delay > 1.5f)
+                {
+                    targetObj[4].GetComponent<InformUI>().Inform();
+                }
+                break;
+            case 18://名前のUI出すところ
+                targetObj[0].GetComponent<Stage>().MoveCam();//視点移動
                 break;
             case 2://プレイヤーの行動(サイコロを振る)
                 if (!dSet)
                 {
                     targetObj[3].GetComponent<Dice>().DiceSetting();
                     dSet = true;
+                    delay = 0;
                 }
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -145,7 +144,7 @@ public class Main : MonoBehaviour
                     {
                         targetObj[3].GetComponent<Dice>().DiceThrow();
                         delay = 0;
-                        dSet = false;
+                        dSet = true;
                         Rot = false;
                     }
                 }
@@ -155,6 +154,13 @@ public class Main : MonoBehaviour
             case 3:
                 Stage.evocation.SetActive(false);//サイコロの目の確認
                 //print("サイコロの目の確認");
+                break;
+            case 17:
+                delay += Time.deltaTime;
+                if (delay > 1.5f)
+                {
+                    targetObj[4].GetComponent<InformUI>().InformNum();
+                }
                 break;
             case 4: //プレイヤーの行動(コマの移動)
                 targetObj[0].GetComponent<Stage>().MoveCam();//視点移動

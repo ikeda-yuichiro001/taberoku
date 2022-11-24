@@ -50,9 +50,10 @@ public class DiceNumber : MonoBehaviour
             Dice.Wait = true;
             Debug.Log("ƒTƒCƒRƒ‚Ì–Ú‚Í..." + number);
             Player.Len = number;
+            InformUI.a = number;
             //NewPlayer.DiceNum = number;
             number = 0;
-            Main.Phase = 4;
+            Main.Phase = 17;
             //NewMain.Phase = 6;
         }
     }
