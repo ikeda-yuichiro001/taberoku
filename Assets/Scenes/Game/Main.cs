@@ -11,6 +11,7 @@ public class Main : MonoBehaviour
     float eTime;
     float ttt;
     private float e;  //収縮率
+    public static int GoalMasu;
     public AudioSource BGM;
     public int Minutes, Seconds;//ゆくゆくはprivateにする
     private float S;
@@ -22,6 +23,7 @@ public class Main : MonoBehaviour
     public RawImage seikai, huseikai;
     public GameObject[] targetObj;
     public GameObject camera_;
+    public GameObject OWARI;
 
     void Start()
     {
@@ -33,6 +35,7 @@ public class Main : MonoBehaviour
         BGM.mute = false;
         seikai.color = Color.clear;
         huseikai.color = Color.clear;
+        OWARI.SetActive(false);
         VoiceRec.INIT(Recv, new string[]
         { "げーむをしゅうりょう", "なげる", "ふる","はい","まる","いいえ","ばつ"});
     }
@@ -44,15 +47,13 @@ public class Main : MonoBehaviour
             //ゴールしてる人がいるならそのままリザルト画面へ
             //いない場合はもっともゴールに近い人を優勝にする
             //そういった処理に私は飛ばしたい
-            BGM.mute = true;
-            SE.AUDIO.PlayOneShot(SE.CRIP[5]);
-            SceneLoader.Load("Result");
+            Phase = 8;
         }
-        else if(a == "はい" || a == "まる")
+        else if((a == "はい" || a == "まる") && Phase == 6)
         {
             Phase = 15;
         }
-        else if (a == "いいえ" || a == "ばつ")
+        else if ((a == "いいえ" || a == "ばつ") && Phase == 6)
         {
             Phase = 16;
         }
@@ -63,7 +64,29 @@ public class Main : MonoBehaviour
     }
     void Update()
     {
-        S += Time.deltaTime;
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(!Player.gg)
+            {
+                for (int a = 0; a < OPTION.menberLen; a++)
+                {
+                    if (GoalMasu < Stage.masu[a])
+                    {
+                        GoalMasu = Stage.masu[a];
+                        Player.GG = a;
+                    }
+                    //同率一位がいる場合
+                    /*
+                    else if (GoalMasu == Stage.masu[a])
+                    {
+
+                    }*/
+                }
+                Phase = 8;
+            }
+            else Phase = 8;
+        }
+        /*S += Time.deltaTime;
         if(S >= 1.0f)
         {
             Seconds--;
@@ -80,7 +103,7 @@ public class Main : MonoBehaviour
         }
         Timer.text = "残り時間 " + Minutes.ToString() + "分"　+ Seconds.ToString() + "秒";
         //targetObj[1].GetComponent<Player>().PlayerCircular();
-        /*ttt += Time.deltaTime;
+        ttt += Time.deltaTime;
         if (ttt > 0.01f)
         {
             eTime += Time.deltaTime;
@@ -122,13 +145,23 @@ public class Main : MonoBehaviour
                 }
                 break;
             case 18://名前のUI出すところ
-                targetObj[0].GetComponent<Stage>().MoveCam();//視点移動
+                if(!Zero)
+                {
+                    delay = 0;
+                    Zero = true;
+                }
+                delay += Time.deltaTime;
+                if (delay > 1.5f)
+                {
+                    targetObj[0].GetComponent<Stage>().MoveCam();//視点移動
+                }
                 break;
             case 2://プレイヤーの行動(サイコロを振る)
                 if (!dSet)
                 {
                     targetObj[3].GetComponent<Dice>().DiceSetting();
                     dSet = true;
+                    Zero = false;
                     delay = 0;
                 }
                 if (Input.GetKeyDown(KeyCode.Return))
@@ -144,7 +177,7 @@ public class Main : MonoBehaviour
                     {
                         targetObj[3].GetComponent<Dice>().DiceThrow();
                         delay = 0;
-                        dSet = true;
+                        dSet = false;
                         Rot = false;
                     }
                 }
@@ -163,18 +196,16 @@ public class Main : MonoBehaviour
                 }
                 break;
             case 4: //プレイヤーの行動(コマの移動)
-                targetObj[0].GetComponent<Stage>().MoveCam();//視点移動
+                targetObj[0].GetComponent<Stage>().ChaseCam();//視点移動
                 targetObj[1].GetComponent<Player>().PlayerMove0();
                 targetObj[1].GetComponent<Player>().PlayerMove1();
                 break;
             case 5://止まったマスの処理
                 targetObj[2].GetComponent<Grid>().GridProcessing();
-                //print("Phase 5ダヨーン");
+                delay = 0;
                 break;
             case 6://止まったマスの効果の処理
                 targetObj[2].GetComponent<Grid>().Creating();
-                //print("Phase 6ダヨーン");
-                //Phase++;
                 break;
             case 7://masuに何もながっだから次の人に回す
                 delay += Time.deltaTime; 
@@ -233,7 +264,7 @@ public class Main : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     Stage.textboxs2.SetActive(false);
-                    targetObj[1].GetComponent<Player>().PlayerPass();
+                    Phase = 7;
                 }
                 break;
             case 12://解説＆罰ゲームターン
@@ -251,7 +282,7 @@ public class Main : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     Stage.textboxs3.SetActive(false);
-                    targetObj[1].GetComponent<Player>().PlayerPass();
+                    Phase = 7;
                 }
                 break;
             case 15:
@@ -281,7 +312,12 @@ public class Main : MonoBehaviour
                 }
                 break;
             case 8://ゴールの処理
-                targetObj[5].GetComponent<Fin>().Finish();
+                delay += Time.deltaTime;
+                if (delay > 1.5f)
+                {
+                    targetObj[5].GetComponent<Fin>().Finish();
+                    delay = 0;
+                }
                 print("終了！");
                 break;
             default:

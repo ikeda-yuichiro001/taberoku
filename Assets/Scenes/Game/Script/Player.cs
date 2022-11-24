@@ -9,8 +9,10 @@ public class Player : MonoBehaviour
     int l = 0;
     float set = 0;
     float TT;
+    static public int GG;
     bool Moooove = false;
     bool Cheak = false;
+    static public bool gg;
     /*
     void Start()
     {
@@ -27,6 +29,11 @@ public class Player : MonoBehaviour
         {
             if (Stage.masu[Num] == Stage.grid.Length - 1)//ÉSÅ[ÉãîªíË
             {
+                if(!gg)
+                {
+                    GG = Num;
+                    gg = true;
+                }
                 Stage.Goal[Num] = true;
                 goal++;
                 //DATA_.winner.data.Add(new Winner() { name = (string)Stage.texts[Num].text, time = });

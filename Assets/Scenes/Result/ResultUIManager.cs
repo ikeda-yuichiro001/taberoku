@@ -9,12 +9,13 @@ public class ResultUIManager : MonoBehaviour
     public Text Winner;
     public Text Prename;
     public Image Precolor;
-    public RESULT[] ResultData;
+    //public RESULT[] ResultData;
     public GameObject Boxed;
     void Start()
     {
         DATA_.winner.Load();
-        Winner.text = "aaaaa";
+        Winner.text = DATA_.userData.data[Player.GG].name;
+        /*
         Prename = Resources.Load("Text") as Text;
         Precolor = Resources.Load("Image") as Image;
         ResultData = new RESULT[OPTION.menberLen];
@@ -25,6 +26,7 @@ public class ResultUIManager : MonoBehaviour
             ResultData[a].NAME = Instantiate(Prename, new Vector3(0, 0, 0), Quaternion.identity);
             ResultData[a].NAME.transform.SetParent(ResultData[a].BackColor.transform, false);
         }
+        */
         VoiceRec.INIT(Recv, new string[] { "‚¨‚í‚é", "‚¨‚í‚è", "‚µ‚ã‚¤‚è‚å‚¤","‚½‚¢‚Æ‚é‚Ö", "‚½‚¢‚Æ‚é‚¦" });
     }
     void Recv(string a)

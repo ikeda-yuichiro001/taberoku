@@ -128,10 +128,15 @@ public class Stage : MonoBehaviour
                 players[Player.Num].transform.position + new Vector3(0, 4, -5),set);// * Menber;
             CT = 0;
         }
-        if(CT > 1)
+        if(set > 1)
         {
             set = 0;
             Main.Phase = 2;
         }
+    }
+    public void ChaseCam()
+    {
+
+        cam.transform.position = players[Player.Num].transform.position + new Vector3(0, 4, -5);
     }
 }

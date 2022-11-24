@@ -10,6 +10,7 @@ public class Grid : MonoBehaviour
     float alf;
     private float pass;
     public static bool set = false;
+    bool set2, set3;
     public static bool se = false;
     public RawImage Back;
     public Text h1, bun, h2, bun2, h3, bun3;
@@ -34,38 +35,37 @@ public class Grid : MonoBehaviour
     }
     public void Creating()
     {
-        if (set == false)
+        if (!set)
         {
-            for(int q = 0; q < 10;q++)
+            /*for(int q = 0; q < 10;q++)
             {
                 staticquestions[q] = questions[q];
-            }
+            }*/
             Stage.textboxs.SetActive(true);
             Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, 0);
-            h1.color = new Color(0, 0, 0, 0);
-            bun.color = new Color(0, 0, 0, 0);
-            print("問題を表示するZOI!");
+            h1.color = Color.clear;
+            bun.color = Color.clear;
             rand = Random.Range(0, 10);
+            h1.text = "問題";
+            bun.text = questions[rand].questionText;
+            GT = 0;
+            print("問題を表示するZOI!");
             set = true;
         }
         GT += Time.deltaTime;
-        if (GT >= 0.01f)
+        if (GT < 2)
         {
-            if (Back.color.a < 1.0f)
-            {
-                alf += Time.deltaTime;
-                GT = 0;
-            }
+            Back.color += new Color(0, 0, 0, Time.deltaTime);
+            h1.color += Color.black * Time.deltaTime;
+            bun.color += Color.black * Time.deltaTime;
         }
-        Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, alf);
-        if (Back.color.a >= 1.0f)
+        else if (GT < 2.5f)
         {
+            Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, 1.0f);
             h1.color = new Color(0, 0, 0, 1.0f);
             bun.color = new Color(0, 0, 0, 1.0f);
             if (se == false)
             {
-                h1.text = "問題";
-                bun.text = questions[rand].questionText;
                 SE.AUDIO.PlayOneShot(SE.CRIP[2]);
                 se = true;
             }
@@ -98,24 +98,72 @@ public class Grid : MonoBehaviour
                 Main.Phase = 10;//NewMain.Phase = 12;
             }
         }
-        /*if (Input.GetKeyDown(KeyCode.Return))
-        {
-            set = false;
-            se = false;
-            Gameturn = false;
-            Stage.textboxs.SetActive(false);
-            Main.Phase = 7;
-        }*/
     }
     public void Explanat()
     {
-        h2.text = "解説";
-        bun2.text = explanations[rand].explanationText;
+        if (!set2)
+        {
+            Stage.textboxs2.SetActive(true);
+            h2.color = Color.clear;
+            bun2.color = Color.clear;
+            GT = 0;
+            print("解説を表示するZOI!");
+            set2 = true;
+        }
+        GT += Time.deltaTime;
+        if (GT < 2)
+        {
+            h1.color += Color.clear * Time.deltaTime;
+            bun.color += Color.clear * Time.deltaTime;
+        }
+        if (GT < 5)
+        {
+            h1.color = Color.clear * Time.deltaTime;
+            bun.color = Color.clear * Time.deltaTime;
+            h2.color -= Color.black * Time.deltaTime;
+            bun2.color -= Color.black * Time.deltaTime;
+        }
+        if (GT < 9)
+        {
+            h2.color = Color.black * Time.deltaTime;
+            bun2.color = Color.black * Time.deltaTime;
+        }
+        if (h2.color.a >= 1.0f)
+        {
+            h2.color = new Color(0, 0, 0, 1.0f);
+            bun2.color = new Color(0, 0, 0, 1.0f);
+            h2.text = "解説";
+            bun2.text = explanations[rand].explanationText;
+            set2 = false;
+        }
     }
     public void SinGames()
     {
-        h3.text = "罰ゲーム";
-        bun3.text = singames[rand].singameText;
+        if (!set3)
+        {
+            Stage.textboxs3.SetActive(true);
+            h3.color = Color.clear;
+            bun3.color = Color.clear;
+            print("罰ゲームを表示するZOI!");
+            set3 = true;
+        }
+        GT += Time.deltaTime;
+        if (GT >= 0.01f)
+        {
+            if (Back.color.a < 1.0f)
+            {
+                alf += Time.deltaTime;
+                GT = 0;
+            }
+        }
+        Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, alf);
+        if (Back.color.a >= 1.0f)
+        {
+            h3.color = new Color(0, 0, 0, 1.0f);
+            bun3.color = new Color(0, 0, 0, 1.0f);
+            h3.text = "罰ゲーム";
+            bun3.text = singames[rand].singameText;
+        }
     }
 
     public static Question[] staticquestions = new Question[10];
