@@ -23,7 +23,7 @@ public class TitleManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Return))
         {
             SceneLoader.Load("Description");
             SE.PlayOneShot(SE.clip);

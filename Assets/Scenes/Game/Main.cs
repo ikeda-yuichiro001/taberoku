@@ -25,6 +25,7 @@ public class Main : MonoBehaviour
     public GameObject[] targetObj;
     public GameObject camera_;
     public GameObject OWARI;
+    public Text gooooal;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class Main : MonoBehaviour
         BGM.mute = false;
         seikai.color = Color.clear;
         huseikai.color = Color.clear;
+        gooooal.color = Color.clear;
         OWARI.SetActive(false);
         VoiceRec.INIT(Recv, new string[]
         { "げーむをしゅうりょう", "なげる", "ふる","はい","まる","いいえ","ばつ"});
@@ -65,7 +67,16 @@ public class Main : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Escape))
+        /*チート
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.A))
+        {
+            for(int ccc = 0; ccc < OPTION.menberLen;ccc++)
+            {
+                Stage.masu[ccc] = 44;
+                Stage.players[ccc].transform.position = Stage.grid[Stage.masu[ccc]].transform.position;
+            }
+        }*/
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Escape))
         {
             if(!Player.gg)
             {
@@ -127,13 +138,13 @@ public class Main : MonoBehaviour
                 break;
             case 1://プレイヤーの行動(位置をみる)
                 //Stage.Soys[Player.Num].SetActive(true);//名前の表示
-                if (Player.goal<OPTION.menberLen)
+                if (Player.goal < OPTION.menberLen)
                 {
                     targetObj[1].GetComponent<Player>().PlayerPosition();
                     Stage.players[Player.Num].transform.position = Stage.grid[Stage.masu[Player.Num]].transform.position;
                     //ゴールしていない人がいたらPhase++;
                 }
-                else if(Player.goal == OPTION.menberLen)
+                if (Player.goal == OPTION.menberLen)
                 {
                     Phase = 8;//全員がゴールしたら
                     print("プレイヤー全員がゴールしたZOI!");
@@ -317,6 +328,38 @@ public class Main : MonoBehaviour
                 else
                 {
                     Phase = 10;
+                }
+                break;
+            case 19:
+                if (!Zero)
+                {
+                    SE.AUDIO.PlayOneShot(SE.CRIP[7]);//ゴールっぽいやつを選んどく
+                    gooooal.color = Color.clear;
+                    delay = 0;
+                    Zero = true;
+                }
+                else
+                {
+                    delay += Time.deltaTime;
+                    if (delay < 2)
+                    {
+                        gooooal.color += new Color(0.5f,1,0.5f,1) * Time.deltaTime;
+                    }
+                    else if (delay < 3)
+                    {
+                        gooooal.color = new Color(0.5f, 1, 0.5f);
+                    }
+                    else if (delay < 5)
+                    {
+                        gooooal.color -= new Color(0.5f, 1, 0.5f,1) * Time.deltaTime;
+                    }
+                    else
+                    {
+                        gooooal.color = Color.clear;
+                        Zero = false;
+                        delay = 0;
+                        Phase = 7;
+                    }
                 }
                 break;
             case 8://ゴールの処理

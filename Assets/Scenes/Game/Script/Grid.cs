@@ -78,10 +78,6 @@ public class Grid : MonoBehaviour
                 se = true;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            set = false;
-        }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             set = false;

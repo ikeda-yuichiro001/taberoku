@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     static public int GG;
     bool Moooove = false;
     bool Cheak = false;
+    bool SEset;
     static public bool gg;
     /*
     void Start()
@@ -80,10 +81,9 @@ public class Player : MonoBehaviour
                 print("アムロ行っきまーす!");
                 Moooove = true;
             }
-            else if (Moooove == false && (Stage.masu[Num] > Stage.grid.Length - 1 || Stage.masu[Num] == Stage.grid.Length - 1))
+            if (Moooove == false && (Stage.masu[Num] > Stage.grid.Length - 1 || Stage.masu[Num] == Stage.grid.Length - 1))
             {
-                l++;
-                //SE.AUDIO.PlayOneShot(SE.CRIP[0]);//ゴールっぽいやつを選んどく
+                Main.Phase = 19;
                 print("アムロ逝っきまーす!");
             }
             if (Moooove == true)
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
                 if (TT > 0.01f)
                 {
                     set += Time.deltaTime * Vector3.Distance(Stage.grid[Stage.masu[Num] - 1].transform.position,
-                        Stage.grid[Stage.masu[Num]].transform.position) / 2;
+                        Stage.grid[Stage.masu[Num]].transform.position);
                     Stage.players[Num].transform.position =
                         Vector3.Lerp(Stage.grid[Stage.masu[Num] - 1].transform.position,
                         Stage.grid[Stage.masu[Num]].transform.position, set);
