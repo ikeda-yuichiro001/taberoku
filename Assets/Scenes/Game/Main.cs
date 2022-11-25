@@ -122,14 +122,15 @@ public class Main : MonoBehaviour
             case 0://ステージ&プレイヤーの生成
                 targetObj[0].GetComponent<Stage>().StageCreate();
                 camera_.transform.position = new Vector3(0, 36, -15);//視点移動
+                targetObj[1].GetComponent<Player>().PlayerMove0();//駒の位置調整
                 Phase = 1;
                 break;
             case 1://プレイヤーの行動(位置をみる)
                 //Stage.Soys[Player.Num].SetActive(true);//名前の表示
-                targetObj[1].GetComponent<Player>().PlayerMove0();//駒の位置調整
                 if (Player.goal<OPTION.menberLen)
                 {
                     targetObj[1].GetComponent<Player>().PlayerPosition();
+                    Stage.players[Player.Num].transform.position = Stage.grid[Stage.masu[Player.Num]].transform.position;
                     //ゴールしていない人がいたらPhase++;
                 }
                 else if(Player.goal == OPTION.menberLen)
@@ -197,11 +198,12 @@ public class Main : MonoBehaviour
                 }
                 break;
             case 4: //プレイヤーの行動(コマの移動)
+                /*
                 if(!Moob)
                 {
-                    targetObj[0].GetComponent<Stage>().ChaseCam();//視点移動
                     Moob = true;
-                }
+                }*/
+                targetObj[0].GetComponent<Stage>().ChaseCam();//視点移動
                 targetObj[1].GetComponent<Player>().PlayerMove1();
                 break;
             case 5://止まったマスの処理
