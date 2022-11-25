@@ -6,7 +6,242 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: file_52649_1Material
+    second: {fileID: 2100000, guid: 7ea83e49ddeca3a4ab40514f2d949abf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fish_file_20221116_222957_1Material
+    second: {fileID: 2100000, guid: d1781693e0c58a343afa76f0e3b6d88b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fish_file_20221116_223025_1Material
+    second: {fileID: 2100000, guid: 729e1faf2474267489f5d1bc2687ba9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fish_file_20221116_223211_1Material
+    second: {fileID: 2100000, guid: 0374d257935587942a9e831ea1bd49fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fish_file_20221116_223323_1Material
+    second: {fileID: 2100000, guid: 9fd857f247d2ca843bf10d7566084ff0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fish_file_20221116_223403_1Material
+    second: {fileID: 2100000, guid: b731a61effc57df4ca35e4108629624b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fish_happa_1Material1
+    second: {fileID: 2100000, guid: 9334f0b6f905f134492e9fd473652f75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fish_phong2
+    second: {fileID: 2100000, guid: 30ef2bf438a23d14c92d6f740fd862b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: flower
+    second: {fileID: 2100000, guid: 58fa5a99cff1c504ba594cba816bcaaf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kabin_2Material
+    second: {fileID: 2100000, guid: de267a2c63e5bc0498ddb08c63b3c143, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: p0113_m_1Material
+    second: {fileID: 2100000, guid: d562a15da2554f4469064dd7276f0b5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: p0337_m_1Material
+    second: {fileID: 2100000, guid: 983781199d0704749a138919b558f594, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: p0491_m_1Material
+    second: {fileID: 2100000, guid: 050aed1814d721b4dabdb3220e1b4980, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: p0492_m_1Material
+    second: {fileID: 2100000, guid: f15502765a07d464dbef05c706017512, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: p0497_m_1Material
+    second: {fileID: 2100000, guid: dbf5603fe7f55104bbb1a844eebb4ea7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: p0500_m_1Material
+    second: {fileID: 2100000, guid: 19204fea7755b9f4fbfa91c97a17118b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__flower
+    second: {fileID: 2100000, guid: 2a4ed6fd93c73194d8d83c6c9e5acb5e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__flower1
+    second: {fileID: 2100000, guid: d502a44d1e36e8c43ac3f5b7cdca2bd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__flower2
+    second: {fileID: 2100000, guid: 95c6255268a3ac347a62b3ec8396be7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__flower3
+    second: {fileID: 2100000, guid: d8b025f28c264214bae87652eb477386, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__flower4
+    second: {fileID: 2100000, guid: 4939577ed9556654db961b29a438fa09, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__flower5
+    second: {fileID: 2100000, guid: 83b9fc9aa6b8b6a4a8da7790342afd97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__flower6
+    second: {fileID: 2100000, guid: eb80c6bfbc6b59a4d99f89854a0da232, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__p0500_m_1Material
+    second: {fileID: 2100000, guid: ff69ed0062241ce488367a8bbf138f11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__phong25
+    second: {fileID: 2100000, guid: 392b351de070063448925ef8c8b80c34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__phong26
+    second: {fileID: 2100000, guid: 385798303ada8e64eaa7f47192b5dee5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong1
+    second: {fileID: 2100000, guid: 133073b7f60d85642aaf4b1ee2ce4dfc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong12
+    second: {fileID: 2100000, guid: c617bb72cb912c04d8e047eaf2e5b50e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong13
+    second: {fileID: 2100000, guid: b2b8e99b065501f46bc02e1a5aa3a1b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong18
+    second: {fileID: 2100000, guid: 96fd5d5daa24ca647a36026e91ff9d28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong2
+    second: {fileID: 2100000, guid: 184b810551b98984aac8fd9ac05635e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong20
+    second: {fileID: 2100000, guid: 65e6a46310b588b478ab29dc8a0e1964, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong21
+    second: {fileID: 2100000, guid: 3dab1df536ce32943be948dbe7868721, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong23
+    second: {fileID: 2100000, guid: 8d373dc70ff57f343aa5e852edf61d9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong24
+    second: {fileID: 2100000, guid: 590a939f6fd5af140947159e0b21ac52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong3
+    second: {fileID: 2100000, guid: ebefc4df3a31f6f418bd54323e3ac42a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong4
+    second: {fileID: 2100000, guid: 6df843467fb8c6d4ca2678b172e08fae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong5
+    second: {fileID: 2100000, guid: d56b2e0f82ea74245acf10735ee60725, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong6
+    second: {fileID: 2100000, guid: 7b2f1e489f08dc44ab85db2d087cb43a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong7
+    second: {fileID: 2100000, guid: 30d3b883140dddf42a9df7b650620d73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong8
+    second: {fileID: 2100000, guid: 7569f77b85df0164bb8b2e5a0eb8b939, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong9
+    second: {fileID: 2100000, guid: 543ca1ce498d5a542a475817ebb89d79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ranchon2_1Material
+    second: {fileID: 2100000, guid: 271a40c46fd89d648a245b05e3f10f1a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ranchon_1Material
+    second: {fileID: 2100000, guid: dbabd1035ba412a48b6982ac8bfaa190, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rice_file_20221116_200702_1Material
+    second: {fileID: 2100000, guid: d4a38452f1401e44eaf1c71bb95ec44d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sarad_file_20221116_200532_1Material
+    second: {fileID: 2100000, guid: ed2da3796daa6e34882a6d5f0919f665, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: siru_file_20221116_200605_1Material
+    second: {fileID: 2100000, guid: c6a5486c4b0daf34b99caadb2ee043ee, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
