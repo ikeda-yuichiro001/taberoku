@@ -50,6 +50,7 @@ public class Grid : MonoBehaviour
             rand = Random.Range(0, 10);
             h1.text = "–â‘è";
             bun.text = questions[rand].questionText;
+            Irasuto.texture = equestions[rand].E;
             GT = 0;
             print("–â‘è‚ð•\Ž¦‚·‚éZOI!");
             set = true;
@@ -175,6 +176,9 @@ public class Grid : MonoBehaviour
 
     public static Question[] staticquestions = new Question[10];
     public Question[] questions = new Question[10];
+
+
+    public EQuestion[] equestions = new EQuestion[10];
     
 
     public Explanation[] explanations = new Explanation[10];
@@ -190,6 +194,12 @@ public class Question
     [Multiline]
     public string questionText;
     public bool Answer;//yes => true, no => false;
+}
+
+[System.Serializable]
+public class EQuestion
+{
+    public Texture E;
 }
 
 [System.Serializable]
