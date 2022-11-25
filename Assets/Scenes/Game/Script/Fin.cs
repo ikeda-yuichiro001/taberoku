@@ -17,11 +17,11 @@ public class Fin : MonoBehaviour
             F = true;
         }
         count += Time.deltaTime;
-        if(count < 1.0f)
+        if(count < 2)
         {
             Owari.transform.localScale += new Vector3(10,10,10) * Time.deltaTime;
         }
-        else if(count < 1.6f)
+        else if(count < 3)
         {
             Owari.transform.localScale = new Vector3(8.5f, 8.5f, 8.5f);
             if (!C)

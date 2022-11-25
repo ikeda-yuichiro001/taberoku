@@ -82,7 +82,7 @@ public class InformUI : MonoBehaviour
         SmokeTime += Time.deltaTime;
         if (SmokeTime < 2)
         {
-            DiceNum.GetComponent<Text>().color += Color.black * Time.deltaTime;
+            DiceNum.GetComponent<Text>().color += Color.black * Time.deltaTime * 2;
         }
         else if (SmokeTime < 3)
         {
@@ -90,7 +90,7 @@ public class InformUI : MonoBehaviour
         }
         else if (SmokeTime < 5)
         {
-            DiceNum.GetComponent<Text>().color -= Color.black * Time.deltaTime;
+            DiceNum.GetComponent<Text>().color -= Color.black * Time.deltaTime * 2;
         }
         else if (SmokeTime < 6)
         {

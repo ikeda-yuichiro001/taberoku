@@ -17,6 +17,7 @@ public class Main : MonoBehaviour
     private float S;
     float delay;
     public static int Phase;
+    public static bool Moob;
     bool seflag , dSet, Rot, Zero;
     float cnt,cnt2;
     public Text Timer;
@@ -120,11 +121,11 @@ public class Main : MonoBehaviour
         {
             case 0://ステージ&プレイヤーの生成
                 targetObj[0].GetComponent<Stage>().StageCreate();
+                camera_.transform.position = new Vector3(0, 36, -15);//視点移動
                 Phase = 1;
                 break;
             case 1://プレイヤーの行動(位置をみる)
-                Stage.Soys[Player.Num].SetActive(true);//名前の表示
-                camera_.transform.position = new Vector3(0, 36, -15);//視点移動
+                //Stage.Soys[Player.Num].SetActive(true);//名前の表示
                 targetObj[1].GetComponent<Player>().PlayerMove0();//駒の位置調整
                 if (Player.goal<OPTION.menberLen)
                 {
@@ -170,7 +171,7 @@ public class Main : MonoBehaviour
                 }
                 if (Rot)
                 {
-                    Stage.Soys[Player.Num].SetActive(false);
+                    //Stage.Soys[Player.Num].SetActive(false);
                     targetObj[3].GetComponent<Dice>().DiceRotate();
                     delay += Time.deltaTime;
                     if (delay > 1.5f)
@@ -196,11 +197,15 @@ public class Main : MonoBehaviour
                 }
                 break;
             case 4: //プレイヤーの行動(コマの移動)
-                targetObj[0].GetComponent<Stage>().ChaseCam();//視点移動
-                targetObj[1].GetComponent<Player>().PlayerMove0();
+                if(!Moob)
+                {
+                    targetObj[0].GetComponent<Stage>().ChaseCam();//視点移動
+                    Moob = true;
+                }
                 targetObj[1].GetComponent<Player>().PlayerMove1();
                 break;
             case 5://止まったマスの処理
+                targetObj[1].GetComponent<Player>().PlayerMove0();
                 targetObj[2].GetComponent<Grid>().GridProcessing();
                 delay = 0;
                 break;
@@ -212,6 +217,7 @@ public class Main : MonoBehaviour
                 if(delay > 1.4f)
                 {
                     targetObj[1].GetComponent<Player>().PlayerPass();
+                    camera_.transform.position = new Vector3(0, 36, -15);//視点移動
                     delay = 0;
                 }
                 //print("Phase 7ダヨーン");
@@ -315,8 +321,12 @@ public class Main : MonoBehaviour
                 delay += Time.deltaTime;
                 if (delay > 1.5f)
                 {
-                    targetObj[5].GetComponent<Fin>().Finish();
+                    Zero = true;
                     delay = 0;
+                }
+                if (Zero)
+                {
+                    targetObj[5].GetComponent<Fin>().Finish();
                 }
                 print("終了！");
                 break;

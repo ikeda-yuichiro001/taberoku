@@ -69,6 +69,9 @@ public class Grid : MonoBehaviour
             Irasuto.color = Color.white;
             h1.color = Color.black;
             bun.color = Color.black;
+        }
+        if(Back.color.a > 1)
+        {
             if (se == false)
             {
                 SE.AUDIO.PlayOneShot(SE.CRIP[2]);

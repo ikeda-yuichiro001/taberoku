@@ -24,11 +24,11 @@ public class Stage : MonoBehaviour
     int GameLen;
     public static int[] MiniGame;
     public GameObject Soy;
-    public static GameObject[] Soys;
+    //public static GameObject[] Soys;
     public RawImage RawImage;
     public Text Text;
-    public static RawImage[] rawImages;
-    public static Text[] texts;
+    //public static RawImage[] rawImages;
+    //public static Text[] texts;
     public Material red;
     float CT, set;
 
@@ -37,14 +37,14 @@ public class Stage : MonoBehaviour
         Menber = OPTION.menberLen;
         cam = CAM;
         grid = new GameObject[25 + (5 * Menber)];
-        MiniGame = new int[18 + (3 * Menber)];
+        MiniGame = new int[9 + (3 * Menber)];
         players = new GameObject[Menber];
         //num = new int[Menber];
         masu = new int[Menber];
         Goal = new bool[Menber];
-        Soys = new GameObject[Menber];
-        rawImages = new RawImage[Menber];
-        texts = new Text[Menber];
+        //Soys = new GameObject[Menber];
+        //rawImages = new RawImage[Menber];
+        //texts = new Text[Menber];
         textboxs = textboxes;
         textboxs.SetActive(false);
         textboxs2 = textboxes2;
@@ -57,11 +57,13 @@ public class Stage : MonoBehaviour
         IRASUTOs = IRASUTO;
         IRASUTO.SetActive(false);
         ViewLinePoint = 0;
+
         var pos = new Vector3[Line.positionCount];
         int cnt = Line.GetPositions(pos);
         for (int len = 0; len < grid.Length; len++)//ƒ}ƒX‚Ì¶¬
         {
             A = (cnt / grid.Length) * len;
+            print(A);
             pos[len] = Line.GetPosition(A);
             grid[len] = Instantiate(G, pos[len]+ Vector3.up*0.2f, Quaternion.identity);//Random.Range(-0.3f, 0.3f)
             grid[len].transform.SetParent(stage.transform, false);
@@ -98,6 +100,7 @@ public class Stage : MonoBehaviour
             players[len2] = Instantiate(player[DATA_.userData.data[len2].shape]/*[DATA_.userData.data[len2].shape]*/,
                 grid[0].transform.position ,
                 Quaternion.identity);
+            /*
             Soys[len2] = Instantiate(Soy,
                 new Vector3(0,0,0),
                 Quaternion.identity);
@@ -113,7 +116,7 @@ public class Stage : MonoBehaviour
             rawImages[len2].color = StartManager.PlayerColor[DATA_.userData.data[len2].color];
             texts[len2].text = DATA_.userData.data[len2].name;
             //num[len2] = len2;
-            Soys[len2].SetActive(false);
+            Soys[len2].SetActive(false);*/
             masu[len2] = 0;
             Goal[len2] = false;
         }

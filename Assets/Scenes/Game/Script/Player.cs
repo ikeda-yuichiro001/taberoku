@@ -77,25 +77,26 @@ public class Player : MonoBehaviour
             if (Moooove == false && Stage.masu[Num] < Stage.grid.Length - 1)
             {
                 Stage.masu[Num]++;
-                //print("アムロ行っきまーす!");
+                print("アムロ行っきまーす!");
                 Moooove = true;
             }
             else if (Moooove == false && (Stage.masu[Num] > Stage.grid.Length - 1 || Stage.masu[Num] == Stage.grid.Length - 1))
             {
                 l++;
-                SE.AUDIO.PlayOneShot(SE.CRIP[0]);//ゴールっぽいやつを選んどく
+                //SE.AUDIO.PlayOneShot(SE.CRIP[0]);//ゴールっぽいやつを選んどく
+                print("アムロ逝っきまーす!");
             }
             if (Moooove == true)
             {
                 TT += Time.deltaTime;
-                if (TT >= 0.01f)
+                if (TT > 0.01f)
                 {
                     set += 0.05f;
                     Stage.players[Num].transform.position =
                         Vector3.Lerp(Stage.grid[Stage.masu[Num] - 1].transform.position,
                         Stage.grid[Stage.masu[Num]].transform.position, set);
                     TT = 0;
-                    if (set >= 1)
+                    if (set > 1)
                     {
                         set = 0;
                         Moooove = false;//移動の終了
@@ -106,16 +107,12 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        else if (l == Len)
+        else if (l >= Len)
         {
             l = 0;
             print("プレイヤー " + Num + " のマス目は " + Stage.masu[Num] + " だZOI!");
             Main.Phase = 5;
         }
-    }
-
-    public void PlayerCircular()
-    {
     }
 
     public void PlayerPass()
