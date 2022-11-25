@@ -23,43 +23,44 @@ public class InformUI : MonoBehaviour
         {
             SE.AUDIO.PlayOneShot(SE.CRIP[6]);
             //Smoke.color = new Color(1, 1, 1, 0);
-            InformBoxs.SetActive(true);
+            //InformBoxs.SetActive(true);
             newInformBoxs.SetActive(true);
             UIset1 = true;
 
-            InformBoxs.GetComponent<RawImage>().texture = images[(OPTION.menberLen-1) - Player.Num];
+            //InformBoxs.GetComponent<RawImage>().texture = images[(OPTION.menberLen-1) - Player.Num];
             newInformBoxs.GetComponent<RawImage>().texture = images[Player.Num];
-            InformBoxs.GetComponent<RawImage>().color = Color.clear;
+            //InformBoxs.GetComponent<RawImage>().color = Color.clear;
             newInformBoxs.GetComponent<RawImage>().color = Color.clear;
         }
 
         SmokeTime += Time.deltaTime;
-
-        if (SmokeTime < 4)
+        /*
+        if (SmokeTime < 2)
         {
-            InformBoxs.GetComponent<RawImage>().color += Color.white * Time.deltaTime / 4;
+            InformBoxs.GetComponent<RawImage>().color += Color.white * Time.deltaTime;
         }
-        else if (SmokeTime < 8)
+        else*/
+        if (SmokeTime < 2)
         {
-            InformBoxs.GetComponent<RawImage>().color -= Color.white * Time.deltaTime / 4;
-            newInformBoxs.GetComponent<RawImage>().color += Color.white * Time.deltaTime / 4;
+            //InformBoxs.GetComponent<RawImage>().color -= Color.white * Time.deltaTime / 4;
+            newInformBoxs.GetComponent<RawImage>().color += Color.white * Time.deltaTime;
         }
-        else if (SmokeTime < 9)
+        else if (SmokeTime < 6)
         {
-            InformBoxs.GetComponent<RawImage>().color = Color.clear;
+            //InformBoxs.GetComponent<RawImage>().color = Color.clear;
             newInformBoxs.GetComponent<RawImage>().color = Color.white;
         }
         else
         {
-            newInformBoxs.GetComponent<RawImage>().color -= Color.white * Time.deltaTime * 2;
+            newInformBoxs.GetComponent<RawImage>().color -= Color.white * Time.deltaTime;
         }
-        if (SmokeTime > 10)
+        if (SmokeTime > 8)
         {
 
-            InformBoxs.GetComponent<RawImage>().color =
+            //InformBoxs.GetComponent<RawImage>().color =
                 newInformBoxs.GetComponent<RawImage>().color = Color.clear;
             UIset1 = false;
-            InformBoxs.SetActive(false);
+            //InformBoxs.SetActive(false);
             newInformBoxs.SetActive(false);
             SmokeTime = 0;
             //Smoke.transform.localScale = new Vector3(1, 1, 1);

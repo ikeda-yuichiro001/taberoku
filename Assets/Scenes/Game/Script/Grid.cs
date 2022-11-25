@@ -37,10 +37,10 @@ public class Grid : MonoBehaviour
     {
         if (!set)
         {
-            /*for(int q = 0; q < 10;q++)
+            for (int q = 0; q < 10;q++)
             {
                 staticquestions[q] = questions[q];
-            }*/
+            }
             Stage.textboxs.SetActive(true);
             Stage.IRASUTOs.SetActive(true);
             Back.color = new Color(Back.color.r, Back.color.g, Back.color.b, 0);
