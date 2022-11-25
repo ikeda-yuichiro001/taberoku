@@ -27,8 +27,8 @@ public class InformUI : MonoBehaviour
             newInformBoxs.SetActive(true);
             UIset1 = true;
 
-            InformBoxs.GetComponent<RawImage>().texture = images[Player.Num];
-            newInformBoxs.GetComponent<RawImage>().texture = images[Player.Num+1 % OPTION.menberLen];
+            InformBoxs.GetComponent<RawImage>().texture = images[(OPTION.menberLen-1) - Player.Num];
+            newInformBoxs.GetComponent<RawImage>().texture = images[Player.Num];
             InformBoxs.GetComponent<RawImage>().color = Color.clear;
             newInformBoxs.GetComponent<RawImage>().color = Color.clear;
         }
